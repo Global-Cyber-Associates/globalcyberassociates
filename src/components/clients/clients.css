@@ -1,0 +1,60 @@
+.clients {
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: #f8fafc;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.client-logo-wrapper {
+  width: 140px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f2937;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 0.75rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.client-logo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-logo-wrapper {
+    width: 120px;
+    height: 60px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}

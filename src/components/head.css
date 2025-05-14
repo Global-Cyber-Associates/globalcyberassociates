@@ -1,0 +1,91 @@
+:root {
+  --light-blue: #007bff; 
+  --white-smoke: #ffffff; 
+  --dark-primary: #0d1b2a;
+  --dark-secondary: #31456a;
+  --accent-color: #007bff;
+  --footer-dark: #1a202c;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, var(--dark-primary), var(--dark-secondary));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.site-header .container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: auto;
+  display: flex;
+}
+
+.logo img {
+  height: 20px;
+  width: 20px;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white-smoke);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--white-smoke); /* Default to white */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: -5px;
+  transition: width 0.4s ease;
+}
+
+.site-nav a:hover {
+  color: var(--light-blue); /* Change to blue on hover */
+}
+
+.site-nav a:hover::after {
+  width: 100%;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--footer-dark);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--light-blue); /* Change text to blue */
+  font-size: 0.9rem;
+}
