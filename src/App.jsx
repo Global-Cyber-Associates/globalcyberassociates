@@ -1,7 +1,8 @@
 import React from "react";
+import "./App.css";  // Main CSS file for styling
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/homepage/home.jsx";  // Home page component
-// import About from "./components/About";  // About page component
+import About from "./components/about/about.jsx";
 import Services from "./components/servicepage/service.jsx";  // Services page component
 import CareersPage from "./components/careers/careers.jsx";
 import Contact from "./components/contact/contact.jsx"; 
@@ -24,8 +25,8 @@ const App = () => {
       <Routes>   
         <Route path="/" element={<Home />} />
         <Route index element={<Home />} />
-        {/* <Route path="about" element={<About />} /> */}
-        <Route path="services" element={<Services />} />
+        <Route path="about" element={<About />} />
+        <Route path="Solutions" element={<Services />} />
         <Route path="careers" element={<CareersPage />} />
         <Route path="contact" element={<Contact />} />
       </Routes>

@@ -1,37 +1,45 @@
 import React from "react";
 import './footer.css';
-import { FaLinkedin, FaTwitter, FaGithub  } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
+
 const Footer = () => {
   return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
+    <footer className="globalcyber-footer">
+      <div className="footer-grid">
 
-        {/* Company Info */}
         <div className="footer-section">
           <h3>GlobalCyberAssociates</h3>
-          <p>Your trusted cybersecurity partner in safeguarding digital infrastructure.</p>
+          <p>Trusted experts in securing digital infrastructure for organizations worldwide.</p>
         </div>
 
-        {/* Social Media */}
         <div className="footer-section">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer"><FaTwitter /></a>
-            <a href="https://github.com" target="_blank" rel="noreferrer"><FaGithub /></a>
+            <a
+              href="https://www.linkedin.com/company/globalcyberassociate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="linkedin-button"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg"
+                alt="LinkedIn Logo"
+                className="linkedin-logo"
+              />
+            </a>
           </div>
         </div>
 
-        {/* Contact Info */}
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>info@globalcyberassociates.com</p>
+          <p>info@globalcyberassociate.com</p>
         </div>
       </div>
 
-      <div className="container footer-bottom">
+      <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} GlobalCyberAssociates. All rights reserved.</p>
+                  <p>Chennai | Hyderabad | New York  </p>
+
       </div>
     </footer>
   );

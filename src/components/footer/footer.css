@@ -1,49 +1,68 @@
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    padding-bottom: 2rem;
-  }
-  
-  .footer-section h3, .footer-section h4 {
-    margin-bottom: 1rem;
-    color: #00bcd4;
-  }
-  
-  .footer-section p, .footer-section a {
-    color: #cbd5e1;
-    font-size: 0.95rem;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer-section ul li a:hover {
-    color: #00bcd4;
-  }
-  
-  .social-icons a {
-    font-size: 1.4rem;
-    margin-right: 1rem;
-    color: #cbd5e1;
-    transition: color 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    color: #00bcd4;
-  }
-  
-  .footer-bottom {
-    border-top: 1px solid #2c3748;
-    padding-top: 1rem;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #94a3b8;
-  }
-  
+.globalcyber-footer {
+  background-color: #0f172a;
+  padding: 3rem 1.5rem 2rem;
+  color: #cbd5e1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.globalcyber-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.globalcyber-footer .footer-section h3,
+.globalcyber-footer .footer-section h4 {
+  color: #00bcd4;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.globalcyber-footer .footer-section p,
+.globalcyber-footer .footer-section a {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.globalcyber-footer .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.globalcyber-footer .social-icons a {
+  font-size: 1.4rem;
+  color: #cbd5e1;
+  transition: color 0.3s ease;
+}
+
+.globalcyber-footer .social-icons a:hover {
+  color: #00bcd4;
+}
+
+.globalcyber-footer .footer-bottom {
+  border-top: 1px solid #334155;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.linkedin-button{
+  background-color: rgb(226, 228, 229);
+  font-size: 15px !important;
+  font-family: 'roboto', sans-serif;
+  align-content: center;
+  width: 70px;
+  height: 22px;
+  padding: 0;
+  margin: 0;
+  padding:  2px 2px 0px 2px;
+  border-radius: 2px;
+}

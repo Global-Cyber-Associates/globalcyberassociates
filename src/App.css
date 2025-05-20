@@ -1,0 +1,22 @@
+*{
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+:root {
+  --light-blue: #3fa9f5;
+  --white-smoke: #f9fafb;
+  --dark-primary: #0f172a;
+  --dark-secondary: #1e293b;
+  --accent-color: #314e8e;
+  --footer-dark: #111827;
+  --text-secondary: #9eb3d1;
+  --text-muted: #96b1b0;
+  --background-card: #1f2937;
+  --background-deep: #213857;
+  --border-muted: #334155; 
+  --hover-effect: rgba(38, 50, 56, 0.1);
+  --button-hover-effect: rgba(38, 50, 56, 0.2);
+
+}
+

@@ -1,14 +1,8 @@
 import React from "react";
 import "./clients.css";
+import clients from "./clients.js";
 
 const ClientsSection = () => {
-  const clients = [
-    { name: "FinTechHub", logo: "/images/clients/fintechhub.png" },
-    { name: "HealthCore", logo: "/images/clients/healthcore.png" },
-    { name: "InnoSoft", logo: "/images/clients/innosoft.png" },
-    { name: "DataSecure", logo: "/images/clients/datasecure.png" },
-    { name: "BlockchainX", logo: "/images/clients/blockchainx.png" },
-  ];
 
   return (
     <section className="section clients">

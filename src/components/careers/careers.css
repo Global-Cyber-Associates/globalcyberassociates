@@ -1,243 +1,118 @@
-:root {
-  --light-blue: #3fa9f5;
-  --white-smoke: #f9fafb;
-  --dark-primary: #0f172a;
-  --dark-secondary: #1e293b;
-  --accent-color: #314e8e;
-  --footer-dark: #111827;
-  --text-secondary: #9eb3d1;
-  --text-muted: #96b1b0;
-  --background-card: #1f2937;
-  --background-deep: #213857;
-  --border-muted: #334155;
-  --hover-effect: rgba(38, 50, 56, 0.1);
-  --button-hover-effect: rgba(38, 50, 56, 0.2);
-}
 
-/* General Layout */
 .careers-page {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  color: var(--text-secondary);
   background-color: var(--dark-primary);
+  color: var(--white-smoke);
+  font-family: 'Segoe UI', sans-serif;
+  padding: 4rem 1rem;
 }
 
-/* Hero Section */
-.careers-hero {
-  background-color: var(--background-deep);
-  color: var(--white-smoke);
-  padding: 60px 20px;
+.careers-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.careers-hero,
+.careers-jobs,
+.careers-why,
+.careers-culture {
+  margin-bottom: 4rem;
   text-align: center;
-  border-bottom: 3px solid var(--border-muted);
 }
 
 .careers-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .careers-hero p {
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin: 0 auto;
-  font-weight: 300;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Job Listings */
-.careers-listings {
-  padding: 50px 20px;
-  background-color: var(--background-card);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.careers-listings h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: var(--light-blue);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.jobs-table table {
-  width: 100%;
-  border-collapse: collapse;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.jobs-table th,
-.jobs-table td {
-  padding: 16px;
-  text-align: left;
-  border-bottom: 1px solid var(--border-muted);
-  vertical-align: top;
-}
-
-.jobs-table th {
-  background-color: var(--accent-color);
-  color: var(--white-smoke);
   font-size: 1.1rem;
-  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
-.jobs-table td {
-  font-size: 1rem;
-  color: var(--dark-secondary);
-}
-
-/* CTA Button */
-.cta-button {
-  background-color: var(--accent-color);
-  color: white;
-  padding: 12px 24px;
-  display: inline-block;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 1.125rem;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.cta-button:hover {
-  background-color: var(--light-blue);
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:active {
-  transform: scale(1.03);
-}
-
-/* Why Join Us */
-.why-join-us {
-  background-color: var(--dark-secondary);
-  padding: 60px 20px;
-  text-align: center;
-  color: var(--white-smoke);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.why-join-us h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.careers-jobs h2,
+.careers-why h2,
+.careers-culture h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--light-blue);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.why-join-us p {
-  max-width: 800px;
-  margin: 0 auto 30px;
-  font-size: 1.15rem;
+.careers-job-list {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.careers-job-card {
+  background: var(--background-card);
+  padding: 1.5rem;
+  border: 1px solid var(--border-muted);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.careers-job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px var(--hover-effect);
+}
+
+.careers-job-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--white-smoke);
+}
+
+.careers-job-meta {
   color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 
-.reasons ul {
+.careers-job-desc {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.careers-btn {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.careers-btn:hover {
+  background-color: var(--light-blue);
+}
+
+.careers-reasons {
+  margin-top: 2rem;
   list-style: none;
   padding: 0;
-  max-width: 600px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-.reasons li {
-  font-size: 1.1rem;
-  margin: 10px 0;
-  position: relative;
-  padding-left: 25px;
+.careers-reasons li {
+  background: var(--background-card);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  border-radius: 8px;
   color: var(--white-smoke);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.reasons li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--light-blue);
-  font-size: 1.3rem;
-}
-
-/* Our Culture */
-.culture {
-  background-color: var(--background-deep);
-  padding: 60px 20px;
-  text-align: center;
-  color: var(--white-smoke);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.culture h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--light-blue);
-}
-
-.culture p {
-  max-width: 700px;
-  margin: 0 auto 30px;
-  font-size: 1.15rem;
-  color: var(--text-muted);
-}
-
-.cta-container {
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* Footer */
-.careers-footer {
-  background-color: var(--footer-dark);
-  color: var(--white-smoke);
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 1rem;
-  border-top: 3px solid var(--border-muted);
-}
-
-/* Job Card Hover */
-.job-card {
-  background-color: var(--background-card);
-  border-radius: 10px;
-  padding: 20px;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.job-card td{
-  color: white;
-}
-
-/* Responsive Media Queries */
-@media (max-width: 768px) {
-  .careers-hero h1 {
-    font-size: 2.5rem;
+@media (min-width: 768px) {
+  .careers-job-list {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .careers-hero p {
-    font-size: 1rem;
-  }
-
-  .cta-button {
-    font-size: 1rem;
-    padding: 10px 18px;
-  }
-
-  .why-join-us h2, .culture h2 {
-    font-size: 2rem;
-  }
-
-  .careers-listings h2 {
-    font-size: 2rem;
+  .careers-reasons {
+    grid-template-columns: 1fr 1fr;
   }
 }
-

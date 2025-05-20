@@ -1,13 +1,3 @@
-:root {
-  --light-blue: #007bff; 
-  --white-smoke: #ffffff; 
-  --dark-primary: #0d1b2a;
-  --dark-secondary: #31456a;
-  --accent-color: #007bff;
-  --footer-dark: #1a202c;
-}
-
-/* Header */
 .site-header {
   background: linear-gradient(90deg, var(--dark-primary), var(--dark-secondary));
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -32,8 +22,8 @@
 }
 
 .logo img {
-  height: 20px;
-  width: 20px;
+  height: 50px;
+  width: 50px;
 }
 
 .logo h1 {
@@ -81,11 +71,4 @@
   width: 100%;
 }
 
-/* Footer */
-.site-footer {
-  background-color: var(--footer-dark);
-  padding: 2rem 0;
-  text-align: center;
-  color: var(--light-blue); /* Change text to blue */
-  font-size: 0.9rem;
-}
+
