@@ -53,16 +53,3 @@
   font-size: 0.85rem;
   color: #94a3b8;
 }
-
-.linkedin-button{
-  background-color: rgb(226, 228, 229);
-  font-size: 15px !important;
-  font-family: 'roboto', sans-serif;
-  align-content: center;
-  width: 70px;
-  height: 22px;
-  padding: 0;
-  margin: 0;
-  padding:  2px 2px 0px 2px;
-  border-radius: 2px;
-}

@@ -1,6 +1,6 @@
 import React from "react";
 import './footer.css';
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -20,12 +20,17 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="linkedin-button"
+              aria-label="LinkedIn"
             >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg"
-                alt="LinkedIn Logo"
-                className="linkedin-logo"
-              />
+              <FaLinkedin size={30} color="#0A66C2" />
+            </a>
+            <a
+              href="https://wa.me/+919342167657" 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp size={30} color="#25D366" />
             </a>
           </div>
         </div>
@@ -38,7 +43,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} GlobalCyberAssociates. All rights reserved.</p>
-                  <p>Chennai | Hyderabad | New York  </p>
+        <p>Chennai | Hyderabad | New York  </p>
 
       </div>
     </footer>

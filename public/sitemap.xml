@@ -1,0 +1,18 @@
+<!-- filepath: /workspaces/gcasite/public/sitemap.xml -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.globalcyberassociates.com/</loc>
+  </url>
+  <url>
+    <loc>https://www.globalcyberassociates.com/about</loc>
+  </url>
+  <url>
+    <loc>https://www.globalcyberassociates.com/Solutions</loc>
+  </url>
+  <url>
+    <loc>https://www.globalcyberassociates.com/careers</loc>
+  </url>
+  <url>
+    <loc>https://www.globalcyberassociates.com/contact</loc>
+  </url>
+</urlset>

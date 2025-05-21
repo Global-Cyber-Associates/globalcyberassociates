@@ -1,0 +1,129 @@
+.brief-container {
+  max-width: 900px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  padding: 32px 24px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #ffffff;
+}
+
+.brief-container__actions {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.brief-container__download-btn {
+  background: #0a2540;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.brief-container__download-btn:hover {
+  background: #1a73e8;
+}
+
+.brief-container__content {
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+/* Header Section */
+.brief-container__header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.brief-container__logo img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+}
+
+.brief-container__title h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #0a2540;
+  font-weight: 700;
+}
+.brief-container__title h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1a73e8;
+  font-weight: 400;
+}
+
+/* Section Blocks */
+.brief-container__section {
+  margin: 16px 0;
+}
+.brief-container__section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0a2540;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.brief-container__service,
+.brief-container__reason {
+  margin-bottom: 12px;
+}
+.brief-container__service-title,
+.brief-container__reason-title {
+  font-weight: 600;
+  color: #1a73e8;
+}
+.brief-container__service-desc,
+.brief-container__reason-desc {
+  color: #333;
+  margin-left: 8px;
+  font-size: 0.98rem;
+}
+
+/* Contact Section */
+.brief-container__contact-info {
+  margin-top: 8px;
+  color: #0a2540;
+}
+.brief-container__contact-item {
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+.brief-container__contact-label {
+  font-weight: 500;
+  color: #0a2540;
+}
+
+/* CTA */
+.brief-container__cta {
+  margin: 32px 0 16px 0;
+  text-align: center;
+}
+.brief-container__cta-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0a2540;
+}
+.brief-container__cta-subtext {
+  color: #1a73e8;
+  font-size: 1rem;
+}
+
+/* Footer */
+.brief-container__footer {
+  margin-top: 32px;
+  text-align: center;
+  color: #888;
+  font-size: 0.95rem;
+}
