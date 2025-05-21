@@ -3,8 +3,17 @@ import './contact.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 import branchLocations from './address.js';
+import ModalExample from '../modal/pop.jsx';
+import { useState } from 'react';
 
 const ContactPage = () => {
+ const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       <Header />
@@ -18,28 +27,32 @@ const ContactPage = () => {
         </section>
 
         <section className="main-section">
-          {/* Left section: Form */}
-        {/* Left section: Embedded Microsoft Form */}
-<div className="left-section">
-  <div className="contact-box">
-    <h2>Send Us a Message</h2>
-    <iframe
-      src="https://forms.office.com/r/DukGVdvtiJ?embed=true"
-      className='micro-forms'
-      width="100%"
-      height="700px"
-      frameBorder="0"
-      marginHeight="0"
-      marginWidth="0"
-      title="Contact Form"
-      allowFullScreen
-    >
-      Loading…
-    </iframe>
-  </div>
-</div>
+          <div className="left-section">
+            <div className="contact-box">
+              <h2>Send Us a Message</h2>
+              <form>
+                <div className="form-row">
+                  <input type="text" placeholder="Full Name" />
+                  <input type="email" placeholder="Email" />
+                </div>
+                <div className="form-row">
+                  <input type="text" placeholder="Phone Number" />
+                  <input type="text" placeholder="Company Name" />
+                </div>
+                <input type="text" placeholder="Subject" />
+                <textarea rows="5" placeholder="Your Message" ></textarea>
+                <button type="submit" onClick={handleSubmit} >Submit</button>
+              </form>
 
-          {/* Right section: Branches */}
+              <ModalExample
+                visible={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title="Apologies" 
+                message="We are currently unable to process your request. Kindly reach out to us at info@globalcyberassociate.com for further assistance" 
+              />
+            </div>
+          </div>
+
           <div className="right-section">
             {branchLocations.slice(0, 3).map((branch, index) => (
               <div key={index} className="branch-container">

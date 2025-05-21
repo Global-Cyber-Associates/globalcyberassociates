@@ -1,6 +1,6 @@
 const branchLocations = [
   {
-    title: "Global Cyber Associates Pvt. Ltd",
+    title: "Chennai Office",
     addressLine2: "NO 5, 5th Street,  Dr Radha Krishnan Salai, Sullivan Garden,",
     city: "Mylapore, Chennai",
     state: "Tamil Nadu",
@@ -9,13 +9,22 @@ const branchLocations = [
     email: "info@globalcyberassociates.com",
   },
   {
-    title: "Global Cyber Associates Pvt. Ltd",
+    title: "Hyderabad Office",
     addressLine2: " 2nd floor, plot no 98 Amaze child development building Gayatri Nagar Vivekananda Nagar Kukatpally",
     city: "Hyderabad",
     state: "Telangana",
     zip: "500072",
     country: "India",
-    email: "info@globalcyberassociates.com",
+    email: "info@globalcyberassociate.com",
+  },
+  {
+    title: "USA Office",
+    addressLine2: " 15451 Tully House CT",
+    city: "Charlotte",
+    state: "NC",
+    zip: "28277",
+    country: "USA",
+    email: "info@globalcyberassociate.com",
   }
 //   {
 //     title: "Branch Office - West",
@@ -25,7 +34,7 @@ const branchLocations = [
 //     state: "Maharashtra",
 //     zip: "411016",
 //     country: "India",
-//     email: "info@globalcyberassociates.com",
+//     email: "info@globalcyberassociate.com",
 //   },
 ];
 

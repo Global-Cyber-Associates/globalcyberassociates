@@ -1,14 +1,18 @@
 import React from 'react';
 import './hero.css';
 import image from './img.png';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 
 const HeroSection = () => {
 
+  // Initialize navigation
   const navigate = useNavigate();
   const showSolutions = () => {
     navigate('/Solutions');
   }
+
 
   return (
     <section id="hero" className="hero section">
@@ -39,6 +43,7 @@ We are a next-generation cybersecurity company helping startups, enterprises, an
               <div className="cta-button" onClick={showSolutions}>
                   <span>EXPLORE SOLUTIONS</span>
               </div>
+              
             </div>
           </div>
 

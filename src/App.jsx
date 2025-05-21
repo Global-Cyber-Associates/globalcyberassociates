@@ -6,6 +6,8 @@ import About from "./components/about/about.jsx";
 import Services from "./components/servicepage/service.jsx";  // Services page component
 import CareersPage from "./components/careers/careers.jsx";
 import Contact from "./components/contact/contact.jsx"; 
+import Brief from "./components/brief/brief.jsx";  // Brief page component
+
  // Contact page component
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -29,6 +31,9 @@ const App = () => {
         <Route path="Solutions" element={<Services />} />
         <Route path="careers" element={<CareersPage />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="Brief" element={<Brief />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
+        {/* Fallback route for 404 Not Found */}  
       </Routes>
     </>
   );

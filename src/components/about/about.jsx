@@ -2,10 +2,17 @@ import React from 'react';
 import './about.css';
 import Head from '../head.jsx';
 import office from './team.jpg';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 
 const AboutSection = () => {
+
+  const navigate = useNavigate();
+  const showSolutions = () => {
+    navigate('/Solutions');
+  }
+
   return (
     <>
       <Head />
@@ -62,9 +69,9 @@ const AboutSection = () => {
                   </div>
                 </div>
 
-                <a href="/Solutions" className="about-section__btn">
+                <div className="cta-button" onClick={showSolutions}>
                   Explore Our Solutions
-                </a>
+                </div>
               </div>
             </div>
           </div>
