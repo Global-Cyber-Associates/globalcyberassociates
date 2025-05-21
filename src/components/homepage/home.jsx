@@ -13,30 +13,30 @@ import AboutSection from "../about/about.jsx";
 import Features from "../4phases/phases.jsx";
 
 const Home = () => {
-  useEffect(() => {
-    AOS.init({  
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    });
+  // useEffect(() => {
+  //   AOS.init({  
+  //     duration: 1000,
+  //     once: true,
+  //     easing: "ease-in-out",
+  //   });
 
-    const scroller = document.getElementById("testimonialScroller");
-    let scrollAmount = 0;
-    const scrollStep = 1;
-    const maxScrollLeft = () => scroller.scrollWidth - scroller.clientWidth;
+  //   const scroller = document.getElementById("testimonialScroller");
+  //   let scrollAmount = 0;
+  //   const scrollStep = 1;
+  //   const maxScrollLeft = () => scroller.scrollWidth - scroller.clientWidth;
 
-    const scrollInterval = setInterval(() => {
-      if (scroller.scrollLeft >= maxScrollLeft()) {
-        scrollAmount = 0;
-        scroller.scrollLeft = 0;
-      } else {
-        scrollAmount += scrollStep;
-        scroller.scrollLeft += scrollStep;
-      }
-    }, 20);
+  //   const scrollInterval = setInterval(() => {
+  //     if (scroller.scrollLeft >= maxScrollLeft()) {
+  //       scrollAmount = 0;
+  //       scroller.scrollLeft = 0;
+  //     } else {
+  //       scrollAmount += scrollStep;
+  //       scroller.scrollLeft += scrollStep;
+  //     }
+  //   }, 20);
 
-    return () => clearInterval(scrollInterval);
-  }, []);
+  //   return () => clearInterval(scrollInterval);
+  // }, []);
 
   return (
     <>
