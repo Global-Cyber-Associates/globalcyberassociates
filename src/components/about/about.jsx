@@ -2,6 +2,8 @@ import React from 'react';
 import './about.css';
 import Head from '../head.jsx';
 import office from './team.jpg';
+import { useNavigate } from 'react-router-dom';
+
 
 const AboutSection = () => {
   return (

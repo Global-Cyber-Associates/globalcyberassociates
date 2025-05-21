@@ -1,9 +1,15 @@
 import React from 'react';
-import './hero.css'; // Make sure to style it
+import './hero.css';
 import image from './img.png';
-
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+
+  const navigate = useNavigate();
+  const showSolutions = () => {
+    navigate('/Solutions');
+  }
+
   return (
     <section id="hero" className="hero section">
       <div className="out-container">
@@ -30,10 +36,8 @@ We are a next-generation cybersecurity company helping startups, enterprises, an
                 </p>
               </div>
 
-              <div className="cta-button">
-                <a href="/Solutions">
+              <div className="cta-button" onClick={showSolutions}>
                   <span>EXPLORE SOLUTIONS</span>
-                </a>
               </div>
             </div>
           </div>
