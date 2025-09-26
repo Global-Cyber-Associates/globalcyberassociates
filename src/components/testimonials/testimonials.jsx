@@ -1,72 +1,120 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './testimonials.css';
 
-
 const testimonials = [
-  {
-    name: 'Ananya Desai',
-    role: 'CTO, FinEdge Bank',
-    text: 'Helped us fix critical issues before our audit. Fast and professional.',
+  { 
+    name: 'Charan Gurudas', 
+    role: 'CEO, PreciFast India Pvt Ltd', 
+    text: 'Working with GCA was an absolute pleasure. They helped us strengthen our CRM security, and I feel confident knowing our data is well-protected. Their team truly cares about their clients.', 
+    project: 'CRM Security' 
   },
-  {
-    name: 'Rahul Verma',
-    role: 'IT Manager, HealthPlus Clinics',
-    text: 'Their quick response kept our systems safe during an attack.',
+  { 
+    name: 'Prasanna Durga', 
+    role: 'Director, NLigten Systems Pvt Ltd', 
+    text: 'GCA did a wonderful job securing our cloud platform. Their approach is professional yet personal, and I always feel our systems are in safe hands.', 
+    project: 'Cloud Collaboration' 
   },
-  {
-    name: 'Priya K.',
-    role: 'Founder, SaaS Startup',
-    text: 'Their assessment gave us the clarity we needed on our risks.',
+  { 
+    name: 'Vikram Singh', 
+    role: 'Project Head, NSys Technologies', 
+    text: 'The security assessment for our mobile app was thorough and insightful. GCA guided us through fixing issues clearly, and I genuinely appreciated their expertise and support.', 
+    project: 'Mobile App Security' 
   },
-  {
-    name: 'Mohammed A.',
-    role: 'DevOps Lead, EcomSphere',
-    text: 'The red team test was real-world and revealed key gaps.',
-  },
-  {
-    name: 'Sonal Mehta',
-    role: 'Compliance Officer, MediSecure',
-    text: 'Their guidance helped us pass ISO 27001 with ease.',
-  },
-  {
-    name: 'Kiran J.',
-    role: 'CEO, DataSync Solutions',
-    text: 'Reliable 24/7 monitoring that gives us real peace of mind.',
+  { 
+    name: 'Anand', 
+    role: 'CEO, Eshwari & Co.', 
+    text: 'Partnering with GCA has been a very positive experience. They enhanced our network security and gave us real peace of mind. Their dedication and professionalism stand out.', 
+    project: 'Network Security' 
   },
 ];
 
 
-export default function AutoScrollGrid() {
+
+export default function InfiniteScrollTestimonials() {
   const scrollRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
+  // Clone testimonials for infinite effect
+  const loopedTestimonials = [...testimonials, ...testimonials];
+
+  // Auto-scroll
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    let scrollAmount = 1;
+    const scroller = scrollRef.current;
+    if (!scroller) return;
 
-    const scrollInterval = setInterval(() => {
-      if (scrollContainer) {
-        scrollContainer.scrollLeft += scrollAmount;
-        if (
-          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
-          scrollContainer.scrollWidth
-        ) {
-          scrollContainer.scrollLeft = 0;
-        }
+    let scrollAmount = 0.5;
+    let animationFrameId;
+
+    const scroll = () => {
+      if (!scrollRef.current || isHovered || isDragging) {
+        animationFrameId = requestAnimationFrame(scroll);
+        return;
       }
-    }, 20);
 
-    return () => clearInterval(scrollInterval);
-  }, []);
+      scroller.scrollLeft += scrollAmount;
+
+      // Reset scroll position when we reach the first duplicate set
+      if (scroller.scrollLeft >= scroller.scrollWidth / 2) {
+        scroller.scrollLeft = 0;
+      }
+
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered, isDragging]);
+
+  // Mouse drag handlers
+  const onMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+
+    // Infinite loop while dragging
+    if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+      scrollRef.current.scrollLeft -= scrollRef.current.scrollWidth / 2;
+    } else if (scrollRef.current.scrollLeft < 0) {
+      scrollRef.current.scrollLeft += scrollRef.current.scrollWidth / 2;
+    }
+  };
+
+  const onMouseUp = () => setIsDragging(false);
+  const onMouseLeave = () => setIsDragging(false);
 
   return (
     <div className="testimonial-section">
       <h2 className="testimonial-section__title">What Our Users Say</h2>
-      <div className="testimonial-section__scroll-wrapper" ref={scrollRef}>
+      <div
+        className="testimonial-section__scroll-wrapper"
+        ref={scrollRef}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+      >
         <div className="testimonial-section__grid">
-          {testimonials.map((item, index) => (
+          {loopedTestimonials.map((item, index) => (
             <div className="testimonial-section__card" key={index}>
               <p className="testimonial-section__text">"{item.text}"</p>
-              <p className="testimonial-section__author">- {item.name}, {item.role}</p>
+              <p className="testimonial-section__project">{item.project}</p>
+              <p className="testimonial-section__author">
+                – {item.name}, {item.role}
+              </p>
             </div>
           ))}
         </div>

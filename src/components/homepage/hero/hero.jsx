@@ -53,17 +53,6 @@ We are a next-generation cybersecurity company helping startups, enterprises, an
               <div className="fluid-shape">
                 <img src={image} />
               </div>
-
-              {/* <div className="stats-card">
-                <div className="stats-number">
-                  <h2>0</h2>
-                </div>
-                <div className="stats-label">
-                  <p>Successful Campaigns</p>
-                </div>
-                <div className="stats-arrow">
-                </div>
-              </div> */}
             </div>
           </div>
 
