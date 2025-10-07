@@ -1,6 +1,6 @@
 # Minimal React + Vite Template
 
-This project is a minimal setup for building React applications using [Vite](https://vitejs.dev/). It includes:
+- This project is a minimal setup for building React applications using [Vite](https://vitejs.dev/). It includes:
 
 - **React** for building user interfaces
 - **Vite** for fast development and build tooling
