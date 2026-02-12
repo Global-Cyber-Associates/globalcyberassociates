@@ -40,14 +40,14 @@ const Features = () => {
     return (
         <>
             <section className="features-container">
-                    {features.map((feature) => (
-                        <div className="feature-card" key={feature.id}>
-                            <div className="feature-number">{feature.id}</div>
-                            <img src={feature.img} alt={feature.title} className="feature-img" />
-                            <h3 className="feature-title">{feature.title}</h3>
-                            <p className="feature-desc">{feature.description}</p>
-                        </div>
-                    ))}
+                {features.map((feature) => (
+                    <div className="feature-card" key={feature.id}>
+                        <div className="feature-number">{feature.id}</div>
+                        <img src={feature.img} alt={feature.title} className="feature-img" />
+                        <h3 className="feature-title">{feature.title}</h3>
+                        <p className="feature-desc">{feature.description}</p>
+                    </div>
+                ))}
             </section>
         </>
 

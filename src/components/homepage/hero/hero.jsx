@@ -35,15 +35,15 @@ const HeroSection = () => {
 
               <div className="description">
                 <p>
-We are a next-generation cybersecurity company helping startups, enterprises, and individuals stay safe in the digital world. Whether it's securing your infrastructure, detecting threats, or training your team — we've got you covered.
+                  We are a next-generation cybersecurity company helping startups, enterprises, and individuals stay safe in the digital world. Whether it's securing your infrastructure, detecting threats, or training your team — we've got you covered.
 
                 </p>
               </div>
 
               <div className="cta-button" onClick={showSolutions}>
-                  <span>EXPLORE SOLUTIONS</span>
+                <span>EXPLORE SOLUTIONS</span>
               </div>
-              
+
             </div>
           </div>
 

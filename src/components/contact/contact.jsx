@@ -7,10 +7,10 @@ import ModalExample from '../modal/pop.jsx';
 import { useState } from 'react';
 
 const ContactPage = () => {
- const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setIsModalOpen(true);
   };
 
@@ -47,8 +47,8 @@ const ContactPage = () => {
               <ModalExample
                 visible={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                title="Apologies" 
-                message="We are currently unable to process your request. Kindly reach out to us at info@globalcyberassociate.com for further assistance" 
+                title="Apologies"
+                message="We are currently unable to process your request. Kindly reach out to us at info@globalcyberassociate.com for further assistance"
               />
             </div>
           </div>

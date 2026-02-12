@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 const CareersPage = () => {
   // Initialize navigation
   const navigate = useNavigate();
-    const showAbout = () => {
-      navigate('/About');
-    }
+  const showAbout = () => {
+    navigate('/About');
+  }
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -78,9 +78,9 @@ const CareersPage = () => {
             <h2>Our Culture</h2>
             <p>
               Innovation, inclusion, and impact define who we are. We believe in solving tough challenges together.
-            </p>            
+            </p>
             <div className="cta-button" onClick={showAbout}>
-                  <span>Learn More About Our Culture</span>
+              <span>Learn More About Our Culture</span>
             </div>
           </div>
         </section>

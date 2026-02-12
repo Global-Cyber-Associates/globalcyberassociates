@@ -14,7 +14,7 @@ import Features from "../4phases/phases.jsx";
 
 const Home = () => {
   useEffect(() => {
-    AOS.init({  
+    AOS.init({
       duration: 1000,
       once: true,
       easing: "ease-in-out",
@@ -45,31 +45,31 @@ const Home = () => {
       <main>
         <Hero />
         <Features />
-       
-       
-       {services.map((service, index) => (
-  <section
-    className="service-section"
-    key={index}
-    data-aos="fade-up"
-    data-aos-delay={index * 100}
-  >
-    <div
-      className="service-container"
-      style={{
-        flexDirection: index % 2 === 0 ? 'row' : 'row-reverse'
-      }}
-    >
-      <div className="service-image">
-        <img src={service.image} alt={service.title} />
-      </div>
-      <div className="service-content">
-        <h2 className="service-title">{service.title}</h2>
-        <p className="service-description">{service.description}</p>
-      </div>
-    </div>
-  </section>
-))}
+
+
+        {services.map((service, index) => (
+          <section
+            className="service-section"
+            key={index}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div
+              className="service-container"
+              style={{
+                flexDirection: index % 2 === 0 ? 'row' : 'row-reverse'
+              }}
+            >
+              <div className="service-image">
+                <img src={service.image} alt={service.title} />
+              </div>
+              <div className="service-content">
+                <h2 className="service-title">{service.title}</h2>
+                <p className="service-description">{service.description}</p>
+              </div>
+            </div>
+          </section>
+        ))}
         <div data-aos="slide-in">
           {/* <ClientsSection /> */}
         </div>
