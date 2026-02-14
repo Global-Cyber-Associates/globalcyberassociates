@@ -8,6 +8,7 @@ import CareersPage from "./components/careers/careers.jsx";
 import Contact from "./components/contact/contact.jsx";
 import Brief from "./components/brief/brief.jsx";  // Brief page component
 import Presentations from "./components/presentations/Presentations.jsx";
+import Presentation2 from "./components/presentations/Presentation2.jsx";
 import { useNavigate } from "react-router-dom";
 
 // Contact page component
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="contact" element={<Contact />} />
         <Route path="Brief" element={<Brief />} />
         <Route path="presentations" element={<Presentations />} />
+        <Route path="presentation2" element={<Presentation2 />} />
         {/* <Route path="*" element={<NotFound />} /> */}
         {/* Fallback route for 404 Not Found */}
       </Routes>
