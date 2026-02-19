@@ -9,6 +9,7 @@ import Contact from "./components/contact/contact.jsx";
 import Brief from "./components/brief/brief.jsx";  // Brief page component
 import Presentations from "./components/presentations/Presentations.jsx";
 import Presentation2 from "./components/presentations/Presentation2.jsx";
+import AssessmentPage from "./components/assessment/AssessmentPage.jsx";
 import { useNavigate } from "react-router-dom";
 
 // Contact page component
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="Brief" element={<Brief />} />
         <Route path="presentations" element={<Presentations />} />
         <Route path="presentation2" element={<Presentation2 />} />
+        <Route path="Assessment" element={<AssessmentPage />} />
         {/* <Route path="*" element={<NotFound />} /> */}
         {/* Fallback route for 404 Not Found */}
       </Routes>

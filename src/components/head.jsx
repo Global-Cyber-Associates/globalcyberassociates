@@ -25,6 +25,7 @@ const Header = () => {
             <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
             <li><Link to="/Solutions" onClick={() => setMenuOpen(false)}>Solutions</Link></li>
             <li><Link to="/careers" onClick={() => setMenuOpen(false)}>Careers</Link></li>
+            <li><Link to="/Assessment" onClick={() => setMenuOpen(false)}>Risk Assessment</Link></li>
             <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
             <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
           </ul>

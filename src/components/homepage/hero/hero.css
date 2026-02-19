@@ -72,29 +72,85 @@
   margin-right: auto;
 }
 
-/* CTA Button */
+/* CTA Buttons & Subtext */
+.cta-group {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.cta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center subtext relative to button */
+  min-width: 220px;
+}
+
 .cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: 100%; /* Fill the cta-item container */
+}
+
+/* ... existing button variants ... */
+
+.cta-button.primary {
   background-color: var(--accent-color);
   color: white;
-  padding: 0.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 6px 20px var(--button-hover-effect);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  max-width: 100%;
-  flex-wrap: wrap;
+  box-shadow: 0 4px 15px rgba(49, 78, 142, 0.3);
+}
+
+.cta-button.primary:hover {
+  background-color: var(--light-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(63, 169, 245, 0.4);
+}
+
+.cta-button.secondary {
+  background-color: #a3e635; /* brand-lime */
+  color: #020617; /* brand-dark */
+  border: none;
+  box-shadow: 0 4px 15px rgba(163, 230, 53, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background-color: #bef264;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(163, 230, 53, 0.5);
+}
+
+.cta-subtext {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
   text-align: center;
 }
 
-.cta-button:hover {
-  background-color: var(--light-blue);
-  transform: translateY(-3px);
+@media (max-width: 768px) {
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+  .cta-item {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 /* Visual Content */

@@ -40,10 +40,24 @@ const HeroSection = () => {
                 </p>
               </div>
 
-              <div className="cta-button" onClick={showSolutions}>
-                <span>EXPLORE SOLUTIONS</span>
-              </div>
+              <div className="cta-group mt-8">
+                <div className="cta-item">
+                  <div className="cta-button primary" onClick={showSolutions}>
+                    <span>EXPLORE SOLUTIONS</span>
+                  </div>
+                  <p className="cta-subtext">Discover our services</p>
+                </div>
 
+                <div className="cta-item">
+                  <div
+                    className="cta-button secondary cursor-pointer"
+                    onClick={() => navigate('/Assessment')}
+                  >
+                    <span>FREE RISK ASSESSMENT</span>
+                  </div>
+                  <p className="cta-subtext">How secure is your organization?</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -51,7 +65,7 @@ const HeroSection = () => {
           <div className="col-lg-5" data-aos="zoom-out">
             <div className="visual-content">
               <div className="fluid-shape">
-                <img src={image} />
+                <img src={image} alt="Security Illustration" />
               </div>
             </div>
           </div>
