@@ -7,7 +7,7 @@ const Presentation = () => {
     const slides = [
         {
             id: 'question',
-            title: 'How productive is your employee?',
+            title: 'How productive was your employee yesterday?',
             subtitle: 'Most leaders pay for hours that never happened. Visun-AI tells you the truth.',
             image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072',
             type: 'hero'
