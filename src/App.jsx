@@ -9,6 +9,7 @@ import Contact from "./components/contact/contact.jsx";
 import Brief from "./components/brief/brief.jsx";  // Brief page component
 import Presentations from "./components/presentations/Presentations.jsx";
 import Presentation2 from "./components/presentations/Presentation2.jsx";
+import PresentationIndex from "./components/presentations/PresentationIndex.jsx";
 import AssessmentPage from "./components/assessment/AssessmentPage.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -29,11 +30,11 @@ const App = () => {
 
     const handleKeyDown = (e) => {
       // Check for Ctrl + P
-      if (e.ctrlKey && e.key.toLowerCase() === 'p') {
-        e.preventDefault(); // Prevent browser print dialog
-        const password = prompt("Enter Administration Password to view Visual Intel:");
-        if (password === 'gca@123') {
-          navigate('/presentations');
+        if (e.ctrlKey && e.key.toLowerCase() === 'p') {
+          e.preventDefault(); // Prevent browser print dialog
+          const password = prompt("Enter Administration Password to view Visual Intel:");
+          if (password === 'gca@123') {
+          navigate('/presentaiotn');
         } else if (password !== null) {
           alert("Access Denied: Invalid Authentication Token.");
         }
@@ -54,7 +55,9 @@ const App = () => {
         <Route path="careers" element={<CareersPage />} />
         <Route path="contact" element={<Contact />} />
         <Route path="Brief" element={<Brief />} />
-        <Route path="presentations" element={<Presentations />} />
+        <Route path="presentaiotn" element={<PresentationIndex />} />
+        <Route path="presentations" element={<PresentationIndex />} />
+        <Route path="presentation1" element={<Presentations />} />
         <Route path="presentation2" element={<Presentation2 />} />
         <Route path="Assessment" element={<AssessmentPage />} />
         {/* <Route path="*" element={<NotFound />} /> */}

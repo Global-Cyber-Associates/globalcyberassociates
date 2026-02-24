@@ -205,7 +205,7 @@ const Presentation = () => {
                                         <div key={i} className="flex gap-8 group">
                                             <div className="flex flex-col items-center">
                                                 <div className="w-[1px] h-12 bg-blue-600/30"></div>
-                                                <div className="text-[10px] font-black text-blue-500 rotate-90 my-4 tracking-widest">{item.id}</div>
+                                                <div className="text-[10px] font-black text-blue-500 my-4 tracking-widest">{item.id}</div>
                                                 <div className="w-[1px] flex-grow bg-blue-600/30"></div>
                                             </div>
                                             <div className="space-y-2 py-4">
