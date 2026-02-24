@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const presentationCards = [
   {
     id: "presentation-1",
-    title: "Presentation 1",
+    title: "Enterprise Workforce Productivity Strategy",
     description: "Visun-AI workforce visibility and productivity intelligence.",
     path: "/presentation1",
     image:
@@ -12,7 +12,7 @@ const presentationCards = [
   },
   {
     id: "presentation-2",
-    title: "Presentation 2",
+    title: "MSME Cybersecurity Posture Assessment",
     description: "Cybersecurity posture assessment for MSMEs.",
     path: "/presentation2",
     image:
