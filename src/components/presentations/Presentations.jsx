@@ -44,11 +44,11 @@ const Presentation = () => {
         },
         {
             id: 'security_first',
-            title: 'Security is Not Optional.',
+            title: 'Visibility Drives Productivity.',
             items: [
-                { title: 'Shadow IT Search', desc: 'Expose hidden applications running in secret.' },
-                { title: 'Data Lockdown', desc: 'Stop exfiltration to personal cloud accounts.' },
-                { title: 'Identity Map', desc: 'Know exactly who is touching what, and when.' }
+                { title: 'Focus Time Tracking', desc: 'Measure how much time is spent on productive work.' },
+                { title: 'App Usage Insights', desc: 'Identify tools that improve output and tools that waste time.' },
+                { title: 'Team Performance Map', desc: 'Understand who needs support, coaching, or workload balancing.' }
             ],
             image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=2070',
             type: 'grid-3'
@@ -61,22 +61,43 @@ const Presentation = () => {
                 { id: 'AUTO', title: 'Automated Truth', desc: 'No manual logs. No fake hours. Every second is captured directly from the source.' },
                 { id: 'LIVE', title: 'Live Benchmarking', desc: 'See who is actually driving revenue and who is just idling. Instantly.' },
                 { id: 'DATA', title: 'Workforce DNA', desc: 'Deep analytics on application usage, focus levels, and department performance.' },
-                { id: 'KILL', title: 'Kill the Waste', desc: 'Identify and remove productivity killers before they impact your profit.' }
+                { id: 'KILL', title: 'Remove the Blockers', desc: 'Identify and remove productivity blockers before they impact your profit.' }
             ],
             image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015',
             type: 'enhanced-summary'
         },
         {
+            id: 'with_without_visun_ai',
+            title: 'Company With and Without Visun-AI',
+            subtitle: 'A clear view of business outcomes before and after implementation.',
+            withoutPoints: [
+                'Manual timesheets and inconsistent reporting.',
+                'Hidden idle time across teams and shifts.',
+                'Delayed management action due to late insights.',
+                'Lower output from unresolved workflow blockers.'
+            ],
+            withPoints: [
+                'Live dashboard visibility across every team.',
+                'Automatic tracking of productive and idle hours.',
+                'Faster, data-backed decisions in real time.',
+                'Higher accountability, output, and ROI.'
+            ],
+            image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070',
+            type: 'comparison'
+        },
+        {
             id: 'closing_call',
-            title: 'Command Your Future.',
+            title: 'Lead with Clarity. Win with Productivity.',
             subtitle: 'You cannot manage what you cannot see. Install Visun-AI First.',
             cta: 'Initiate Day 1 Deployment',
+            ctaLink: 'https://visun.globalcyberassociates.com/login',
             image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072',
             type: 'hero-final'
         }
     ];
 
     const totalSlides = slides.length;
+    const isComparisonSlide = slides[activeSlide].type === 'comparison';
 
     const goToSlide = (index) => {
         if (isTransitioning || index < 0 || index >= totalSlides) return;
@@ -101,7 +122,7 @@ const Presentation = () => {
             {slides.map((slide, index) => (
                 <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === activeSlide ? 'opacity-30' : 'opacity-0'}`}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === activeSlide ? (slide.id === 'with_without_visun_ai' ? 'opacity-0' : 'opacity-30') : 'opacity-0'}`}
                 >
                     <img
                         src={slide.image}
@@ -130,10 +151,10 @@ const Presentation = () => {
             </div>
 
             {/* SLIDE CONTENT OVERLAY */}
-            <div className="h-full w-full relative z-10 flex items-center px-10 md:px-24 lg:px-32">
-                <div className={`w-full max-w-5xl transition-all duration-700 ease-out ${isTransitioning ? 'opacity-0 translate-y-4 blur-sm' : 'opacity-100 translate-y-0 blur-0'}`}>
+            <div className={`h-full w-full relative z-10 flex ${isComparisonSlide ? 'items-stretch px-0' : 'items-center px-10 md:px-24 lg:px-32'}`}>
+                <div className={`w-full ${isComparisonSlide ? 'max-w-none h-full' : 'max-w-5xl'} transition-all duration-700 ease-out ${isTransitioning ? 'opacity-0 translate-y-4 blur-sm' : 'opacity-100 translate-y-0 blur-0'}`}>
 
-                    <div className="space-y-10 lg:space-y-16">
+                    <div className={isComparisonSlide ? 'h-full' : 'space-y-10 lg:space-y-16'}>
 
                         {/* HERO COMPONENT */}
                         {(slides[activeSlide].type === 'hero' || slides[activeSlide].type === 'hero-final') && (
@@ -146,9 +167,22 @@ const Presentation = () => {
                                 </p>
                                 {slides[activeSlide].cta && (
                                     <div className="pt-6">
-                                        <button className="px-10 py-4 bg-blue-600 text-white text-base lg:text-lg font-black rounded-full hover:bg-blue-500 transition-all shadow-xl active:scale-95 uppercase italic tracking-tight">
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                if (slides[activeSlide].ctaLink) {
+                                                    window.location.assign(slides[activeSlide].ctaLink);
+                                                }
+                                            }}
+                                            className="px-10 py-4 bg-blue-600 text-white text-base lg:text-lg font-black rounded-full hover:bg-blue-500 transition-all shadow-xl active:scale-95 uppercase italic tracking-tight"
+                                        >
                                             {slides[activeSlide].cta}
                                         </button>
+                                        {slides[activeSlide].tagline && (
+                                            <p className="mt-4 text-sm md:text-base font-semibold tracking-wide text-blue-300 uppercase">
+                                                {slides[activeSlide].tagline}
+                                            </p>
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -216,6 +250,46 @@ const Presentation = () => {
                                             </div>
                                         </div>
                                     ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* WITH VS WITHOUT COMPARISON (NEW SLIDE 7) */}
+                        {slides[activeSlide].type === 'comparison' && (
+                            <div className="h-full w-full">
+                                <div className="h-full w-full flex flex-col">
+                                    <div className="w-full px-8 md:px-12 lg:px-16 pt-12 md:pt-14 pb-8 text-center border-b border-white/10">
+                                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight uppercase italic leading-none">
+                                            {slides[activeSlide].title}
+                                        </h2>
+                                        <p className="text-base md:text-lg font-light text-white/70 italic mt-3 mx-auto max-w-3xl">
+                                            {slides[activeSlide].subtitle}
+                                        </p>
+                                    </div>
+                                    <div className="flex-1 grid grid-cols-1 md:grid-cols-2 min-h-0">
+                                    <div className="h-full bg-gradient-to-b from-rose-950/60 via-black to-black border-r border-red-400/30 px-8 md:px-12 lg:px-16 pt-10 pb-12 overflow-auto">
+                                        <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-red-300 italic mb-8">Without Visun-AI</h3>
+                                        <ul className="space-y-5">
+                                            {slides[activeSlide].withoutPoints.map((point, i) => (
+                                                <li key={i} className="flex items-start gap-3 text-base lg:text-lg text-white/90 leading-relaxed bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3">
+                                                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-red-300 shrink-0"></span>
+                                                    <span>{point}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="h-full bg-gradient-to-b from-blue-950/70 via-black to-black px-8 md:px-12 lg:px-16 pt-10 pb-12 overflow-auto">
+                                        <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-cyan-300 italic mb-8">With Visun-AI</h3>
+                                        <ul className="space-y-5">
+                                            {slides[activeSlide].withPoints.map((point, i) => (
+                                                <li key={i} className="flex items-start gap-3 text-base lg:text-lg text-white/95 leading-relaxed bg-cyan-400/[0.06] border border-cyan-300/20 rounded-xl px-4 py-3">
+                                                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-cyan-300 shrink-0"></span>
+                                                    <span>{point}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         )}
