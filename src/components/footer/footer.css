@@ -60,6 +60,16 @@
   text-decoration: underline;
 }
 
+.globalcyber-footer .footer-mission {
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00bcd4 !important;
+  margin-bottom: 0.6rem !important;
+  opacity: 0.8;
+}
+
 .globalcyber-footer .footer-bottom {
   border-top: 1px solid #334155;
   margin-top: 2.5rem;

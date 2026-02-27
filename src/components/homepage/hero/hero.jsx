@@ -25,13 +25,18 @@ const HeroSection = () => {
               <div className="agency-name">
               </div>
               <h4></h4>
-              <div className="eyebrow-tag" style={{ fontSize: '0.8rem', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', opacity: '0.7', marginBottom: '1rem' }}>
-                Startup Friendly · MSME Focused · Enterprise Ready
+              <div className="eyebrow-tag" style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-color)', marginBottom: '0.9rem' }}>
+                Democratizing Cybersecurity
               </div>
               <div className="main-heading">
                 <h1>
                   Next-Gen Security for Next-Level Business.
                 </h1>
+              </div>
+              <div className="hero-proof-chips">
+                <span className="hero-chip">Startup Friendly</span>
+                <span className="hero-chip">MSME Focused</span>
+                <span className="hero-chip">Enterprise Ready</span>
               </div>
 
               <div className="divider"></div>

@@ -52,6 +52,26 @@
   color: var(--white-smoke);
 }
 
+/* Proof chips below H1 */
+.hero-proof-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
+.hero-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  border: 1px solid rgba(168, 218, 220, 0.35);
+  border-radius: 20px;
+  padding: 4px 12px;
+  background: rgba(168, 218, 220, 0.07);
+}
+
 /* Divider Line */
 .divider {
   width: 80px;

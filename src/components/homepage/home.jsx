@@ -3,7 +3,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../head.jsx";
 import Footer from "../footer/footer.jsx";
-import services from "./service.js";
 import TestimonialSection from "../testimonials/testimonials.jsx";
 import "./home.css";
 import ClientsSection from "../clients/clients.jsx";
@@ -46,37 +45,10 @@ const Home = () => {
 
       <main>
         <Hero />
-        <MythBuster />
-        <LeadMagnet />
         <Features />
+        <MythBuster />
+        <LeadMagnet />        
 
-
-        {services.map((service, index) => (
-          <section
-            className="service-section"
-            key={index}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-          >
-            <div
-              className="service-container"
-              style={{
-                flexDirection: index % 2 === 0 ? 'row' : 'row-reverse'
-              }}
-            >
-              <div className="service-image">
-                <img src={service.image} alt={service.title} />
-              </div>
-              <div className="service-content">
-                <h2 className="service-title">{service.title}</h2>
-                <p className="service-description">{service.description}</p>
-              </div>
-            </div>
-          </section>
-        ))}
-        <div data-aos="slide-in">
-          {/* <ClientsSection /> */}
-        </div>
 
         <div data-aos="slide-in">
           <TestimonialSection />

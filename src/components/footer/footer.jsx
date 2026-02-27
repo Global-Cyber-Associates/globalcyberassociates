@@ -9,6 +9,7 @@ const Footer = () => {
 
         <div className="footer-section">
           <h3>GlobalCyberAssociates</h3>
+          <p className="footer-mission">Democratizing Cybersecurity</p>
           <p>Trusted experts in securing digital infrastructure for organizations worldwide.</p>
         </div>
 
