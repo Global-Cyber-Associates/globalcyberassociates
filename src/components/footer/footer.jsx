@@ -36,6 +36,15 @@ const Footer = () => {
         </div>
 
         <div className="footer-section">
+          <h4>Company</h4>
+          <ul className="footer-links">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
           <h4>Contact</h4>
           <p>info@globalcyberassociate.com</p>
         </div>

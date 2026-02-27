@@ -253,3 +253,23 @@
 .site-nav a.active {
   color: var(--accent-color);
 }
+
+/* Free Assessment CTA button in nav */
+.site-nav a.nav-cta {
+  background-color: var(--accent-color);
+  color: #fff !important;
+  padding: 8px 16px !important;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.site-nav a.nav-cta:hover {
+  background-color: var(--light-blue) !important;
+  color: var(--dark-primary) !important;
+  transform: translateY(-1px) !important;
+}
+
+.site-nav a.nav-cta::after {
+  display: none !important;
+}

@@ -256,6 +256,84 @@
   }
 }
 
+/* Email Card Grid — Contact Page */
+.contact-cards-section {
+  padding: 60px 20px 40px;
+}
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+}
+
+.email-card {
+  background-color: var(--background-card, #1b263b);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-card h3 {
+  color: whitesmoke;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.email-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.email-card .email-address {
+  color: var(--accent-color, #0077b6);
+  font-size: 0.85rem;
+  word-break: break-all;
+  font-weight: 500;
+}
+
+.email-card .email-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background-color: var(--accent-color, #0077b6);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.email-card .email-btn:hover {
+  background-color: var(--dark-secondary, #1b263b);
+}
+
+.contact-footer-anchor {
+  text-align: center;
+  padding: 8px 20px 24px;
+  font-size: 0.95rem;
+  color: rgb(188, 202, 207);
+}
+
+.contact-footer-anchor a {
+  color: var(--accent-color, #0077b6);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-footer-anchor a:hover {
+  text-decoration: underline;
+}
+
 /* Small Devices */
 @media (max-width: 600px) {
   .contact-page .contact-box {

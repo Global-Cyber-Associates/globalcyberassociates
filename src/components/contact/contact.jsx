@@ -2,18 +2,8 @@ import React from 'react';
 import './contact.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
-import branchLocations from './address.js';
-import ModalExample from '../modal/pop.jsx';
-import { useState } from 'react';
 
 const ContactPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
-
   return (
     <>
       <Header />
@@ -21,64 +11,48 @@ const ContactPage = () => {
         <section className="hero">
           <img src="https://t4.ftcdn.net/jpg/05/24/03/99/360_F_524039911_SJfffOLKTk1HZvTPyF9vv1FN6oCipyVi.jpg" alt="Contact Banner" />
           <div className="hero-content">
-            <h1>Let's Build the Future Together</h1>
-            <p>"Innovation, Integrity, and Impact — it's not just our mission, it's our culture."</p>
+            <h1>Ready to take the first step?</h1>
+            <p>No intake forms. Direct access to the right person. We respond within one business day.</p>
           </div>
         </section>
 
-        <section className="main-section">
-          <div className="left-section">
-            <div className="contact-box">
-              <h2>Send Us a Message</h2>
-              <form>
-                <div className="form-row">
-                  <input type="text" placeholder="Full Name" />
-                  <input type="email" placeholder="Email" />
-                </div>
-                <div className="form-row">
-                  <input type="text" placeholder="Phone Number" />
-                  <input type="text" placeholder="Company Name" />
-                </div>
-                <input type="text" placeholder="Subject" />
-                <textarea rows="5" placeholder="Your Message" ></textarea>
-                <button type="submit" onClick={handleSubmit} >Submit</button>
-              </form>
+        <section className="contact-cards-section">
+          <div className="contact-cards-grid">
 
-              <ModalExample
-                visible={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                title="Apologies"
-                message="We are currently unable to process your request. Kindly reach out to us at info@globalcyberassociate.com for further assistance"
-              />
+            <div className="email-card" data-aos="fade-up" data-aos-delay="100">
+              <h3>Services Enquiries</h3>
+              <p>For Security Testing, Compliance, Training, and SOC engagements</p>
+              <span className="email-address">sales@globalcyberassociate.com</span>
+              <a href="mailto:sales@globalcyberassociate.com" className="email-btn">Send an Email</a>
             </div>
+
+            <div className="email-card" data-aos="fade-up" data-aos-delay="200">
+              <h3>Product Demos &amp; Licensing</h3>
+              <p>For VisuN and VisuN+ trials, pricing, and deployment</p>
+              <span className="email-address">products@globalcyberassociate.com</span>
+              <a href="mailto:products@globalcyberassociate.com" className="email-btn">Request a Demo</a>
+            </div>
+
+            <div className="email-card" data-aos="fade-up" data-aos-delay="300">
+              <h3>North America</h3>
+              <p>Charlotte, NC · USA</p>
+              <span className="email-address">info@globalcyberassociate.com</span>
+              <a href="mailto:info@globalcyberassociate.com" className="email-btn">Contact US Team</a>
+            </div>
+
+            <div className="email-card" data-aos="fade-up" data-aos-delay="400">
+              <h3>India</h3>
+              <p>Mylapore, Chennai · Tamil Nadu</p>
+              <span className="email-address">info@globalcyberassociates.com</span>
+              <a href="mailto:info@globalcyberassociates.com" className="email-btn">Contact India Team</a>
+            </div>
+
           </div>
 
-          <div className="right-section">
-            {branchLocations.slice(0, 3).map((branch, index) => (
-              <div key={index} className="branch-container">
-                <div className="info-card">
-                  <h3>{branch.title}</h3>
-                  <p>
-                    {branch.addressLine1} {branch.addressLine2},<br />
-                    {branch.city}, {branch.state} - {branch.zip},<br />
-                    {branch.country} <br />
-                    Email: {branch.email}
-                  </p>
-                </div>
-
-                <div className="branch-map">
-                  <iframe
-                    title={`Map-${index}`}
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(
-                      `${branch.addressLine1}, ${branch.city}, ${branch.state}`
-                    )}&output=embed`}
-                    allowFullScreen
-                    loading="lazy"
-                  ></iframe>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="contact-footer-anchor">
+            Or start with no commitment —{' '}
+            <a href="/Assessment">Take the Free Risk Assessment →</a>
+          </p>
         </section>
 
         <Footer />

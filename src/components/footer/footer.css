@@ -45,6 +45,21 @@
   color: #00bcd4;
 }
 
+.globalcyber-footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.globalcyber-footer .footer-links li {
+  margin-bottom: 0.4rem;
+}
+
+.globalcyber-footer .footer-links a:hover {
+  color: #00bcd4;
+  text-decoration: underline;
+}
+
 .globalcyber-footer .footer-bottom {
   border-top: 1px solid #334155;
   margin-top: 2.5rem;

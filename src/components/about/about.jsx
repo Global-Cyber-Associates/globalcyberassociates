@@ -20,7 +20,7 @@ const AboutSection = () => {
         <div className="about-section__title" data-aos="fade-up">
           <h2>About Us</h2>
           <p className="about-section__subtitle">
-            Empowering innovation through intelligent solutions.
+            We built this practice to level the playing field.
           </p>
         </div>
 
@@ -41,14 +41,13 @@ const AboutSection = () => {
             <div className="about-section__text-col" data-aos="fade-left" data-aos-delay="300">
               <div className="about-section__text">
                 <h2 className="about-section__heading">
-                  Driving Success Through Digital Excellence
+                  Driving Security Through Equal Access
                 </h2>
                 <p className="about-section__lead">
-                  We design smart strategies that solve real problems and power business growth.
+                  The biggest cybersecurity risk facing businesses today isn't sophistication — it's assumption. The assumption that "we're too small to be targeted." We exist to fix that.
                 </p>
                 <p className="about-section__description">
-                  From advanced analytics to creative execution, our team brings clarity and momentum
-                  to organizations ready to scale and adapt in a fast-moving world.
+                  Our team brings deep enterprise experience to every engagement — and we deploy it at the scale and price point that actually fits your business. From a founder-led startup to a multi-branch MSME, we meet you where you are and build you up from there.
                 </p>
 
                 <div className="about-section__features">
@@ -63,14 +62,14 @@ const AboutSection = () => {
                   <div className="about-section__feature" data-aos="zoom-in" data-aos-delay="450">
                     <i className="bi bi-rocket-takeoff-fill"></i>
                     <div>
-                      <h5>Innovation-First Mindset</h5>
-                      <p>We leverage emerging technologies to create forward-thinking solutions.</p>
+                      <h5>Startup-to-Enterprise Reach</h5>
+                      <p>Same rigour, right-sized engagement for where you are today.</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="cta-button" onClick={showSolutions}>
-                  Explore Our Solutions
+                  Explore Our Services
                 </div>
               </div>
             </div>

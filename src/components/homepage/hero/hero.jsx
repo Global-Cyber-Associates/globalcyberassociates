@@ -25,6 +25,9 @@ const HeroSection = () => {
               <div className="agency-name">
               </div>
               <h4></h4>
+              <div className="eyebrow-tag" style={{ fontSize: '0.8rem', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', opacity: '0.7', marginBottom: '1rem' }}>
+                Startup Friendly · MSME Focused · Enterprise Ready
+              </div>
               <div className="main-heading">
                 <h1>
                   Next-Gen Security for Next-Level Business.
@@ -36,26 +39,25 @@ const HeroSection = () => {
               <div className="description">
                 <p>
                   We are a next-generation cybersecurity company helping startups, enterprises, and individuals stay safe in the digital world. Whether it's securing your infrastructure, detecting threats, or training your team — we've got you covered.
-
                 </p>
               </div>
 
               <div className="cta-group mt-8">
                 <div className="cta-item">
-                  <div className="cta-button primary" onClick={showSolutions}>
-                    <span>EXPLORE SOLUTIONS</span>
+                  <div
+                    className="cta-button primary cursor-pointer"
+                    onClick={() => navigate('/Assessment')}
+                  >
+                    <span>GET YOUR FREE RISK ASSESSMENT</span>
                   </div>
-                  <p className="cta-subtext">Discover our services</p>
+                  <p className="cta-subtext">No commitment. Know your risk in minutes.</p>
                 </div>
 
                 <div className="cta-item">
-                  <div
-                    className="cta-button secondary cursor-pointer"
-                    onClick={() => navigate('/Assessment')}
-                  >
-                    <span>FREE RISK ASSESSMENT</span>
+                  <div className="cta-button secondary" onClick={showSolutions}>
+                    <span>EXPLORE SERVICES</span>
                   </div>
-                  <p className="cta-subtext">How secure is your organization?</p>
+                  <p className="cta-subtext">Security Testing · Compliance · Training · SOC</p>
                 </div>
               </div>
             </div>
