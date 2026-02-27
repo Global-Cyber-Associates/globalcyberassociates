@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 70" width="220" height="70">
+  <!-- Icon: bracketed N (code/app feel) -->
+  <text x="8" y="47" font-family="'Courier New', monospace" font-size="28" font-weight="700" fill="#818cf8" opacity="0.6">{</text>
+  <text x="22" y="47" font-family="'Courier New', monospace" font-size="28" font-weight="700" fill="#a5b4fc">N</text>
+  <text x="38" y="47" font-family="'Courier New', monospace" font-size="28" font-weight="700" fill="#818cf8" opacity="0.6">}</text>
+  <!-- Wordmark -->
+  <text x="62" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" fill="#e0e7ff" letter-spacing="-0.3">NSys</text>
+  <text x="62" y="52" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="400" fill="#818cf8" letter-spacing="2">TECHNOLOGIES</text>
+</svg>
