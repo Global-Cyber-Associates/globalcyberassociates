@@ -1,0 +1,357 @@
+/* ── Pricing Calculator Section ── */
+.pricing-calc-section {
+  padding: 72px 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 119, 182, 0.04) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pricing-calc-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pricing-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color, #0077b6);
+  margin-bottom: 0.75rem;
+}
+
+.pricing-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white-smoke, #f5f5f5);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.pricing-sub {
+  font-size: 1rem;
+  color: rgba(245, 245, 245, 0.62);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* ── Calc Card ── */
+.calc-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .calc-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+}
+
+/* ── Fields (left panel) ── */
+.calc-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calc-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.5);
+}
+
+/* Select wrapper */
+.calc-select-wrap {
+  position: relative;
+}
+
+.calc-select {
+  width: 100%;
+  appearance: none;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.7rem 2.5rem 0.7rem 1rem;
+  color: var(--white-smoke, #f5f5f5);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.calc-select:focus {
+  outline: none;
+  border-color: var(--accent-color, #0077b6);
+}
+
+.calc-select option {
+  background: #0f172a;
+  color: #f5f5f5;
+}
+
+.calc-select-icon {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(245, 245, 245, 0.4);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+/* Depth tabs */
+.depth-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.depth-tab {
+  flex: 1;
+  padding: 0.55rem 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(245, 245, 245, 0.55);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+
+.depth-tab:hover {
+  border-color: var(--accent-color, #0077b6);
+  color: var(--white-smoke, #f5f5f5);
+}
+
+.depth-tab.active {
+  background: var(--accent-color, #0077b6);
+  border-color: var(--accent-color, #0077b6);
+  color: #fff;
+}
+
+.depth-desc {
+  font-size: 0.82rem;
+  color: rgba(245, 245, 245, 0.45);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Result panel (right) ── */
+.calc-result {
+  flex: 0 0 auto;
+  width: 100%;
+  background: rgba(0, 119, 182, 0.08);
+  border: 1px solid rgba(0, 119, 182, 0.25);
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .calc-result {
+    width: 240px;
+  }
+}
+
+.result-service-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(245, 245, 245, 0.7);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.result-depth-badge {
+  display: inline-block;
+  align-self: center;
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 119, 182, 0.2);
+  border: 1px solid rgba(0, 119, 182, 0.4);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-color, #0077b6);
+}
+
+.result-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--white-smoke, #f5f5f5);
+  line-height: 1;
+}
+
+.result-unit {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(245, 245, 245, 0.5);
+  margin-left: 0.15rem;
+}
+
+/* Range bar */
+.result-range-bar {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.range-segment {
+  flex: 1;
+  padding: 0.45rem 0.25rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: background 0.2s;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.range-segment + .range-segment {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.range-segment.active {
+  background: rgba(0, 119, 182, 0.18);
+}
+
+.range-segment.high.active {
+  background: rgba(163, 230, 53, 0.1);
+}
+
+.range-tier {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.4);
+}
+
+.range-segment.active .range-tier {
+  color: var(--accent-color, #0077b6);
+}
+
+.range-segment.high.active .range-tier {
+  color: #a3e635;
+}
+
+.range-price {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(245, 245, 245, 0.65);
+}
+
+.range-segment.active .range-price {
+  color: var(--white-smoke, #f5f5f5);
+}
+
+.result-disclaimer {
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.35);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.calc-cta {
+  display: block;
+  padding: 0.75rem 1rem;
+  background: var(--accent-color, #0077b6);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.calc-cta:hover {
+  background: #005f8e;
+  transform: translateY(-1px);
+}
+
+/* ── Product Action Row (price card + CTA side by side) ── */
+.product-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.product-price-card {
+  flex: 0 0 auto;
+  background: rgba(0, 119, 182, 0.07);
+  border: 1px solid rgba(0, 119, 182, 0.2);
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.product-price-card.featured {
+  background: rgba(0, 119, 182, 0.12);
+  border-color: rgba(0, 119, 182, 0.4);
+}
+
+.pp-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.4);
+  margin: 0;
+}
+
+.pp-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white-smoke, #f5f5f5);
+  line-height: 1;
+}
+
+.pp-unit {
+  font-size: 0.72rem;
+  color: rgba(245, 245, 245, 0.5);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.pp-meta {
+  font-size: 0.68rem;
+  color: rgba(245, 245, 245, 0.35);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.pp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}

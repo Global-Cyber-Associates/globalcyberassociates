@@ -15,9 +15,9 @@ const core = [
   {
     title: "Compliance Audits",
     shortDescription: "Turn regulatory requirements into your competitive advantage.",
-    description: "Compliance isn't paperwork — it's your legal protection and your clients' trust. We audit your controls, identify gaps, and guide you to certification-readiness for GDPR, HIPAA, and PCI-DSS. Structured. Stress-free.",
+    description: "Compliance isn't paperwork — it's your legal protection and your clients' trust. We audit your controls, identify gaps, and guide you to certification-readiness for NIST, GDPR, HIPAA, and PCI-DSS. Structured. Stress-free.",
     icon: "bi-patch-check-fill",
-    tags: ["GDPR", "HIPAA", "PCI-DSS", "ISO 27001"],
+    tags: ["NIST", "GDPR", "HIPAA", "PCI-DSS", "ISO 27001"],
     image: audit
   },
   {

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './products.css';
+import '../pricing/pricing.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 import visunImg from '../homepage/vuln.png';
@@ -37,7 +38,7 @@ const Products = () => {
             Purpose-Built Tools for Ongoing Visibility
           </h1>
           <p className="products-sub">
-            Beyond services, we build tools that give you continuous visibility and control —
+            Our purpose built tools give you continuous visibility and control —
             without needing a full security team to operate them.
           </p>
         </div>
@@ -64,12 +65,21 @@ const Products = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="mailto:products@globalcyberassociate.com?subject=VisuN%20%E2%80%94%20Demo%20Request"
-                className="product-cta"
-              >
-                REQUEST A VISUN DEMO →
-              </a>
+              <div className="product-action-row">
+                <div className="product-price-card featured">
+                  <div className="pp-price">$1</div>
+                  <div className="pp-text">
+                    <p className="pp-unit">per endpoint / mo</p>
+                    <p className="pp-meta">30-day retention</p>
+                  </div>
+                </div>
+                <a
+                  href="mailto:products@globalcyberassociate.com?subject=VisuN%20%E2%80%94%20Demo%20Request"
+                  className="product-cta"
+                >
+                  REQUEST A VISUN DEMO →
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -97,12 +107,21 @@ const Products = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="mailto:products@globalcyberassociate.com?subject=VisuN%2B%20%E2%80%94%20Demo%20Request"
-                className="product-cta"
-              >
-                REQUEST A VISUN+ DEMO →
-              </a>
+              <div className="product-action-row">
+                <div className="product-price-card featured">
+                  <div className="pp-price">$2</div>
+                  <div className="pp-text">
+                    <p className="pp-unit">per user / mo</p>
+                    <p className="pp-meta">30-day retention</p>
+                  </div>
+                </div>
+                <a
+                  href="mailto:products@globalcyberassociate.com?subject=VisuN%2B%20%E2%80%94%20Demo%20Request"
+                  className="product-cta"
+                >
+                  REQUEST A VISUN+ DEMO →
+                </a>
+              </div>
             </div>
           </div>
         </section>

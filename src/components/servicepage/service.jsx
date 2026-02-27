@@ -5,6 +5,7 @@ import './service.css';
 import FaqSection from './faq/faq.jsx';
 import solutionsData from './services.js';
 import core from '../homepage/service.js';
+import PricingCalculator from '../pricing/PricingCalculator.jsx';
 
 const ServicePage = () => {
   return (
@@ -61,6 +62,7 @@ const ServicePage = () => {
           ))}
 
         </div>
+        <PricingCalculator />
         <FaqSection />
       </div>
       <Footer />
