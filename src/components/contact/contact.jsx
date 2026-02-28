@@ -2,6 +2,7 @@ import React from 'react';
 import './contact.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
+import branchLocations from './address.js';
 
 const ContactPage = () => {
   return (
@@ -47,6 +48,40 @@ const ContactPage = () => {
               <a href="mailto:info@globalcyberassociates.com" className="email-btn">Contact India Team</a>
             </div>
 
+          </div>
+
+          <div className="address-cards-grid">
+            {branchLocations.map((loc) => {
+              const query = encodeURIComponent(`${loc.addressLine2}, ${loc.city}, ${loc.state} ${loc.zip}, ${loc.country}`);
+              return (
+                <div key={loc.title} className="address-card" data-aos="fade-up">
+                  <h3>{loc.title}</h3>
+                  <iframe
+                    title={`Map - ${loc.title}`}
+                    src={`https://maps.google.com/maps?q=${query}&output=embed&z=15`}
+                    className="address-map"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <address>
+                    <span>{loc.addressLine2}</span>
+                    <span>{loc.city}, {loc.state} {loc.zip}</span>
+                    <span>{loc.country}</span>
+                  </address>
+                  <div className="address-card-footer">
+                    <a href={`mailto:${loc.email}`} className="address-email">{loc.email}</a>
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${query}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="directions-btn"
+                    >
+                      Get Directions →
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <p className="contact-footer-anchor">
