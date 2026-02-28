@@ -13,9 +13,9 @@
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.3s ease;
-  border: 2px solid #1f2f38;
+  border: 2px solid var(--background-card);
   padding: 1.5rem 1.2rem;
-  color: #e1e6e9;
+  color: var(--white-smoke);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -29,7 +29,7 @@
 .feature-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #42bdff;
+  color: var(--light-blue);
   margin-bottom: 1rem;
 }
 
@@ -45,13 +45,13 @@
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 0.6rem;
-  color: #42bdff;
+  color: var(--light-blue);
   letter-spacing: 0.5px;
 }
 
 .feature-desc {
   font-size: 1rem;
-  color: #c4d3d9;
+  color: var(--text-secondary);
   line-height: 1.6;
   text-align: justify;
   margin-top: 0.5rem;
@@ -59,7 +59,6 @@
   flex-grow: 1;
 }
 
-/* 🌐 Responsive */
 @media (max-width: 768px) {
   .feature-card {
     width: 100%;

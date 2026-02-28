@@ -56,7 +56,7 @@ img {
 }
 
 .btn-primary:hover {
-  background-color: #26c6da;
+  background-color: var(--brand-cyan);
   transform: translateY(-2px);
 }
 
@@ -172,7 +172,7 @@ img {
 
 .service-section {
   padding: 20px;
-  border-bottom: 1px solid #0f304c;
+  border-bottom: 1px solid var(--border-deep);
 }
 
 .service-section:nth-child(even) {
@@ -209,13 +209,13 @@ img {
 
 .service-title {
   font-size: 28px;
-  color: #adbbc0;
+  color: var(--text-secondary);
   margin-bottom: 16px;
 }
 
 .service-description {
   font-size: 16px;
-  color: #a3a2a2;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 

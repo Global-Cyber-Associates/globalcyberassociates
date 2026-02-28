@@ -128,7 +128,7 @@
 .cta-button.primary {
   background-color: var(--accent-color);
   color: white;
-  box-shadow: 0 4px 15px rgba(49, 78, 142, 0.3);
+  box-shadow: 0 4px 15px var(--accent-bg-strong);
 }
 
 .cta-button.primary:hover {
@@ -138,14 +138,14 @@
 }
 
 .cta-button.secondary {
-  background-color: #a3e635; /* brand-lime */
-  color: #020617; /* brand-dark */
+  background-color: var(--brand-lime);
+  color: var(--brand-dark);
   border: none;
   box-shadow: 0 4px 15px rgba(163, 230, 53, 0.3);
 }
 
 .cta-button.secondary:hover {
-  background-color: #bef264;
+  background-color: var(--brand-lime-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(163, 230, 53, 0.5);
 }

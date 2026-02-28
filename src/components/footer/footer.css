@@ -1,7 +1,7 @@
 .globalcyber-footer {
-  background-color: #0f172a;
+  background-color: var(--footer-dark);
   padding: 3rem 1.5rem 2rem;
-  color: #cbd5e1;
+  color: var(--text-slate);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -16,14 +16,14 @@
 
 .globalcyber-footer .footer-section h3,
 .globalcyber-footer .footer-section h4 {
-  color: #00bcd4;
+  color: var(--brand-cyan);
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .globalcyber-footer .footer-section p,
 .globalcyber-footer .footer-section a {
-  color: #cbd5e1;
+  color: var(--text-slate);
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 0.5rem;
@@ -37,12 +37,12 @@
 
 .globalcyber-footer .social-icons a {
   font-size: 1.4rem;
-  color: #cbd5e1;
+  color: var(--text-slate);
   transition: color 0.3s ease;
 }
 
 .globalcyber-footer .social-icons a:hover {
-  color: #00bcd4;
+  color: var(--brand-cyan);
 }
 
 .globalcyber-footer .footer-links {
@@ -56,7 +56,7 @@
 }
 
 .globalcyber-footer .footer-links a:hover {
-  color: #00bcd4;
+  color: var(--brand-cyan);
   text-decoration: underline;
 }
 
@@ -65,16 +65,16 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #00bcd4 !important;
+  color: var(--brand-cyan) !important;
   margin-bottom: 0.6rem !important;
   opacity: 0.8;
 }
 
 .globalcyber-footer .footer-bottom {
-  border-top: 1px solid #334155;
+  border-top: 1px solid var(--border-muted);
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   text-align: center;
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--text-slate-muted);
 }
