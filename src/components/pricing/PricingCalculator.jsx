@@ -25,7 +25,7 @@ const PricingCalculator = () => {
         <p className="pricing-eyebrow">Pricing</p>
         <h2 className="pricing-title">Estimate Your Investment</h2>
         <p className="pricing-sub">
-          USD pricing at Indian market rates. Baselines only — final scope confirmed on discovery call.
+          Baselines only — final scope confirmed on discovery call.
         </p>
 
         <div className="calc-card">
@@ -82,6 +82,14 @@ const PricingCalculator = () => {
                 ))}
               </div>
               <p className="depth-desc">{category.depthLabels[depth]}</p>
+
+              <div className="advance-notice">
+                <strong>Note:</strong> A 50% advance payment is required to initiate an engagement.
+              </div>
+
+              <div className="result-depth-badge">
+                Get a Basic Cybersecurity Audit for just <strong style={{ color: 'white' }}>$100</strong> and gain actionable insights to strengthen your organization’s digital security.
+              </div>
             </div>
 
           </div>
@@ -121,7 +129,7 @@ const PricingCalculator = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

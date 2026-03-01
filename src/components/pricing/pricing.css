@@ -155,6 +155,21 @@
   margin: 0;
 }
 
+.advance-notice {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--accent-color);
+  border-radius: 8px;
+  font-size: 0.99rem;
+  font-weight: 700;
+  color: var(--white-smoke);
+  line-height: 1.5;
+}
+
+.advance-notice strong {
+  color: var(--white-smoke);
+}
+
 /* ── Result panel (right) ── */
 .calc-result {
   flex: 0 0 auto;
@@ -231,7 +246,7 @@
   background: rgba(255, 255, 255, 0.02);
 }
 
-.range-segment + .range-segment {
+.range-segment+.range-segment {
   border-left: 1px solid var(--border-section);
 }
 

@@ -2,16 +2,8 @@ import React, { useEffect } from 'react';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 import Questionnaire from './Questionnaire.jsx';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
 const AssessmentPage = () => {
     useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            once: true,
-            easing: "ease-in-out",
-        });
         window.scrollTo(0, 0);
     }, []);
 

@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from 'react';
 import './products.css';
 import '../pricing/pricing.css';
 import Header from '../head.jsx';
@@ -17,16 +15,12 @@ const visunFeatures = [
 ];
 
 const visunPlusFeatures = [
-  { label: 'Employee Productivity Monitoring', detail: 'Objective data on how time and tools are being used' },
-  { label: 'Productivity Improvement Insights', detail: 'Actionable trends to help teams work smarter' },
-  { label: 'Policy Compliance Tracking', detail: 'Ensure acceptable use policies are being followed' },
+  { label: 'Financial Impact & ROI', detail: 'Understand the financial impact of productivity and compliance' },
+  { label: 'People & Performance View', detail: 'Understand the performance of your people' },
+  { label: 'Workforce Intelligence & Growth Control Center', detail: 'A unified platform to monitor, analyze, and optimize workforce productivity and performance' },
 ];
 
 const Products = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: 'ease-in-out' });
-  }, []);
-
   return (
     <>
       <Header />
@@ -93,7 +87,7 @@ const Products = () => {
             <div className="product-content">
               <p className="product-tag">Product</p>
               <h2 className="product-name">VisuN+</h2>
-              <p className="product-tagline">Visibility Into Your Workforce</p>
+              <p className="product-tagline">Productivity Enhancement Platform</p>
               <p className="product-description">
                 VisuN+ extends network visibility to people and productivity. Understand how your
                 workforce operates, identify inefficiencies, and surface risk patterns —

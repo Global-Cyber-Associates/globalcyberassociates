@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Header from "../head.jsx";
 import Footer from "../footer/footer.jsx";
 import TestimonialSection from "../testimonials/testimonials.jsx";
@@ -15,12 +13,6 @@ import LeadMagnet from "./leadmagnet/leadmagnet.jsx";
 
 const Home = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    });
-
     const scroller = document.getElementById("testimonialScroller");
     let scrollAmount = 0;
     const scrollStep = 1;
@@ -47,7 +39,7 @@ const Home = () => {
         <Hero />
         <Features />
         <MythBuster />
-        <LeadMagnet />        
+        <LeadMagnet />
 
 
         <div data-aos="slide-in">
@@ -63,7 +55,6 @@ const Home = () => {
               <li data-aos="fade-right" data-aos-delay="300">✔️ Independent and confidential assessments — your data stays yours</li>
               <li data-aos="fade-right" data-aos-delay="400">✔️ Flexible engagements — from a lean startup to a multi-site enterprise</li>
               <li data-aos="fade-right" data-aos-delay="500">✔️ Transparent reporting with clear, prioritised next steps</li>
-              <li data-aos="fade-right" data-aos-delay="600">✔️ Accessible pricing — serious security without the enterprise invoice</li>
             </ul>
           </div>
         </div>

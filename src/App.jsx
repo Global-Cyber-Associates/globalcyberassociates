@@ -1,23 +1,21 @@
-import React from "react";
-import "./App.css";  // Main CSS file for styling
+import { lazy, Suspense, useEffect } from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/homepage/home.jsx";  // Home page component
-import About from "./components/about/about.jsx";
-import Services from "./components/servicepage/service.jsx";  // Services page component
-import CareersPage from "./components/careers/careers.jsx";
-import Contact from "./components/contact/contact.jsx";
-import Brief from "./components/brief/brief.jsx";  // Brief page component
-import Presentations from "./components/presentations/Presentations.jsx";
-import Presentation2 from "./components/presentations/Presentation2.jsx";
-import PresentationIndex from "./components/presentations/PresentationIndex.jsx";
-import AssessmentPage from "./components/assessment/AssessmentPage.jsx";
-import Products from "./components/products/products.jsx";
 import { useNavigate } from "react-router-dom";
-
-// Contact page component
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+
+const Home             = lazy(() => import("./components/homepage/home.jsx"));
+const About            = lazy(() => import("./components/about/about.jsx"));
+const Services         = lazy(() => import("./components/servicepage/service.jsx"));
+const CareersPage      = lazy(() => import("./components/careers/careers.jsx"));
+const Contact          = lazy(() => import("./components/contact/contact.jsx"));
+const Brief            = lazy(() => import("./components/brief/brief.jsx"));
+const Presentations    = lazy(() => import("./components/presentations/Presentations.jsx"));
+const Presentation2    = lazy(() => import("./components/presentations/Presentation2.jsx"));
+const PresentationIndex = lazy(() => import("./components/presentations/PresentationIndex.jsx"));
+const AssessmentPage   = lazy(() => import("./components/assessment/AssessmentPage.jsx"));
+const Products         = lazy(() => import("./components/products/products.jsx"));
 
 const App = () => {
 
@@ -47,7 +45,7 @@ const App = () => {
   }, [navigate]);
 
   return (
-    <>
+    <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route index element={<Home />} />
@@ -65,7 +63,7 @@ const App = () => {
         {/* <Route path="*" element={<NotFound />} /> */}
         {/* Fallback route for 404 Not Found */}
       </Routes>
-    </>
+    </Suspense>
   );
 };
 

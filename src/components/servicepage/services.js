@@ -16,7 +16,7 @@ const solutionsData = [
       {
         icon: "bi-diagram-3",
         title: "Network Penetration Testing",
-        description: "Internal and external testing to expose misconfigured services, weak protocols, and open attack surface."
+        description: "Internal and external testing to expose misconfigured services, legacy protocols, and open attack surface."
       },
       {
         icon: "bi-cloud",
@@ -25,7 +25,7 @@ const solutionsData = [
       },
       {
         icon: "bi-plug",
-        title: "API & IoT Testing",
+        title: "API/IoT Testing",
         description: "Assess REST/GraphQL APIs and connected devices for auth gaps, data leakage, and protocol weaknesses."
       },
       {
@@ -38,11 +38,6 @@ const solutionsData = [
         title: "Endpoint Security Assessment",
         description: "Audit laptops, desktops, and mobile devices for weak configurations, unpatched software, and exposure risk."
       },
-      {
-        icon: "bi-code-slash",
-        title: "Source Code Review",
-        description: "Manual code analysis to surface logic errors, hardcoded credentials, and insecure patterns before they ship."
-      }
     ]
   },
   {

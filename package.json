@@ -13,7 +13,6 @@
     "@tailwindcss/postcss": "^4.1.18",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.24",
-    "axios": "^1.9.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "html2canvas": "^1.4.1",

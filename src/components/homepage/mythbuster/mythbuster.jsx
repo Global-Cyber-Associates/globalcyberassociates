@@ -17,7 +17,7 @@ const MythBuster = () => {
 
         <div className="mythbuster-body">
           <p>
-            Ransomware doesn't check your revenue. Phishing doesn't screen for headcount. Compliance fines don't scale with your team size.
+            <strong>Ransomware</strong> doesn't check your revenue. <strong>Email phishing</strong> won't ignore your headcount. <strong>Insider threats and data theft</strong> don't wait for an invite. A single leak can end a decade of growth overnight.
           </p>
           <p>
             The truth is — <strong>small and mid-size businesses are the #1 target</strong>, precisely because attackers assume they're unprotected.
