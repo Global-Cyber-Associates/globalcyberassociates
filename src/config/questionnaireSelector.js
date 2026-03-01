@@ -13,7 +13,7 @@ import { questionnaire3Config } from './questionnaire3Config';
  */
 
 // 🔧 CHANGE THIS TO SWITCH QUESTIONNAIRES
-export const ACTIVE_QUESTIONNAIRE = 'default';
+export const ACTIVE_QUESTIONNAIRE = 'questionnaire3';
 
 /**
  * Get the active questionnaire configuration
