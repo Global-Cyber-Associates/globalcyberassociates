@@ -72,7 +72,6 @@ export default function ClientLogoStrip() {
 
   return (
     <div className="logo-strip-section">
-      <p className="logo-strip-eyebrow">Trusted By</p>
       <div
         className="logo-strip-scroll"
         ref={scrollRef}

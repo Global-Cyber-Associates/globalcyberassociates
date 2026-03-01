@@ -36,15 +36,14 @@ const Home = () => {
       <Header />
 
       <main>
+        <div style={{ position: "sticky", top: "70px", zIndex: 100 }}>
+          <TestimonialSection />
+        </div>
+
         <Hero />
         <Features />
         <MythBuster />
         <LeadMagnet />
-
-
-        <div data-aos="slide-in">
-          <TestimonialSection />
-        </div>
 
         <div className="section why-us" data-aos="slide-in">
           <div className="container">
