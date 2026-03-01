@@ -44,7 +44,6 @@ const Products = () => {
               <img src={visunImg} alt="VisuN — Network Visibility" />
             </div>
             <div className="product-content">
-              <p className="product-tag">Product</p>
               <h2 className="product-name">VisuN</h2>
               <p className="product-tagline">See Everything on Your Network</p>
               <p className="product-description">
@@ -85,7 +84,6 @@ const Products = () => {
               <img src={visunPlusImg} alt="VisuN+ — Workforce Intelligence" />
             </div>
             <div className="product-content">
-              <p className="product-tag">Product</p>
               <h2 className="product-name">VisuN+</h2>
               <p className="product-tagline">Productivity Enhancement Platform</p>
               <p className="product-description">
