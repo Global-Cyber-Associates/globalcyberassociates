@@ -18,6 +18,15 @@ const presentationCards = [
     image:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=2070",
   },
+  {
+    id: "presentation-3",
+    title: "Workforce Productivity Investment ROI",
+    description:
+      "Executive deck focused on salary efficiency, cost recovery, and investment advantages.",
+    path: "/presentation3",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2070",
+  },
 ];
 
 export default function PresentationIndex() {
