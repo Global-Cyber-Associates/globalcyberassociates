@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 70" width="220" height="70">
+  <!-- Icon: signal/broadcast rays suggesting "enlighten" -->
+  <circle cx="30" cy="35" r="6" fill="#0ea5e9"/>
+  <path d="M18 22 Q30 10 42 22" stroke="#0ea5e9" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M13 16 Q30 2 47 16" stroke="#0ea5e9" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <!-- Wordmark -->
+  <text x="56" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" fill="#e2f4fc" letter-spacing="-0.3">NLigten</text>
+  <text x="56" y="52" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="400" fill="#7ec8e3" letter-spacing="2">SYSTEMS</text>
+</svg>

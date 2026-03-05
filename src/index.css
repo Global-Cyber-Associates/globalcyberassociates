@@ -2,6 +2,11 @@
   scrollbar-width: none;
 }
 
-body{
+body {
   margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at center, var(--dark-secondary), var(--dark-primary));
+  color: var(--white-smoke);
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }

@@ -1,0 +1,74 @@
+.mythbuster-section {
+  background-color: var(--dark-primary, #0b1e2d);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 72px 24px;
+}
+
+.mythbuster-container {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mythbuster-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color, #0077b6);
+  margin-bottom: 1.5rem;
+}
+
+.mythbuster-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white-smoke, #f5f5f5);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.mythbuster-subheading {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--light-blue, #a8dadc);
+  margin-top: 0.75rem;
+}
+
+.mythbuster-body {
+  margin: 2rem auto;
+  max-width: 720px;
+  text-align: left;
+}
+
+.mythbuster-body p {
+  font-size: 1rem;
+  color: rgba(245, 245, 245, 0.75);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.mythbuster-body strong {
+  color: var(--white-smoke, #f5f5f5);
+  font-weight: 600;
+}
+
+.mythbuster-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.mythbuster-chips .chip {
+  display: inline-block;
+  padding: 8px 22px;
+  border: 1px solid var(--accent-color, #0077b6);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--light-blue, #a8dadc);
+  letter-spacing: 0.04em;
+}

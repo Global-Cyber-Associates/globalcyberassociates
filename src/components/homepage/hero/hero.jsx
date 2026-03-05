@@ -25,10 +25,18 @@ const HeroSection = () => {
               <div className="agency-name">
               </div>
               <h4></h4>
+              <div className="eyebrow-tag" style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-color)', marginBottom: '0.9rem' }}>
+                Democratizing Cybersecurity
+              </div>
               <div className="main-heading">
                 <h1>
                   Next-Gen Security for Next-Level Business.
                 </h1>
+              </div>
+              <div className="hero-proof-chips">
+                <span className="hero-chip">Startup Friendly</span>
+                <span className="hero-chip">MSME Focused</span>
+                <span className="hero-chip">Enterprise Ready</span>
               </div>
 
               <div className="divider"></div>
@@ -36,26 +44,25 @@ const HeroSection = () => {
               <div className="description">
                 <p>
                   We are a next-generation cybersecurity company helping startups, enterprises, and individuals stay safe in the digital world. Whether it's securing your infrastructure, detecting threats, or training your team — we've got you covered.
-
                 </p>
               </div>
 
               <div className="cta-group mt-8">
                 <div className="cta-item">
-                  <div className="cta-button primary" onClick={showSolutions}>
-                    <span>EXPLORE SOLUTIONS</span>
+                  <div
+                    className="cta-button primary cursor-pointer"
+                    onClick={() => navigate('/Assessment')}
+                  >
+                    <span>GET YOUR FREE RISK ASSESSMENT</span>
                   </div>
-                  <p className="cta-subtext">Discover our services</p>
+                  <p className="cta-subtext">No commitment. Know your risk in minutes.</p>
                 </div>
 
                 <div className="cta-item">
-                  <div
-                    className="cta-button secondary cursor-pointer"
-                    onClick={() => navigate('/Assessment')}
-                  >
-                    <span>FREE RISK ASSESSMENT</span>
+                  <div className="cta-button secondary" onClick={showSolutions}>
+                    <span>EXPLORE SERVICES</span>
                   </div>
-                  <p className="cta-subtext">How secure is your organization?</p>
+                  <p className="cta-subtext">Security Testing · Compliance · Training · SOC</p>
                 </div>
               </div>
             </div>

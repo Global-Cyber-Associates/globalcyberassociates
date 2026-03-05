@@ -1,95 +1,110 @@
 const solutionsData = [
   {
-    category: "Vulnerability Assessment & Penetration Testing (VAPT)",
+    category: "VAPT",
+    categoryIcon: "bi-shield-lock-fill",
     solutions: [
       {
-        title: "Web Application Security Assessment",
-        description: "In-depth assessment of websites for security flaws like injection, broken authentication, and misconfigurations."
+        icon: "bi-globe2",
+        title: "Web Application Testing",
+        description: "Identify injection flaws, broken auth, misconfigurations, and OWASP Top 10 vulnerabilities in your web apps."
       },
       {
-        title: "Mobile Application Penetration Testing",
-        description: "Testing of desktop or enterprise applications for logic flaws and runtime vulnerabilities."
+        icon: "bi-phone",
+        title: "Mobile App Penetration Testing",
+        description: "Test iOS and Android apps for insecure data storage, weak authentication, and runtime vulnerabilities."
       },
       {
+        icon: "bi-diagram-3",
         title: "Network Penetration Testing",
-        description: "Internal and external network testing to uncover misconfigured services, weak protocols, and open ports."
+        description: "Internal and external testing to expose misconfigured services, legacy protocols, and open attack surface."
       },
       {
-        title: "Cloud Penetration Testing",
-        description: "Evaluate cloud infrastructure (AWS, Azure, GCP) for insecure policies, public data exposure, and access issues."
+        icon: "bi-cloud",
+        title: "Cloud Security Testing",
+        description: "Evaluate AWS, Azure, GCP.. for insecure policies, public data exposure, and privilege escalation paths."
       },
       {
-     title: "API & IoT Penetration Testing",
-     description: "Assess APIs and IoT devices for insecure communications, weak authentication, exposed data, and firmware or protocol vulnerabilities."
+        icon: "bi-plug",
+        title: "API/IoT Testing",
+        description: "Assess REST/GraphQL APIs and connected devices for auth gaps, data leakage, and protocol weaknesses."
       },
       {
-        title: "Infrastructure Penetration Testing",
-        description: "Review internal systems like servers, databases, and routers for high-risk vulnerabilities and insider threats."
+        icon: "bi-server",
+        title: "Infrastructure Testing",
+        description: "Probe servers, databases, and routers for high-risk vulnerabilities and lateral movement opportunities."
       },
       {
+        icon: "bi-laptop",
         title: "Endpoint Security Assessment",
-        description: "Evaluate endpoints (laptops, desktops, mobile devices) for weak configurations, outdated software, and malware exposure."
+        description: "Audit laptops, desktops, and mobile devices for weak configurations, unpatched software, and exposure risk."
+      },
+    ]
+  },
+  {
+    category: "Compliance Audits",
+    categoryIcon: "bi-patch-check-fill",
+    solutions: [
+      {
+        icon: "bi-shield-check",
+        title: "GDPR Compliance Audit",
+        description: "Assess data handling practices, consent mechanisms, and breach response readiness against EU GDPR requirements."
       },
       {
-        title: "Source Code Review",
-        description: "Manual analysis of application source code to uncover logic errors, hardcoded credentials, and insecure coding practices."
+        icon: "bi-heart-pulse",
+        title: "HIPAA Compliance Audit",
+        description: "Review PHI safeguards, access controls, and audit trails to align with HIPAA Security and Privacy Rules."
+      },
+      {
+        icon: "bi-credit-card",
+        title: "PCI-DSS Assessment",
+        description: "Evaluate cardholder data environments for compliance with PCI-DSS controls and reporting requirements."
+      },
+      {
+        icon: "bi-award",
+        title: "ISO 27001 Gap Analysis",
+        description: "Identify gaps between your current controls and ISO 27001 requirements, with a prioritised remediation roadmap."
       }
     ]
   },
   {
-    category: "Corporate Cybersecurity Training",
+    category: "Corporate & Personnel Training",
+    categoryIcon: "bi-people-fill",
     solutions: [
-      
       {
+        icon: "bi-person-check",
         title: "Security Awareness for Employees",
-        description: "Educate your workforce on phishing, social engineering, password hygiene, and safe IT practices with interactive sessions."
+        description: "Interactive sessions on phishing, social engineering, password hygiene, and safe IT practices — for every role."
       },
       {
+        icon: "bi-flag",
         title: "CTF-Based Corporate Training",
-        description: "Engage teams with hands-on Capture The Flag-style challenges to improve practical security knowledge and critical thinking."
+        description: "Hands-on Capture The Flag challenges that build practical security skills and sharpen critical thinking."
       },
       {
+        icon: "bi-puzzle",
         title: "Custom Training Modules",
-        description: "We design and deliver training tailored to your team’s roles, maturity level, and industry-specific threats."
+        description: "Programmes designed around your team's roles, maturity level, and real-world threat landscape."
       }
     ]
   },
   {
-    category: "Security Consulting & Support",
+    category: "SOC Operations",
+    categoryIcon: "bi-display-fill",
     solutions: [
       {
-        title: "Security Posture Assessment",
-        description: "Get a high-level view of your organization’s current cybersecurity readiness and prioritized improvement plan."
+        icon: "bi-eye",
+        title: "24/7 Threat Monitoring",
+        description: "Continuous surveillance of logs, traffic, and user behaviour with real-time alerting across your environment."
       },
       {
-        title: "Policy & Configuration Guidance",
-        description: "Receive practical support to define or improve your security policies, documentation, and system configurations."
-      }
-    ]
-  },
-  {
-    category: "Startup-Friendly Security Solutions",
-    solutions: [
-      {
-        title: "Essential VAPT Package",
-        description: "Affordable infrastructure testing for small businesses looking to secure their operations without heavy investment."
+        icon: "bi-bell",
+        title: "Incident Detection & Response",
+        description: "Rapid investigation and containment when anomalies surface — minimising dwell time and blast radius."
       },
       {
-        title: "Quick Risk Checkups",
-        description: "Short-term assessments to detect and fix basic issues in networks, apps, or employee behavior."
-      }
-    ]
-  },
-  {
-    category: "Security Consulting",
-    solutions: [
-      {
-        title: "Security Health Check",
-        description: "A fast and affordable review of your current security posture, with actionable recommendations."
-      },
-      {
-        title: "Cybersecurity Consultation (1-on-1)",
-        description: "Book a session to discuss your current tech stack and get expert input on how to secure it."
+        icon: "bi-graph-up",
+        title: "SIEM Integration & Management",
+        description: "Deploy and manage a Security Information and Event Management system tuned to your risk profile."
       }
     ]
   }

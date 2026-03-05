@@ -1,0 +1,64 @@
+.leadmagnet-section {
+  background-color: var(--accent-color, #0077b6);
+  padding: 72px 24px;
+  text-align: center;
+}
+
+.leadmagnet-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.leadmagnet-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1rem;
+}
+
+.leadmagnet-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.leadmagnet-body {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.75;
+  margin-bottom: 2.25rem;
+}
+
+.leadmagnet-body strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.leadmagnet-cta {
+  display: inline-block;
+  padding: 14px 36px;
+  background-color: #fff;
+  color: var(--accent-color, #0077b6);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.leadmagnet-cta:hover {
+  background-color: var(--dark-primary, #0b1e2d);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .leadmagnet-heading {
+    font-size: 1.9rem;
+  }
+}

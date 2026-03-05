@@ -9,6 +9,7 @@ const Footer = () => {
 
         <div className="footer-section">
           <h3>GlobalCyberAssociates</h3>
+          <p className="footer-mission">Democratizing Cybersecurity</p>
           <p>Trusted experts in securing digital infrastructure for organizations worldwide.</p>
         </div>
 
@@ -33,6 +34,15 @@ const Footer = () => {
               <FaWhatsapp size={30} color="#25D366" />
             </a>
           </div>
+        </div>
+
+        <div className="footer-section">
+          <h4>Company</h4>
+          <ul className="footer-links">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
         </div>
 
         <div className="footer-section">

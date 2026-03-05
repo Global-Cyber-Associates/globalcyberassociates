@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from 'react';
 import './careers.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
@@ -13,10 +11,6 @@ const CareersPage = () => {
   const showAbout = () => {
     navigate('/About');
   }
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
 
   return (
     <>

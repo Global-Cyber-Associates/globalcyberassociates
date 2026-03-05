@@ -1,0 +1,66 @@
+# Website Code Stack Review Report
+
+I have reviewed the core architecture and key components of the Vite/React application located at `d:\ideas\gcasite`. The assessment is based on the provided quality and readiness criteria.
+
+## 1. Code Quality
+
+### Clean Separation of Concerns
+**Status:** 🟡 **Fair / Needs Improvement**
+- **Good:** Business logic for the core assessment feature is successfully separated into `src/logic/scoring.js`, decoupling it from the UI. Configuration data is well abstracted into `src/config/questionnaireConfig.js`.
+- **Needs Attention:** Some UI components are too monolithic. For instance, `src/components/assessment/Questionnaire.jsx` contains the main layout component alongside multiple sub-components (`FirmTypeStep`, `GenericQuestionStep`, `ToggleCard`) within the same file. Extracting `ToggleCard` and `Step` components into distinct files would further clarify their single responsibilities.
+
+### Proper Error Handling
+**Status:** 🔴 **Poor**
+- **Missing Global Boundaries:** There are no React Error Boundaries instituted in `App.jsx`. A crash in a subcomponent will unmount the whole React tree and crash the application.
+- **Missing Routing Fallback:** The `<Route path="*" element={<NotFound />} />` remains commented out in `App.jsx`, meaning navigation to non-existent URLs defaults to a blank or broken state.
+- **Unhandled Exceptions (LocalStorage):** In `Questionnaire.jsx`, the component saves progress to `localStorage`. `localStorage` operations can throw exceptions (quota exceeded, disabled storage in private browsing sessions). This needs to be wrapped in a simple `try/catch`. 
+
+### Type Safety (if applicable)
+**Status:** 🔴 **None**
+- The project is built completely in JavaScript (using `.jsx` files). 
+- **Missing PropTypes or JSDoc:** Without TypeScript, you could be enforcing prop validation via `prop-types` or standardized JSDoc. Currently, there's no data schema safety in place. Complex parameters—like `data` being passed into `calculateScore(data)` in `scoring.js`—aren't type-checked, running the risk of implicit `undefined` evaluation.
+
+### DRY Principle Followed
+**Status:** 🟢 **Good**
+- The use of dynamic rendering from configuration objects (e.g., in `Questionnaire.jsx` mapping through `config.steps`) is a strong DRY design choice. You don't rewrite duplicate markup for every question in the assessment.
+- Utility functions like Tailwind class merging (`cn` utility in `lib/utils.js`) are appropriately shared and centralized.
+
+### Edge Cases Handled
+**Status:** 🟡 **Fair / Needs Improvement**
+- **DOM Manipulations React Conflict:** In `src/components/homepage/home.jsx`, there is an edge case where `#testimonialScroller` might not exist when the `setInterval` runs or fails to clean up properly. Writing direct DOM queries (`document.getElementById`) inside a `useEffect` is a React anti-pattern and highly prone to edge-case errors. You should utilize React `useRef` for interactions like this.
+
+---
+
+## 2. Production Readiness
+
+### Migration Strategy (if schema changes)
+**Status:** ⚪ **N/A (Currently)**
+- As the scoring weights and system are strictly client-side configuration files arrayed as constants (`questionnaireConfig.js`), schema migrations aren't strictly necessary until a backend database for the assessment scores is instituted. 
+
+### Backward Compatibility Considered
+**Status:** 🟢 **Good**
+- The site targets modern browsers (due to Vite + ESModules ecosystem standard) with appropriate PostCSS/Tailwind vendor prefixes. The client-side logic is quite safe and backward-compatible for standard modern web.
+
+### Documentation Complete
+**Status:** 🟡 **Fair**
+- The folder structure (`components/`, `config/`, `logic/`, `lib/`) is fundamentally self-documenting. 
+- However, inline comments explaining complex domain decisions are missing. For example, why certain weights (-5, +15) matter in `scoring.js` is opaque to someone who isn't a domain expert. Small block comments explaining *"Business Context"* would heavily improve the readiness of the app for new developers.
+
+### No Obvious Bugs
+**Status:** 🔴 **Bugs Found**
+- **Typo & Route Duplication:** In `App.jsx` specifically for the Easter egg listener:
+  ```javascript
+  if (password === 'gca@123') {
+    navigate('/presentaiotn'); // TYPO!
+  ```
+  This is matched by a dirty routing fix in the router itself, declaring both `"presentaiotn"` and `"presentations"`.
+- **Easter Egg Alert:** The listener prompts a basic browser `prompt` on `Ctrl + P`. It overrides default browser print behavior, which presents severe accessibility and usability anti-patterns. If users genuinely just want to print a page (e.g., printing the resulting assessment report), they will be trapped by this password intercept.
+
+---
+
+## Summary Recommendations
+
+1. **Implement Error Boundaries** in `App.jsx` and uncomment the 404 `NotFound` fallback.
+2. **Fix `Ctrl + P` capture**: Only intercept this on a specific hidden route, or use a less conflicting shortcut (like `Ctrl + Shift + P`).
+3. **Refactor DOM interaction** in `home.jsx` `useEffect` to leverage React `useRef`.
+4. Add basic `try/catch` handlers anywhere browser Web APIs like `localStorage` are utilized.

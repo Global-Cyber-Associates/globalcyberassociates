@@ -1,22 +1,72 @@
-*{
+*, *::before, *::after {
   user-select: none;
   -webkit-user-drag: none;
 }
 
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — Single source of truth.
+   All component CSS must use var(--...).
+   Never hardcode colour values in other files.
+═══════════════════════════════════════════════ */
 :root {
-  --light-blue: #3fa9f5;
-  --white-smoke: #f9fafb;
-  --dark-primary: #0f172a;
-  --dark-secondary: #1e293b;
-  --accent-color: #314e8e;
-  --footer-dark: #111827;
-  --text-secondary: #9eb3d1;
-  --text-muted: #96b1b0;
+
+  /* ── Page Backgrounds ── */
+  --dark-primary:    #0b1e2d;
+  --dark-secondary:  #1b263b;
   --background-card: #1f2937;
   --background-deep: #213857;
-  --border-muted: #334155; 
-  --hover-effect: rgba(38, 50, 56, 0.1);
+  --footer-dark:     #111827;
+
+  /* ── Brand Colors ── */
+  --accent-color:  #0077b6;
+  --accent-hover:  #005f8e;
+  --light-blue:    #a8dadc;
+  --brand-cyan:    #00bcd4;
+  --brand-lime:       #a3e635;
+  --brand-lime-light: #bef264;
+  --brand-dark:       #020617;
+
+  /* ── Text (dark backgrounds) ── */
+  --white-smoke:      #f5f5f5;
+  --text-secondary:   #9eb3d1;
+  --text-muted:       #96b1b0;
+  --text-slate:       #cbd5e1;
+  --text-slate-muted: #94a3b8;
+  --text-body:        rgba(245, 245, 245, 0.75);
+  --text-dim:         rgba(245, 245, 245, 0.5);
+  --text-faint:       rgba(245, 245, 245, 0.35);
+
+  /* ── Borders ── */
+  --border-muted:   #334155;
+  --border-section: rgba(255, 255, 255, 0.06);
+  --border-deep:    #0f304c;
+
+  /* ── Accent transparency layers ── */
+  --accent-bg-soft:       rgba(0, 119, 182, 0.07);
+  --accent-bg-mid:        rgba(0, 119, 182, 0.12);
+  --accent-bg-strong:     rgba(0, 119, 182, 0.18);
+  --accent-border-soft:   rgba(0, 119, 182, 0.2);
+  --accent-border-mid:    rgba(0, 119, 182, 0.3);
+  --accent-border-strong: rgba(0, 119, 182, 0.4);
+
+  /* ── Effects ── */
+  --hover-effect:        rgba(38, 50, 56, 0.1);
   --button-hover-effect: rgba(38, 50, 56, 0.2);
 
-}
+  /* ── Light surface (FAQ accordion) ── */
+  --surface-light:   #fdfefe;
+  --surface-mid:     #c0c8cb;
+  --text-dark:       #212529;
+  --text-dark-muted: #495057;
+  --border-light:    #dee2e6;
+  --faq-accent:      #124b5e;
 
+  /* ── Document/Print surface (Brief component) ── */
+  --doc-bg:         #ffffff;
+  --doc-surface:    #f8fafc;
+  --doc-navy:       #0a2540;
+  --doc-blue:       #1a73e8;
+  --doc-border:     #e0e0e0;
+  --doc-text:       #333333;
+  --doc-text-muted: #888888;
+}

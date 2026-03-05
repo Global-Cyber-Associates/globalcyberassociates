@@ -5,27 +5,36 @@ import staff from './staff.png';
 
 const core = [
   {
-    title: "Cybersecurity Audits",
-    description: "Build stronger defenses with a complete view of your security posture. We offer end-to-end security audits that assess your systems, infrastructure, policies, and compliance readiness. Identify risks, close gaps, and align with industry standards to ensure your business is prepared for evolving threats. Internal & External Security Audits Policy Review & Gap Analysis Compliance & Regulatory Alignment",
+    title: "VAPT",
+    shortDescription: "Find what attackers will find — before they do.",
+    description: "Secure your digital assets before attackers find a way in. Our certified team conducts realistic penetration tests and vulnerability assessments across your applications, infrastructure, and network perimeter — VAPT, infrastructure hardening, and network security. You get a prioritised, actionable report. Not theory, not noise.",
+    icon: "bi-shield-lock-fill",
+    tags: ["Apps", "Network", "Infra", "IOT"],
+    image: vuln
+  },
+  {
+    title: "Compliance Audits",
+    shortDescription: "Turn regulatory requirements into your competitive advantage.",
+    description: "Compliance isn't paperwork — it's your legal protection and your clients' trust. We audit your controls, identify gaps, and guide you to certification-readiness for NIST, GDPR, HIPAA, and PCI-DSS. Structured. Stress-free.",
+    icon: "bi-patch-check-fill",
+    tags: ["NIST", "GDPR", "HIPAA", "PCI-DSS", "ISO 27001"],
     image: audit
   },
   {
-    title: "Vulnerability Assessment & Penetration Testing (VAPT)",
-    description: "Secure your digital assets before attackers find a way in. Our expert team conducts comprehensive VAPT assessments to identify, evaluate, and mitigate vulnerabilities across your network, applications, and infrastructure. Stay ahead of threats with real-time insights and actionable reports.",
-    image: vuln
-
-  },
-    {
-    title: "Cybersecurity Staffing Solutions",
-    description: "Find the right talent, right when you need it. We specialize in providing skilled professionals for IT, cybersecurity, and specialized tech roles, helping you build agile, high-performing teams. Whether you're hiring for short-term projects or permanent positions, our curated talent pool ensures your business never misses a beat.",
-    image: staff
-
-  },
-    {
-    title: "Corporate Training & Security Awareness",
-    description: "Empower your team with the skills and awareness to defend against threats. Our training solutions are designed to develop both technical skills and cybersecurity consciousness among employees. We deliver hands-on, customized training programs for IT teams, leadership, and general staff—on-site or online.",
+    title: "Corporate & Personnel Training",
+    shortDescription: "Your people are your first line of defence.",
+    description: "Your people are your first line of defence — and your biggest risk if untrained. We deliver hands-on, role-specific cybersecurity training for IT teams, leadership, and general staff. On-site or remote. Customised to your actual threat landscape.",
+    icon: "bi-people-fill",
+    tags: ["Awareness", "CTF Training", "Custom Modules"],
     image: training
-
+  },
+  {
+    title: "SOC Operations",
+    shortDescription: "Threats don't stop at 5pm. Neither do we.",
+    description: "Threats don't work business hours. Our Security Operations Center monitors your environment around the clock, detects anomalies in real time, and responds before damage is done. Enterprise-grade SOC — scaled to your size and budget.",
+    icon: "bi-display-fill",
+    tags: ["24/7 Monitoring", "Threat Response", "SIEM"],
+    image: staff
   }
 ];
 

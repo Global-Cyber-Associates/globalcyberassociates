@@ -52,6 +52,26 @@
   color: var(--white-smoke);
 }
 
+/* Proof chips below H1 */
+.hero-proof-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
+.hero-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--light-blue);
+  border: 1px solid rgba(168, 218, 220, 0.35);
+  border-radius: 20px;
+  padding: 4px 12px;
+  background: rgba(168, 218, 220, 0.07);
+}
+
 /* Divider Line */
 .divider {
   width: 80px;
@@ -108,7 +128,7 @@
 .cta-button.primary {
   background-color: var(--accent-color);
   color: white;
-  box-shadow: 0 4px 15px rgba(49, 78, 142, 0.3);
+  box-shadow: 0 4px 15px var(--accent-bg-strong);
 }
 
 .cta-button.primary:hover {
@@ -118,14 +138,14 @@
 }
 
 .cta-button.secondary {
-  background-color: #a3e635; /* brand-lime */
-  color: #020617; /* brand-dark */
+  background-color: var(--brand-lime);
+  color: var(--brand-dark);
   border: none;
   box-shadow: 0 4px 15px rgba(163, 230, 53, 0.3);
 }
 
 .cta-button.secondary:hover {
-  background-color: #bef264;
+  background-color: var(--brand-lime-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(163, 230, 53, 0.5);
 }
