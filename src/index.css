@@ -10,3 +10,24 @@ body {
   line-height: 1.6;
   scroll-behavior: smooth;
 }
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.container h2 {
+  margin-top: 25px;
+  font-size: 22px;
+}
+
+.container p {
+  line-height: 1.6;
+  margin-top: 10px;
+}
