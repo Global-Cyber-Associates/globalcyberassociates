@@ -2,8 +2,11 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import AOS from 'aos';
+import AOS from 'aos'
 import 'aos/dist/aos.css';
+import Terms from "./pages/Terms"
+import Privacy from "./pages/Privacy"
+import Refund from "./pages/Refund"
 
 const Home = lazy(() => import("./components/homepage/home.jsx"));
 const About = lazy(() => import("./components/about/about.jsx"));
@@ -61,6 +64,9 @@ const App = () => {
     <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/refund" element={<Refund />} />
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="Solutions" element={<Services />} />

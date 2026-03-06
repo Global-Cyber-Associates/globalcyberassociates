@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import './footer.css';
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
@@ -42,6 +43,15 @@ const Footer = () => {
             <li><a href="/about">About Us</a></li>
             <li><a href="/careers">Careers</a></li>
             <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h4>Legal</h4>
+          <ul className="footer-links">
+            <li><Link to="/terms">Terms & Conditions</Link></li>
+            <li><Link to="/privacy">Privacy Policy</Link></li>
+            <li><Link to="/refund">Refund Policy</Link></li>
           </ul>
         </div>
 
