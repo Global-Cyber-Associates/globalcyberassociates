@@ -72,7 +72,7 @@ const HeroSection = () => {
           <div className="col-lg-5" data-aos="zoom-out">
             <div className="visual-content">
               <div className="fluid-shape">
-                <img src={image} alt="Security Illustration" />
+                <img src={image} alt="Security Illustration" className="fluid-img" />
               </div>
             </div>
           </div>

@@ -37,16 +37,16 @@
 }
 
 .mythbuster-body {
-  margin: 2rem auto;
-  max-width: 720px;
+  margin: 2.5rem auto;
+  max-width: 600px;
   text-align: left;
 }
 
 .mythbuster-body p {
-  font-size: 1rem;
-  color: rgba(245, 245, 245, 0.75);
-  line-height: 1.85;
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: rgba(245, 245, 245, 0.85);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
 }
 
 .mythbuster-body strong {
@@ -71,4 +71,10 @@
   font-weight: 600;
   color: var(--light-blue, #a8dadc);
   letter-spacing: 0.04em;
+}
+
+.quote-mark {
+  color: var(--light-blue, #0077b6);
+  font-family: Georgia, serif;
+  font-size: 1.3em;
 }

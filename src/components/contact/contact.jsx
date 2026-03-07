@@ -30,7 +30,7 @@ const ContactPage = () => {
             <div className="email-card" data-aos="fade-up" data-aos-delay="200">
               <h3>Product Demos &amp; Licensing</h3>
               <p>For VisuN and VisuN+ trials, pricing, and deployment</p>
-              <span className="email-address">products@globalcyberassociate.com</span>
+              <span className="email-address">products@<wbr></wbr>globalcyberassociate.com</span>
               <a href="mailto:products@globalcyberassociate.com" className="email-btn">Request a Demo</a>
             </div>
 

@@ -9,7 +9,8 @@ const MythBuster = () => {
         <p className="mythbuster-label">The Misconception We're Fixing</p>
 
         <h2 className="mythbuster-heading">
-          "Cybersecurity is for big companies."
+          <span className="quote-mark">"</span>Cybersecurity is for big companies.<span className="quote-mark">"</span>
+
           <span className="mythbuster-subheading">
             We hear this every day. It's also the most dangerous myth in business.
           </span>

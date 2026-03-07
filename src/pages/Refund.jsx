@@ -23,7 +23,8 @@ function Refund() {
 
       <h2>Contact</h2>
       <p>
-        For refund-related queries, please contact our support team.
+        For refund-related queries, please contact our support team at
+        info@globalcyberassociate.com.
       </p>
     </div>
   );

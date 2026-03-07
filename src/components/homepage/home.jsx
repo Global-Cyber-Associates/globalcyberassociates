@@ -36,11 +36,9 @@ const Home = () => {
       <Header />
 
       <main>
-        <div style={{ position: "sticky", top: "70px", zIndex: 100 }}>
-          <TestimonialSection />
-        </div>
 
         <Hero />
+        <TestimonialSection />
         <Features />
         <MythBuster />
         <LeadMagnet />
@@ -49,11 +47,11 @@ const Home = () => {
           <div className="container">
             <h2 className="section-title">Built on Honesty. Measured by Outcomes.</h2>
             <ul className="reasons-list">
-              <li data-aos="fade-right" data-aos-delay="100">✔️ Realistic testing based on current attacker tactics — not checkbox audits</li>
-              <li data-aos="fade-right" data-aos-delay="200">✔️ Business-focused remediation guidance, not just raw findings</li>
-              <li data-aos="fade-right" data-aos-delay="300">✔️ Independent and confidential assessments — your data stays yours</li>
-              <li data-aos="fade-right" data-aos-delay="400">✔️ Flexible engagements — from a lean startup to a multi-site enterprise</li>
-              <li data-aos="fade-right" data-aos-delay="500">✔️ Transparent reporting with clear, prioritised next steps</li>
+              <li data-aos="fade-right" data-aos-delay="100"><span className="check-icon">✓</span> Realistic testing based on current attacker tactics — not checkbox audits</li>
+              <li data-aos="fade-right" data-aos-delay="200"><span className="check-icon">✓</span> Business-focused remediation guidance, not just raw findings</li>
+              <li data-aos="fade-right" data-aos-delay="300"><span className="check-icon">✓</span> Independent and confidential assessments — your data stays yours</li>
+              <li data-aos="fade-right" data-aos-delay="400"><span className="check-icon">✓</span> Flexible engagements — from a lean startup to a multi-site enterprise</li>
+              <li data-aos="fade-right" data-aos-delay="500"><span className="check-icon">✓</span> Transparent reporting with clear, prioritised next steps</li>
             </ul>
           </div>
         </div>

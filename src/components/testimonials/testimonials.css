@@ -52,7 +52,7 @@
 
 .logo-card:hover {
   border-color: var(--accent-color, #0077b6);
-  background: #ffffff;
+  background: var(--background-card, #1b263b);
   opacity: 1;
 }
 
@@ -60,6 +60,7 @@
   max-width: 140px;
   max-height: 48px;
   object-fit: contain;
+  transition: all 0.3s ease;
 }
 
 .logo-card-name {
@@ -74,4 +75,8 @@
   color: var(--text-muted, #8899aa);
   letter-spacing: 0.04em;
   white-space: nowrap;
+}
+
+.logo-card:hover .logo-card-img {
+  transform: scale(1.05);
 }
