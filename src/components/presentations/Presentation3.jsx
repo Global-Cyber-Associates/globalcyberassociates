@@ -1,264 +1,383 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import "./presentation2.css";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
-const money = new Intl.NumberFormat("en-IN", {
+const currencyFormatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
   currency: "INR",
   maximumFractionDigits: 0,
 });
 
-const formatMoney = (value) => money.format(value);
+const compactCurrencyFormatter = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
+
+const CHART_COLORS = {
+  cyan: "#22d3ee",
+  blue: "#60a5fa",
+  green: "#34d399",
+  amber: "#fbbf24",
+  red: "#f87171",
+  slate: "#94a3b8",
+};
+
+const STAGES = [
+  "Step 1 / Yesterday Check",
+  "Step 2 / Problem Statement",
+  "Step 3 / Salary Loss",
+  "Step 4 / Fix Plan",
+  "Step 5 / Investment + ROI",
+  "Your Calculator",
+];
+
+const formatMoney = (value) => currencyFormatter.format(value || 0);
+const formatCompactMoney = (value) => compactCurrencyFormatter.format(value || 0);
+
+function calculateModel(input) {
+  const employees = Math.max(Number(input.employees) || 0, 0);
+  const avgSalary = Math.max(Number(input.avgSalary) || 0, 0);
+  const nonProductiveHoursPerDay = Math.max(
+    Number(input.nonProductiveHoursPerDay) || 0,
+    0
+  );
+  const recoveryPercent = Math.max(Number(input.recoveryPercent) || 0, 0);
+  const toolCostPerEmployee = Math.max(Number(input.toolCostPerEmployee) || 0, 0);
+  const paidHoursPerDay = 8;
+
+  const monthlyPayroll = employees * avgSalary;
+  const nonProductivePercent = (nonProductiveHoursPerDay / paidHoursPerDay) * 100;
+  const monthlyLoss = monthlyPayroll * (nonProductivePercent / 100);
+  const monthlyRecovered = monthlyLoss * (recoveryPercent / 100);
+  const monthlyCost = employees * toolCostPerEmployee;
+  const netMonthlyBenefit = monthlyRecovered - monthlyCost;
+  const annualNetBenefit = netMonthlyBenefit * 12;
+  const grossRoiMultiple = monthlyCost > 0 ? monthlyRecovered / monthlyCost : 0;
+  const netRoiPercent =
+    monthlyCost > 0 ? (netMonthlyBenefit / monthlyCost) * 100 : 0;
+  const paybackMonths =
+    netMonthlyBenefit > 0 ? monthlyCost / netMonthlyBenefit : null;
+
+  return {
+    employees,
+    avgSalary,
+    nonProductiveHoursPerDay,
+    nonProductivePercent,
+    recoveryPercent,
+    toolCostPerEmployee,
+    monthlyPayroll,
+    monthlyLoss,
+    monthlyRecovered,
+    monthlyCost,
+    netMonthlyBenefit,
+    annualNetBenefit,
+    grossRoiMultiple,
+    netRoiPercent,
+    paybackMonths,
+  };
+}
 
 export default function Presentation3() {
+  const MotionSection = motion.section;
   const [calculator, setCalculator] = useState({
-    employees: 50,
-    avgSalary: 25000,
-    nonProductiveHoursPerDay: 3,
-    recoveryPercent: 10,
-    toolCostPerEmployee: 150,
+    employees: 10,
+    avgSalary: 30000,
+    nonProductiveHoursPerDay: 2,
+    recoveryPercent: 20,
+    toolCostPerEmployee: 200,
   });
 
-  const calculatorResult = useMemo(() => {
-    const employees = Number(calculator.employees) || 0;
-    const avgSalary = Number(calculator.avgSalary) || 0;
-    const nonProductiveHoursPerDay =
-      Number(calculator.nonProductiveHoursPerDay) || 0;
-    const recoveryPercent = Number(calculator.recoveryPercent) || 0;
-    const toolCostPerEmployee = Number(calculator.toolCostPerEmployee) || 0;
-    const standardWorkingHoursPerDay = 8;
-    const visunRecoveryRate = recoveryPercent / 100;
+  const sampleInputs = useMemo(
+    () => ({
+      employees: 10,
+      avgSalary: 30000,
+      nonProductiveHoursPerDay: 2,
+      recoveryPercent: 20,
+      toolCostPerEmployee: 200,
+    }),
+    []
+  );
 
-    const payroll = employees * avgSalary;
-    const nonProductivePercent =
-      (nonProductiveHoursPerDay / standardWorkingHoursPerDay) * 100;
-    const wasted = payroll * (nonProductivePercent / 100);
-    const recovered = wasted * visunRecoveryRate;
-    const toolCost = employees * toolCostPerEmployee;
-    const netGain = recovered - toolCost;
-    const roi = toolCost > 0 ? recovered / toolCost : 0;
-
-    return {
-      nonProductivePercent,
-      nonProductiveHoursPerDay,
-      payroll,
-      wasted,
-      recovered,
-      toolCost,
-      netGain,
-      roi,
-      standardWorkingHoursPerDay,
-      visunRecoveryRate,
-      recoveryPercent,
-    };
-  }, [calculator]);
+  const sample = useMemo(() => calculateModel(sampleInputs), [sampleInputs]);
+  const calculatorResult = useMemo(
+    () => calculateModel(calculator),
+    [calculator]
+  );
 
   const slides = useMemo(() => {
-    const employees = 50;
-    const avgSalary = 25000;
-    const payroll = employees * avgSalary;
-    const wastedCost = payroll * 0.2;
-    const recoveredValue = payroll * 0.1;
-    const toolCost = employees * 150;
-    const netGain = recoveredValue - toolCost;
-    const roiMultiple = recoveredValue / toolCost;
+    const weeklyRecoveryData = [
+      { name: "Week 1", value: sample.monthlyRecovered * 0.2 },
+      { name: "Week 2", value: sample.monthlyRecovered * 0.45 },
+      { name: "Week 3", value: sample.monthlyRecovered * 0.75 },
+      { name: "Week 4", value: sample.monthlyRecovered },
+    ];
 
     return [
       {
-        id: "cover",
-        type: "hero",
-        title: "Enterprise Workforce Productivity Tool",
-        subtitle: "Executive Investment Perspective",
+        id: "attention",
+        type: "insight",
+        stage: STAGES[0],
+        title: "How productive was your employee yesterday?",
+        subtitle: "If you cannot answer this daily, salary loss stays hidden.",
         cards: [
           {
-            title: "Business Goal",
-            text: "Reduce non-productive work time without hiring new staff.",
+            label: "Need",
+            value: "Daily visibility",
+            note: "See productive time every day",
           },
           {
-            title: "Finance Goal",
-            text: "Improve salary efficiency and recover hidden value every month.",
+            label: "Current gap",
+            value: "No live proof",
+            note: "Manual reports come too late",
           },
           {
-            title: "Decision Lens",
-            text: "Treat Visun as an operating investment with measurable returns.",
+            label: "Risk",
+            value: "Silent salary leakage",
+            note: "Cost rises, output does not",
           },
         ],
-        image:
-          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072",
+        chart: {
+          title: "Typical Workday Split",
+          type: "donut",
+          unit: "percent",
+          data: [
+            {
+              name: "Productive hours",
+              value: 100 - sample.nonProductivePercent,
+              color: CHART_COLORS.green,
+            },
+            {
+              name: "Non-productive hours",
+              value: sample.nonProductivePercent,
+              color: CHART_COLORS.red,
+            },
+          ],
+        },
       },
       {
-        id: "baseline",
-        type: "detail",
-        title: "Current Salary Baseline",
-        subtitle: "Team and payroll assumptions",
+        id: "interest",
+        type: "insight",
+        stage: STAGES[1],
+        title: "Problem statement",
+        subtitle:
+          "Company pays full salary, but a part of that paid time is non-productive.",
         cards: [
           {
-            title: "Employees",
-            text: `${employees}`,
+            label: "What is happening",
+            value: "Paid time != Productive time",
+            note: "Idle time is hidden",
           },
           {
-            title: "Average Salary",
-            text: `${formatMoney(avgSalary)} per employee / month`,
+            label: "Why it continues",
+            value: "No real-time tracking",
+            note: "Managers act after the loss",
           },
           {
-            title: "Monthly Payroll",
-            text: formatMoney(payroll),
+            label: "Business impact",
+            value: "Lower margin",
+            note: "More spend for same output",
           },
         ],
-        image:
-          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015",
+        chart: {
+          title: "Where Salary Spend Goes",
+          type: "bar",
+          unit: "currency",
+          data: [
+            {
+              name: "Total Salary Spend",
+              value: sample.monthlyPayroll,
+              color: CHART_COLORS.blue,
+            },
+            {
+              name: "Non-Productive Spend",
+              value: sample.monthlyLoss,
+              color: CHART_COLORS.red,
+            },
+            {
+              name: "Productive Spend",
+              value: sample.monthlyPayroll - sample.monthlyLoss,
+              color: CHART_COLORS.green,
+            },
+          ],
+        },
       },
       {
-        id: "loss",
-        type: "detail",
-        title: "Monthly Productivity Leakage",
-        subtitle: "20% non-productive time impact",
+        id: "desire-method",
+        type: "insight",
+        stage: STAGES[2],
+        title: "How much salary investment is going non-productive?",
+        subtitle: `${sample.employees} employees at ${formatMoney(
+          sample.avgSalary
+        )} average salary per month.`,
         cards: [
           {
-            title: "Simple Formula",
-            text: `20% x ${formatMoney(payroll)} = ${formatMoney(wastedCost)}`,
+            label: "Salary spend / month",
+            value: formatMoney(sample.monthlyPayroll),
+            note: "Total salary investment",
           },
           {
-            title: "Current Loss",
-            text: "Around 2.50L lost each month in paid but non-productive time.",
+            label: "Non-productive spend / month",
+            value: formatMoney(sample.monthlyLoss),
+            note: `${sample.nonProductiveHoursPerDay.toFixed(
+              1
+            )} non-productive hours/day`,
           },
           {
-            title: "Why It Matters",
-            text: "This is direct payroll leakage that lowers operating efficiency.",
+            label: "Non-productive spend / year",
+            value: formatMoney(sample.monthlyLoss * 12),
+            note: "If current pattern continues",
           },
         ],
-        image:
-          "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=2006",
+        chart: {
+          title: "Salary Loss If Nothing Changes",
+          type: "bar",
+          unit: "currency",
+          data: [
+            {
+              name: "Month Loss",
+              value: sample.monthlyLoss,
+              color: CHART_COLORS.amber,
+            },
+            {
+              name: "Year Loss",
+              value: sample.monthlyLoss * 12,
+              color: CHART_COLORS.red,
+            },
+          ],
+        },
       },
       {
-        id: "recovery",
-        type: "detail",
-        title: "Value Recovered with Visun",
-        subtitle: "10% recovery model",
+        id: "desire-proof",
+        type: "insight",
+        stage: STAGES[3],
+        title: "How Visun fixes this",
+        subtitle: "Simple 14-day plan.",
         cards: [
           {
-            title: "Recovery Formula",
-            text: `10% x ${formatMoney(payroll)} = ${formatMoney(recoveredValue)}`,
+            label: "Days 1-4",
+            value: "Capture baseline",
+            note: "See current productivity clearly",
           },
           {
-            title: "Recovered Value",
-            text: "Around 1.24L to 1.25L value recovered every month.",
+            label: "Days 5-10",
+            value: "Manager action",
+            note: "Fix top non-productive areas",
           },
           {
-            title: "Operational Benefit",
-            text: "Recovery is created from existing team capacity, not new hiring.",
+            label: "Days 11-14",
+            value: "Review gains",
+            note: "Decide scale using real numbers",
           },
         ],
-        image:
-          "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=2070",
+        chart: {
+          title: "Estimated Value Recovery In Month 1",
+          type: "area",
+          unit: "currency",
+          data: weeklyRecoveryData,
+        },
       },
       {
-        id: "cost",
-        type: "detail",
-        title: "Tool Investment",
-        subtitle: "Simple monthly pricing",
+        id: "action",
+        type: "insight",
+        stage: STAGES[4],
+        title: "Tool investment and ROI",
+        subtitle:
+          "This is the investment per system, and ROI against monthly salary loss.",
         cards: [
           {
-            title: "Unit Cost",
-            text: "INR 150 per employee / month",
+            label: "Tool cost per system / month",
+            value: formatMoney(sample.toolCostPerEmployee),
+            note: `${sample.employees} systems in this sample`,
           },
           {
-            title: "Total Tool Cost",
-            text: `${employees} x INR 150 = ${formatMoney(toolCost)}`,
+            label: "Total tool cost / month",
+            value: formatMoney(sample.monthlyCost),
+            note: "Your monthly tool investment",
           },
           {
-            title: "Investment Quality",
-            text: "Low monthly outflow relative to recovered productivity value.",
+            label: "Salary loss / month",
+            value: formatMoney(sample.monthlyLoss),
+            note: "Current non-productive salary cost",
+          },
+          {
+            label: "ROI and net gain",
+            value: `${sample.netRoiPercent.toFixed(0)}%`,
+            note: `${formatMoney(sample.netMonthlyBenefit)} net gain / month`,
           },
         ],
-        image:
-          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2070",
-      },
-      {
-        id: "roi",
-        type: "hero",
-        title: "Investment ROI Snapshot",
-        subtitle: "Monthly financial impact",
-        cards: [
-          {
-            title: "Recovered Value",
-            text: formatMoney(recoveredValue),
-          },
-          {
-            title: "Tool Cost",
-            text: formatMoney(toolCost),
-          },
-          {
-            title: "Net Gain",
-            text: `${formatMoney(netGain)} per month`,
-          },
-          {
-            title: "ROI Multiple",
-            text: `${roiMultiple.toFixed(1)}x (conservative meeting claim: 10x+)`,
-          },
-        ],
-        image:
-          "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=2070",
-      },
-      {
-        id: "advantages",
-        type: "detail",
-        title: "Investment Advantages of Visun",
-        subtitle: "Why this is a high-quality operating investment",
-        cards: [
-          {
-            title: "Salary Efficiency",
-            text: "Converts paid idle time into output-producing time.",
-          },
-          {
-            title: "Recurring Gains",
-            text: "Benefits repeat monthly instead of one-time savings.",
-          },
-          {
-            title: "Fast Payback",
-            text: "Low tool cost compared to recovered productivity value.",
-          },
-          {
-            title: "Margin Support",
-            text: "Improves margin without increasing headcount.",
-          },
-          {
-            title: "Finance Visibility",
-            text: "Creates measurable and reviewable ROI metrics.",
-          },
-          {
-            title: "Leakage Control",
-            text: "Reduces hidden payroll leakage with real-time insight.",
-          },
-        ],
-        image:
-          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2070",
+        chart: {
+          title: "Salary Loss vs Tool Cost vs Net Gain",
+          type: "bar",
+          unit: "currency",
+          data: [
+            {
+              name: "Salary Loss",
+              value: sample.monthlyLoss,
+              color: CHART_COLORS.red,
+            },
+            {
+              name: "Tool Cost",
+              value: sample.monthlyCost,
+              color: CHART_COLORS.blue,
+            },
+            {
+              name: "Net Gain",
+              value: sample.netMonthlyBenefit,
+              color:
+                sample.netMonthlyBenefit >= 0
+                  ? CHART_COLORS.green
+                  : CHART_COLORS.red,
+            },
+          ],
+        },
       },
       {
         id: "calculator",
         type: "calculator",
-        title: "Now Let’s Calculate for Our Company",
-        subtitle:
-          "Enter employees and average salary. Select non-productive hours/day to estimate waste and Visun recovery.",
-        image:
-          "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2070",
+        stage: STAGES[5],
+        title: "Enter your numbers",
+        subtitle: "See your monthly and yearly gain.",
       },
     ];
-  }, []);
+  }, [sample]);
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = slides.length;
   const active = slides[currentSlide];
 
-  const goToSlide = (index) => {
-    if (index < 0 || index >= totalSlides) return;
-    setCurrentSlide(index);
-  };
+  const goToSlide = useCallback(
+    (nextIndexOrUpdater) => {
+      setCurrentSlide((previous) => {
+        const next =
+          typeof nextIndexOrUpdater === "function"
+            ? nextIndexOrUpdater(previous)
+            : nextIndexOrUpdater;
+        if (next < 0 || next >= totalSlides) return previous;
+        return next;
+      });
+    },
+    [totalSlides]
+  );
 
   useEffect(() => {
-    const onKeyDown = (e) => {
-      const target = e.target;
+    const onKeyDown = (event) => {
+      const target = event.target;
       const isTypingField =
         target instanceof HTMLElement &&
         (target.tagName === "INPUT" ||
@@ -267,263 +386,493 @@ export default function Presentation3() {
           target.isContentEditable);
       if (isTypingField) return;
 
-      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
-        e.preventDefault();
-        goToSlide(currentSlide + 1);
+      if (
+        event.key === "ArrowRight" ||
+        event.key === "ArrowDown" ||
+        event.key === " "
+      ) {
+        event.preventDefault();
+        goToSlide((index) => index + 1);
       }
-      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        goToSlide(currentSlide - 1);
+
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        event.preventDefault();
+        goToSlide((index) => index - 1);
       }
-      if (/^\d$/.test(e.key)) {
-        const selected = Number(e.key);
+
+      if (/^\d$/.test(event.key)) {
+        const selected = Number(event.key);
         if (selected >= 1 && selected <= totalSlides) {
           goToSlide(selected - 1);
         }
       }
     };
+
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [currentSlide, totalSlides]);
+  }, [goToSlide, totalSlides]);
+
+  const calculatorChartData = useMemo(
+    () => [
+      {
+        name: "Loss",
+        value: calculatorResult.monthlyLoss,
+        color: CHART_COLORS.amber,
+      },
+      {
+        name: "Recovered",
+        value: calculatorResult.monthlyRecovered,
+        color: CHART_COLORS.green,
+      },
+      {
+        name: "Cost",
+        value: calculatorResult.monthlyCost,
+        color: CHART_COLORS.blue,
+      },
+      {
+        name: "Net",
+        value: calculatorResult.netMonthlyBenefit,
+        color:
+          calculatorResult.netMonthlyBenefit >= 0
+            ? CHART_COLORS.cyan
+            : CHART_COLORS.red,
+      },
+    ],
+    [calculatorResult]
+  );
 
   return (
-    <div className="fixed inset-0 bg-black text-white z-[100] overflow-hidden select-none cursor-default">
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? "opacity-35" : "opacity-0"
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt=""
-            className={`w-full h-full object-cover transition-transform duration-[18s] ease-linear ${
-              index === currentSlide ? "scale-105" : "scale-100"
-            }`}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-transparent" />
-        </div>
-      ))}
+    <div className="fixed inset-0 z-[100] overflow-hidden bg-slate-950 text-slate-100">
+      <DeckBackground accentIndex={currentSlide} />
 
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-white/10 z-50">
+      <div className="absolute top-0 left-0 h-[3px] w-full bg-white/10 z-40">
         <div
-          className="h-full bg-blue-600 transition-all duration-700 ease-out"
+          className="h-full bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400 transition-all duration-500"
           style={{ width: `${((currentSlide + 1) / totalSlides) * 100}%` }}
         />
       </div>
 
-      <div className="absolute top-8 left-8 z-[60] flex items-center gap-3 mix-blend-overlay opacity-35">
-        <div className="text-xl font-black tracking-tighter italic uppercase text-white">
-          GCA <span className="text-blue-600">Global</span>
-        </div>
-        <div className="h-[1px] w-8 bg-white/50" />
-        <div className="text-[10px] font-bold tracking-[0.3rem] text-white/60">
-          VISUN AI
-        </div>
-      </div>
-
-      <div className="relative h-full w-full z-10 flex items-center px-8 md:px-20 lg:px-28">
+      <main className="relative z-20 h-full px-3 py-5 md:px-6 md:py-6">
         <AnimatePresence mode="wait">
-          <motion.div
+          <MotionSection
             key={active.id}
-            initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -14, filter: "blur(4px)" }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="max-w-5xl"
+            exit={{ opacity: 0, y: -12, filter: "blur(4px)" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="flex h-full w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-900/55 p-5 shadow-[0_30px_90px_rgba(2,6,23,0.55)] backdrop-blur-2xl md:p-8"
           >
-            <p className="text-[11px] uppercase tracking-[0.3em] text-blue-400/90">
-              Executive Presentation | Slide {currentSlide + 1}/{totalSlides}
-            </p>
-            <h1
-              className={`mt-4 font-black tracking-tight uppercase italic leading-tight ${
-                active.type === "hero"
-                  ? "text-4xl md:text-6xl lg:text-7xl"
-                  : "text-3xl md:text-5xl lg:text-6xl"
-              }`}
-            >
+            <h1 className="mt-1 w-full text-2xl font-black leading-tight tracking-tight md:text-4xl lg:text-5xl">
               {active.title}
             </h1>
-            <p className="mt-5 text-lg md:text-2xl font-light text-white/65 max-w-3xl leading-relaxed">
+            <p className="mt-2 w-full text-sm text-slate-300 md:text-lg">
               {active.subtitle}
             </p>
+
             {active.type !== "calculator" && (
-              <div className="mt-9 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl">
-                {active.cards.map((card, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-white/15 bg-black/35 backdrop-blur-md p-5"
-                  >
-                    <p className="text-xs uppercase tracking-[0.18em] text-blue-300/90">
-                      {card.title}
-                    </p>
-                    <p className="mt-3 text-base md:text-lg text-white/90 leading-relaxed">
-                      {card.text}
-                    </p>
-                  </div>
-                ))}
+              <div className="mt-5 grid min-h-0 flex-1 gap-5 xl:grid-cols-12">
+                <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 xl:col-span-7">
+                  {active.cards.map((card) => (
+                    <MetricCard
+                      key={`${card.label}-${card.value}`}
+                      label={card.label}
+                      value={card.value}
+                      note={card.note}
+                    />
+                  ))}
+                </div>
+                <div className="min-h-0 xl:col-span-5">
+                  <ChartCard chart={active.chart} fullHeight />
+                </div>
               </div>
             )}
 
             {active.type === "calculator" && (
-              <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-5xl">
-                <div className="rounded-2xl border border-white/15 bg-black/35 backdrop-blur-md p-5 space-y-4">
-                  <InputRow
-                    label="Employees"
-                    value={calculator.employees}
-                    onChange={(value) =>
-                      setCalculator((prev) => ({ ...prev, employees: value }))
-                    }
-                  />
-                  <InputRow
-                    label="Average Salary / Employee (Monthly)"
-                    value={calculator.avgSalary}
-                    onChange={(value) =>
-                      setCalculator((prev) => ({ ...prev, avgSalary: value }))
-                    }
-                  />
-                  <SelectRow
-                    label="Non-Productive Time (Hours / Day)"
-                    value={calculator.nonProductiveHoursPerDay}
-                    options={[1, 2, 3, 4, 5, 6, 7, 8]}
-                    unit="hours"
-                    onChange={(value) =>
-                      setCalculator((prev) => ({
-                        ...prev,
-                        nonProductiveHoursPerDay: value,
-                      }))
-                    }
-                  />
-                  <SelectRow
-                    label="Visun Recovery (%)"
-                    value={calculator.recoveryPercent}
-                    options={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
-                    unit="percent"
-                    onChange={(value) =>
-                      setCalculator((prev) => ({
-                        ...prev,
-                        recoveryPercent: value,
-                      }))
-                    }
-                  />
+              <div className="mt-5 grid gap-5 xl:grid-cols-[1fr_1.05fr]">
+                <div className="rounded-2xl border border-white/10 bg-slate-950/55 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100/90">
+                    Your Inputs
+                  </p>
+
+                  <div className="mt-4 space-y-4">
+                    <NumberRow
+                      label="Employees"
+                      value={calculator.employees}
+                      min={1}
+                      step={1}
+                      onChange={(value) =>
+                        setCalculator((prev) => ({ ...prev, employees: value }))
+                      }
+                    />
+                    <NumberRow
+                      label="Average Salary Per Employee"
+                      value={calculator.avgSalary}
+                      min={1000}
+                      step={500}
+                      onChange={(value) =>
+                        setCalculator((prev) => ({ ...prev, avgSalary: value }))
+                      }
+                    />
+                    <NumberRow
+                      label="Tool Cost Per System"
+                      value={calculator.toolCostPerEmployee}
+                      min={0}
+                      step={10}
+                      onChange={(value) =>
+                        setCalculator((prev) => ({
+                          ...prev,
+                          toolCostPerEmployee: value,
+                        }))
+                      }
+                    />
+                    <RangeRow
+                      label="Lost Hours Per Day"
+                      value={calculator.nonProductiveHoursPerDay}
+                      min={0.5}
+                      max={4}
+                      step={0.1}
+                      suffix="hours"
+                      onChange={(value) =>
+                        setCalculator((prev) => ({
+                          ...prev,
+                          nonProductiveHoursPerDay: value,
+                        }))
+                      }
+                    />
+                    <RangeRow
+                      label="Recovery Rate with Visun"
+                      value={calculator.recoveryPercent}
+                      min={5}
+                      max={40}
+                      step={1}
+                      suffix="%"
+                      onChange={(value) =>
+                        setCalculator((prev) => ({
+                          ...prev,
+                          recoveryPercent: value,
+                        }))
+                      }
+                    />
+                  </div>
                 </div>
 
-                <div className="rounded-2xl border border-blue-400/35 bg-slate-950/75 backdrop-blur-md p-6">
-                  <p className="text-xs uppercase tracking-[0.18em] text-blue-200/90">
-                    Live Summary
+                <div className="rounded-2xl border border-cyan-300/25 bg-slate-950/70 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100/90">
+                    Your Result
                   </p>
-                  <div className="mt-3 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3">
-                    <p className="text-xs text-blue-100/80">
-                      Total Value Recovered ({calculatorResult.recoveryPercent}%)
+
+                  <div className="mt-3 rounded-xl border border-red-300/30 bg-red-500/10 px-4 py-4">
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-red-100/85">
+                      Total Salary Loss Per Month
                     </p>
-                    <p className="mt-1 text-3xl font-black text-blue-100">
-                      {formatMoney(calculatorResult.recovered)}
+                    <p className="mt-1 text-4xl font-black text-red-100 md:text-5xl">
+                      {formatMoney(calculatorResult.monthlyLoss)}
                     </p>
                   </div>
-                  <div className="mt-4 divide-y divide-white/10">
+
+                  <div className="mt-4 h-40 rounded-xl border border-white/10 bg-slate-900/60 p-3">
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-slate-300">
+                      Loss vs Recovery vs Cost
+                    </p>
+                    <div className="mt-2 h-32">
+                      <ValueBarChart data={calculatorChartData} unit="currency" />
+                    </div>
+                  </div>
+
+                  <div className="mt-3 divide-y divide-white/10">
                     <ResultRow
-                      label="Total Money You Waste"
-                      value={formatMoney(calculatorResult.wasted)}
+                      label="Monthly Payroll"
+                      value={formatMoney(calculatorResult.monthlyPayroll)}
                     />
                     <ResultRow
-                      label="Total You Invest"
-                      value={formatMoney(calculatorResult.toolCost)}
+                      label="Value Recovered Per Month"
+                      value={formatMoney(calculatorResult.monthlyRecovered)}
                     />
                     <ResultRow
-                      label={`If Visun Recovers ${calculatorResult.recoveryPercent}%`}
-                      value={formatMoney(calculatorResult.recovered)}
+                      label="Tool Cost Per Month"
+                      value={formatMoney(calculatorResult.monthlyCost)}
                     />
                     <ResultRow
-                      label="Net Value After Investment"
-                      value={formatMoney(calculatorResult.netGain)}
+                      label="Net Gain Per Month"
+                      value={formatMoney(calculatorResult.netMonthlyBenefit)}
+                      emphasize
+                    />
+                    <ResultRow
+                      label="ROI vs Monthly Salary Loss"
+                      value={
+                        calculatorResult.monthlyLoss > 0
+                          ? `${(
+                              (calculatorResult.netMonthlyBenefit /
+                                calculatorResult.monthlyLoss) *
+                              100
+                            ).toFixed(0)}%`
+                          : "0%"
+                      }
+                      emphasize
                     />
                   </div>
-                  <p className="mt-4 text-xs text-slate-300">
-                    Assumption: {calculatorResult.nonProductiveHoursPerDay}h/day
-                    non-productive ({calculatorResult.nonProductivePercent.toFixed(
-                      1
-                    )}
-                    %), and Visun recovers {calculatorResult.recoveryPercent}% of
-                    wasted value.
+
+                  <p className="mt-3 text-xs text-slate-300">
+                    Formula: Net gain = Recovered value - Tool cost.
                   </p>
                 </div>
               </div>
             )}
-          </motion.div>
+          </MotionSection>
         </AnimatePresence>
-      </div>
+      </main>
 
-      <div className="absolute bottom-8 right-8 z-50 flex items-center gap-4">
-        <div className="text-sm font-semibold text-white/70">
-          {currentSlide + 1}/{totalSlides}
-        </div>
-        <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md p-2 rounded-full border border-white/10">
-          <button
-            onClick={() => goToSlide(currentSlide - 1)}
-            disabled={currentSlide === 0}
-            className="inline-flex items-center justify-center w-10 h-10 rounded-full text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30 transition"
-          >
-            <ArrowLeft size={16} />
-          </button>
-          <button
-            onClick={() => goToSlide(currentSlide + 1)}
-            disabled={currentSlide === totalSlides - 1}
-            className="inline-flex items-center justify-center w-10 h-10 rounded-full text-white/70 hover:text-white hover:bg-white/10 disabled:opacity-30 transition"
-          >
-            <ArrowRight size={16} />
-          </button>
-        </div>
-      </div>
+      <button
+        type="button"
+        aria-label="Previous slide"
+        onClick={() => goToSlide((index) => index - 1)}
+        disabled={currentSlide === 0}
+        className="absolute left-4 top-1/2 z-40 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-slate-900/70 text-slate-100 transition hover:border-cyan-300/50 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30"
+      >
+        <ArrowLeft size={18} />
+      </button>
+      <button
+        type="button"
+        aria-label="Next slide"
+        onClick={() => goToSlide((index) => index + 1)}
+        disabled={currentSlide === totalSlides - 1}
+        className="absolute right-4 top-1/2 z-40 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-slate-900/70 text-slate-100 transition hover:border-cyan-300/50 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-30"
+      >
+        <ArrowRight size={18} />
+      </button>
     </div>
   );
 }
 
-function InputRow({ label, value, onChange }) {
+function DeckBackground({ accentIndex }) {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(165deg,#020617_0%,#0f172a_52%,#020617_100%)]" />
+      <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,rgba(148,163,184,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.1)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div
+        className="absolute -left-28 top-8 h-96 w-96 rounded-full bg-cyan-400/20 blur-[120px] transition-transform duration-700"
+        style={{ transform: `translateX(${accentIndex * 16}px)` }}
+      />
+      <div
+        className="absolute -right-28 bottom-0 h-[26rem] w-[26rem] rounded-full bg-blue-500/25 blur-[140px] transition-transform duration-700"
+        style={{ transform: `translateX(${-accentIndex * 14}px)` }}
+      />
+    </div>
+  );
+}
+
+function MetricCard({ label, value, note }) {
+  return (
+    <article className="h-full rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+      <p className="text-[11px] uppercase tracking-[0.14em] text-slate-300">{label}</p>
+      <p className="mt-2 text-xl font-bold text-slate-100 md:text-2xl">{value}</p>
+      <p className="mt-1 text-sm text-slate-400">{note}</p>
+    </article>
+  );
+}
+
+function ChartCard({ chart, fullHeight = false }) {
+  if (!chart) return null;
+
+  return (
+    <div
+      className={`rounded-2xl border border-white/10 bg-slate-950/65 p-4 ${
+        fullHeight ? "h-full" : ""
+      }`}
+    >
+      <p className="text-[11px] uppercase tracking-[0.14em] text-cyan-100/90">
+        {chart.title}
+      </p>
+      {chart.type === "donut" && (
+        <div
+          className={`mt-3 grid items-center gap-4 md:grid-cols-[1.15fr_1fr] ${
+            fullHeight ? "h-[calc(100%-1.6rem)]" : ""
+          }`}
+        >
+          <div className={fullHeight ? "h-full min-h-[220px]" : "h-40"}>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={chart.data}
+                  dataKey="value"
+                  nameKey="name"
+                  innerRadius={42}
+                  outerRadius={72}
+                  paddingAngle={2}
+                >
+                  {chart.data.map((entry, index) => (
+                    <Cell
+                      key={`${entry.name}-${index}`}
+                      fill={entry.color || CHART_COLORS.slate}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip
+                  formatter={(value) =>
+                    formatChartValue(Number(value), chart.unit || "currency")
+                  }
+                  contentStyle={tooltipStyle}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="space-y-2">
+            {chart.data.map((entry) => (
+              <div
+                key={entry.name}
+                className="rounded-lg border border-white/10 bg-slate-900/70 px-3 py-2"
+              >
+                <p className="text-xs text-slate-300">{entry.name}</p>
+                <p className="text-sm font-semibold" style={{ color: entry.color }}>
+                  {formatChartValue(entry.value, chart.unit || "currency")}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {chart.type === "area" && (
+        <div className={fullHeight ? "mt-3 h-[calc(100%-1.6rem)] min-h-[220px]" : "mt-3 h-44"}>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={chart.data}>
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(148, 163, 184, 0.24)"
+              />
+              <XAxis dataKey="name" tick={{ fill: "#cbd5e1", fontSize: 11 }} />
+              <YAxis
+                tick={{ fill: "#cbd5e1", fontSize: 11 }}
+                tickFormatter={(value) => formatAxisValue(value, chart.unit)}
+              />
+              <Tooltip
+                formatter={(value) =>
+                  formatChartValue(Number(value), chart.unit || "currency")
+                }
+                contentStyle={tooltipStyle}
+              />
+              <Area
+                type="monotone"
+                dataKey="value"
+                stroke={CHART_COLORS.cyan}
+                fill={CHART_COLORS.cyan}
+                fillOpacity={0.23}
+                strokeWidth={2}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+      {chart.type === "bar" && (
+        <div className={fullHeight ? "mt-3 h-[calc(100%-1.6rem)] min-h-[220px]" : "mt-3 h-44"}>
+          <ValueBarChart data={chart.data} unit={chart.unit || "currency"} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ValueBarChart({ data, unit = "currency" }) {
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.24)" />
+        <XAxis dataKey="name" tick={{ fill: "#cbd5e1", fontSize: 11 }} />
+        <YAxis
+          tick={{ fill: "#cbd5e1", fontSize: 11 }}
+          tickFormatter={(value) => formatAxisValue(value, unit)}
+        />
+        <Tooltip
+          formatter={(value) => formatChartValue(Number(value), unit)}
+          contentStyle={tooltipStyle}
+        />
+        <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+          {data.map((entry, index) => (
+            <Cell
+              key={`${entry.name}-${index}`}
+              fill={entry.color || CHART_COLORS.slate}
+            />
+          ))}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+const tooltipStyle = {
+  background: "#020617",
+  border: "1px solid rgba(148, 163, 184, 0.45)",
+  borderRadius: "10px",
+  color: "#e2e8f0",
+};
+
+function formatAxisValue(value, unit) {
+  if (unit === "percent") return `${Number(value).toFixed(0)}%`;
+  return formatCompactMoney(value);
+}
+
+function formatChartValue(value, unit) {
+  if (unit === "percent") return `${Number(value).toFixed(1)}%`;
+  return formatMoney(value);
+}
+
+function NumberRow({ label, value, onChange, min = 0, step = 1 }) {
   return (
     <label className="block">
-      <p className="text-xs uppercase tracking-[0.12em] text-white/70 mb-2">
-        {label}
-      </p>
+      <p className="mb-2 text-xs uppercase tracking-[0.13em] text-slate-300">{label}</p>
       <input
         type="number"
-        min="0"
+        min={min}
+        step={step}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full rounded-xl border border-white/20 bg-black/40 px-4 py-2.5 text-white outline-none focus:border-blue-500"
+        onChange={(event) => {
+          const parsed = Number(event.target.value);
+          onChange(Number.isFinite(parsed) ? parsed : 0);
+        }}
+        className="w-full rounded-xl border border-white/15 bg-slate-900/80 px-4 py-2.5 text-slate-100 outline-none transition focus:border-cyan-300/60"
       />
     </label>
   );
 }
 
-function SelectRow({ label, value, onChange, options, unit = "hours" }) {
+function RangeRow({
+  label,
+  value,
+  onChange,
+  min = 0,
+  max = 100,
+  step = 1,
+  suffix = "",
+}) {
   return (
     <label className="block">
-      <p className="text-xs uppercase tracking-[0.12em] text-white/70 mb-2">
-        {label}
-      </p>
-      <select
+      <div className="mb-2 flex items-center justify-between">
+        <p className="text-xs uppercase tracking-[0.13em] text-slate-300">{label}</p>
+        <p className="text-sm font-semibold text-cyan-100">
+          {value}
+          {suffix}
+        </p>
+      </div>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full rounded-xl border border-white/20 bg-black/40 px-4 py-2.5 text-white outline-none focus:border-blue-500"
-      >
-        {options.map((option) => (
-          <option key={option} value={option} className="bg-slate-900">
-            {unit === "percent"
-              ? `${option}%`
-              : `${option} hour${option > 1 ? "s" : ""} / day`}
-          </option>
-        ))}
-      </select>
+        onChange={(event) => {
+          const parsed = Number(event.target.value);
+          onChange(Number.isFinite(parsed) ? parsed : min);
+        }}
+        className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-700/70 accent-cyan-300"
+      />
     </label>
   );
 }
 
 function ResultRow({ label, value, emphasize = false }) {
   return (
-    <div className="flex items-center justify-between py-3">
-      <p className="text-sm text-slate-300">{label}</p>
-      <p className={`font-semibold ${emphasize ? "text-blue-200" : "text-white"}`}>
+    <div className="flex items-center justify-between py-3 text-sm">
+      <p className="text-slate-300">{label}</p>
+      <p className={`font-semibold ${emphasize ? "text-cyan-100" : "text-slate-100"}`}>
         {value}
       </p>
     </div>

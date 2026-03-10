@@ -17,6 +17,7 @@ const Brief = lazy(() => import("./components/brief/brief.jsx"));
 const Presentations = lazy(() => import("./components/presentations/Presentations.jsx"));
 const Presentation2 = lazy(() => import("./components/presentations/Presentation2.jsx"));
 const Presentation3 = lazy(() => import("./components/presentations/Presentation3.jsx"));
+const Presentation4 = lazy(() => import("./components/presentations/Presentation4.jsx"));
 const PresentationIndex = lazy(() => import("./components/presentations/PresentationIndex.jsx"));
 const AssessmentPage = lazy(() => import("./components/assessment/AssessmentPage.jsx"));
 const Products = lazy(() => import("./components/products/products.jsx"));
@@ -38,7 +39,7 @@ const App = () => {
         e.preventDefault(); // Prevent browser print dialog
         const password = prompt("Enter Administration Password to view Visual Intel:");
         if (password === 'gca@123') {
-          navigate('/presentaiotn');
+          navigate('/presentations');
         } else if (password !== null) {
           setToast({
             title: "Access denied",
@@ -78,6 +79,7 @@ const App = () => {
         <Route path="presentation1" element={<Presentations />} />
         <Route path="presentation2" element={<Presentation2 />} />
         <Route path="presentation3" element={<Presentation3 />} />
+        <Route path="presentation4" element={<Presentation4 />} />
         <Route path="Assessment" element={<AssessmentPage />} />
         <Route path="products" element={<Products />} />
         {/* <Route path="*" element={<NotFound />} /> */}
