@@ -9,10 +9,10 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="container">
-        <div className="logo">
+        <Link to="/" className="logo" style={{ textDecoration: 'none' }} onClick={() => setMenuOpen(false)}>
           <img className="logo-img" src={logo} alt="Company Logo" />
           <h1 className="logo-text">GlobalCyberAssociates</h1>
-        </div>
+        </Link>
 
         <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           <span className={`bar ${menuOpen ? "open" : ""}`}></span>

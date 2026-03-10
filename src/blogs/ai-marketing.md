@@ -1,6 +1,7 @@
 ---
 title: How AI is Transforming Marketing
 description: AI tools are changing marketing strategies.
+author: Jane Doe
 date: Mar 20, 2025
 image: /blog-images/ai.jpg
 ---

@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import Header from "../components/head";
 
 const blogFiles = import.meta.glob("../blogs/*.md", {
   query: "?raw",
@@ -48,6 +49,8 @@ function BlogPost() {
       <title>{slug} | My Blog</title>
       <meta name="description" content="Developer blog article" />
     </Helmet>
+
+    <Header />
     <div className="max-w-5xl mx-auto p-10 text-white grid md:grid-cols-4 gap-10 bg-white/5 rounded-2xl">
 
       {/* TABLE OF CONTENTS */}
