@@ -25,6 +25,7 @@ const Header = () => {
             <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
             <li><Link to="/Solutions" onClick={() => setMenuOpen(false)}>Services</Link></li>
             <li><Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link></li>
+            <li><Link to="/blog" onClick={() => setMenuOpen(false)}>Blog</Link></li>
             <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
             <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
             <li><Link to="/Assessment" className="nav-cta" onClick={() => setMenuOpen(false)}>Free Assessment</Link></li>

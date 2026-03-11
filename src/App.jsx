@@ -8,6 +8,7 @@ import Terms from "./pages/Terms"
 import Privacy from "./pages/Privacy"
 import Refund from "./pages/Refund"
 
+
 const Home = lazy(() => import("./components/homepage/home.jsx"));
 const About = lazy(() => import("./components/about/about.jsx"));
 const Services = lazy(() => import("./components/servicepage/service.jsx"));
@@ -21,6 +22,8 @@ const Presentation4 = lazy(() => import("./components/presentations/Presentation
 const PresentationIndex = lazy(() => import("./components/presentations/PresentationIndex.jsx"));
 const AssessmentPage = lazy(() => import("./components/assessment/AssessmentPage.jsx"));
 const Products = lazy(() => import("./components/products/products.jsx"));
+const Blogs = lazy(() => import("./pages/Blog.jsx"));
+const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 
 const App = () => {
 
@@ -68,6 +71,8 @@ const App = () => {
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/refund" element={<Refund />} />
+        <Route path="/blog" element={<Blogs />} />
+        <Route path="blog/:slug" element={<BlogPost />} />
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="Solutions" element={<Services />} />

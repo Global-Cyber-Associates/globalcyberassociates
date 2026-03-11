@@ -73,6 +73,7 @@
 }
 
 /* Divider Line */
+/*
 .divider {
   width: 80px;
   height: 4px;
@@ -80,11 +81,12 @@
   border-radius: 2px;
   margin-bottom: 1.5rem;
 }
-
+*/
 /* Description Text */
 .description p {
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.7;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
   color: var(--text-muted);
   max-width: 560px;
