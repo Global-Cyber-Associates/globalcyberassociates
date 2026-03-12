@@ -1,133 +1,172 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import Header from "../components/head"
+import { useMemo, useState } from "react";
+import Header from "../components/head";
+import Footer from "../components/footer/footer";
+import { buildBlogsIndex, getSiteUrl, toAbsoluteUrl } from "./blogUtils";
+import "./blog.css";
 
-const blogFiles = import.meta.glob("../blogs/*.md", {
-  query: "?raw",
-  import: "default",
-  eager: true
-});
+const blogs = buildBlogsIndex();
 
-function parseFrontmatter(file) {
-  const match = file.match(/---([\s\S]*?)---/);
-  const frontmatter = match ? match[1] : "";
+function sortBlogs(items, mode) {
+  const sorted = [...items];
 
-  const data = {};
-  frontmatter.split("\n").forEach((line) => {
-    const [key, ...rest] = line.split(":");
-    if (!key) return;
-    data[key.trim()] = rest.join(":").trim();
-  });
+  if (mode === "oldest") {
+    return sorted.sort((a, b) => a.timestamp - b.timestamp);
+  }
 
-  const content = file.replace(/---([\s\S]*?)---/, "").trim();
+  if (mode === "title") {
+    return sorted.sort((a, b) => a.title.localeCompare(b.title));
+  }
 
-  return { data, content };
+  return sorted.sort((a, b) => b.timestamp - a.timestamp);
 }
 
-function readingTime(text) {
-  const words = text.split(/\s+/).length;
-  const minutes = Math.ceil(words / 200);
-  return `${minutes} min read`;
+function buildBlogSchema(siteUrl, items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Global Cyber Associates Blog",
+    url: `${siteUrl}/blog`,
+    description: "Expert insights on cybersecurity, AI, and digital growth from Global Cyber Associates.",
+    blogPost: items.slice(0, 10).map((blog) => ({
+      "@type": "BlogPosting",
+      headline: blog.title,
+      description: blog.description,
+      url: `${siteUrl}/blog/${blog.slug}`
+    }))
+  };
 }
-
-const blogs = Object.entries(blogFiles)
-  .map(([path, file]) => {
-    const slug = path.split("/").pop().replace(".md", "");
-    const { data, content } = parseFrontmatter(file);
-
-    return {
-      slug,
-      ...data,
-      tags: data.tags ? data.tags.split(",") : [],
-      reading: readingTime(content)
-    };
-  })
-  .filter((blog) => blog.title);
 
 function Blog() {
   const [search, setSearch] = useState("");
-  const [activeTag, setActiveTag] = useState("");
+  const [sortBy, setSortBy] = useState("latest");
+  const siteUrl = getSiteUrl();
+  const canonicalUrl = `${siteUrl}/blog`;
 
-  const allTags = [...new Set(blogs.flatMap(blog => blog.tags))];
+  const filteredBlogs = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    const filtered = blogs.filter((blog) => {
+      if (!term) return true;
+      return (
+        blog.title.toLowerCase().includes(term) ||
+        blog.description.toLowerCase().includes(term) ||
+        blog.tags.join(" ").toLowerCase().includes(term)
+      );
+    });
 
-  const filteredBlogs = blogs.filter((blog) => {
-    const matchesSearch =
-      blog.title.toLowerCase().includes(search.toLowerCase()) ||
-      blog.description.toLowerCase().includes(search.toLowerCase());
+    return sortBlogs(filtered, sortBy);
+  }, [search, sortBy]);
 
-    const matchesTag =
-      activeTag === "" || blog.tags.includes(activeTag);
-
-    return matchesSearch && matchesTag;
-  });
+  const socialImage = filteredBlogs[0]?.image ? toAbsoluteUrl(filteredBlogs[0].image, siteUrl) : "";
+  const schema = useMemo(() => buildBlogSchema(siteUrl, filteredBlogs), [filteredBlogs, siteUrl]);
 
   return (
-    <>
-    
-      <Header />
-      
-      <div className="p-10">
-        <h1 className="text-3xl font-bold mb-10">Blog</h1>
-        <input
-          type="text"
-          placeholder="Search blogs..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-3 mb-6 rounded bg-white/10"
+    <div className="blog-page">
+      <Helmet>
+        <title>Blog | Global Cyber Associates</title>
+        <meta
+          name="description"
+          content="Expert insights on cybersecurity, AI, digital risk, and growth strategy."
         />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Global Cyber Associates Blog" />
+        <meta
+          property="og:description"
+          content="Expert insights on cybersecurity, AI, digital risk, and growth strategy."
+        />
+        <meta property="og:url" content={canonicalUrl} />
+        {socialImage ? <meta property="og:image" content={socialImage} /> : null}
+        <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+        <meta name="twitter:title" content="Global Cyber Associates Blog" />
+        <meta
+          name="twitter:description"
+          content="Expert insights on cybersecurity, AI, digital risk, and growth strategy."
+        />
+        {socialImage ? <meta name="twitter:image" content={socialImage} /> : null}
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          <button
-            onClick={() => setActiveTag("")}
-            className={`px-3 py-1 rounded ${activeTag === "" ? "bg-blue-500" : "bg-white/10"}`}
-          >
-            All
-          </button>
+      <Header />
 
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setActiveTag(tag)}
-              className={`px-3 py-1 rounded ${activeTag === tag ? "bg-blue-500" : "bg-white/10"}`}
+      <main className="blog-main">
+        <section className="blog-hero">
+          <p className="blog-kicker">Global Cyber Associates</p>
+          <h1>Cybersecurity, AI, and Digital Risk Insights</h1>
+        </section>
+
+        <section className="blog-toolbar">
+          <label className="blog-search">
+            <span>Search</span>
+            <input
+              type="text"
+              value={search}
+              placeholder="Search articles"
+              onChange={(event) => setSearch(event.target.value)}
+              aria-label="Search blog articles"
+            />
+          </label>
+
+          <label className="blog-sort">
+            <span>Sort</span>
+            <select
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value)}
+              aria-label="Sort blog articles"
             >
-              {tag}
-            </button>
-          ))}
-        </div>
+              <option value="latest">Latest</option>
+              <option value="oldest">Oldest</option>
+              <option value="title">Title A-Z</option>
+            </select>
+          </label>
+        </section>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {filteredBlogs.map((blog) => (
-            <Link
-              to={`/blog/${blog.slug}`}
-              key={blog.slug}
-              className="bg-white/5 rounded-xl overflow-hidden hover:scale-105 transition block group"
-            >
-              {blog.image && (
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                />
-              )}
+        <p className="blog-result-count">
+          {filteredBlogs.length} article{filteredBlogs.length === 1 ? "" : "s"}
+        </p>
 
-              <div className="p-6">
-                <p className="text-sm opacity-70 mb-2">
-                  {blog.date} • {blog.reading} {blog.author && `• By ${blog.author}`}
-                </p>
+        {filteredBlogs.length === 0 ? (
+          <section className="blog-empty">
+            <h2>No articles found</h2>
+            <p>Try another keyword.</p>
+          </section>
+        ) : (
+          <section className="blog-grid">
+            {filteredBlogs.map((blog) => (
+              <article key={blog.slug} className="blog-card">
+                <Link to={`/blog/${blog.slug}`} className="blog-card-media">
+                  {blog.image ? (
+                    <img src={blog.image} alt={blog.title} className="blog-card-image" />
+                  ) : (
+                    <div className="blog-card-placeholder">
+                      <span>{blog.title}</span>
+                    </div>
+                  )}
+                </Link>
 
-                <h2 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition-colors">{blog.title}</h2>
+                <div className="blog-card-body">
+                  <h2>
+                    <Link to={`/blog/${blog.slug}`}>{blog.title}</Link>
+                  </h2>
+                  <p className="blog-card-description">{blog.description}</p>
+                  <p className="blog-card-meta">
+                    <span>{blog.dateLabel || "Date not set"}</span>
+                    <span>{blog.reading}</span>
+                  </p>
+                  <Link to={`/blog/${blog.slug}`} className="blog-card-link">
+                    Read article
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </section>
+        )}
+      </main>
 
-                <p className="opacity-80 mb-4">{blog.description}</p>
-
-                <span className="text-blue-400 font-medium group-hover:underline">
-                  Read More →
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

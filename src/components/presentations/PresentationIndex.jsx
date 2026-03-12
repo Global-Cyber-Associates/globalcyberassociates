@@ -27,6 +27,15 @@ const presentationCards = [
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2070",
   },
+  {
+    id: "presentation-4",
+    title: "The Visun Presentation Classic",
+    description:
+      "Simple, full-screen pitch deck connecting productivity problem, loss, investment, and ROI.",
+    path: "/presentation4",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015",
+  },
 ];
 
 export default function PresentationIndex() {
