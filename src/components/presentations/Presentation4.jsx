@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
+  X,
 } from "lucide-react";
 import logo from "../logo.png";
 import slide1TlImage from "./assets/slide1 Tl.jpg";
@@ -54,12 +55,80 @@ const slideTwoCards = [
 const ORGANIZATION_IMAGE =
   "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80";
 
-const currencyFormatter = new Intl.NumberFormat("en-IN", {
-  style: "currency",
-  currency: "INR",
-  maximumFractionDigits: 0,
-});
+const CURRENCY_OPTIONS = [
+  { code: "INR", label: "India - INR" },
+  { code: "PHP", label: "Philippines - PHP" },
+  { code: "USD", label: "United States - USD" },
+  { code: "GBP", label: "United Kingdom - GBP" },
+  { code: "CAD", label: "Canada - CAD" },
+  { code: "AUD", label: "Australia - AUD" },
+  { code: "EUR", label: "Ireland - EUR" },
+  { code: "SGD", label: "Singapore - SGD" },
+  { code: "MYR", label: "Malaysia - MYR" },
+  { code: "VND", label: "Vietnam - VND" },
+  { code: "PLN", label: "Poland - PLN" },
+  { code: "RON", label: "Romania - RON" },
+  { code: "MXN", label: "Mexico - MXN" },
+  { code: "BRL", label: "Brazil - BRL" },
+  { code: "ZAR", label: "South Africa - ZAR" },
+];
 
+const DEFAULT_CURRENCY = "INR";
+
+// Approximate INR value per 1 unit of selected currency for presentation math.
+const INR_PER_CURRENCY = {
+  INR: 1,
+  PHP: 1.45,
+  USD: 83,
+  GBP: 106,
+  CAD: 61,
+  AUD: 54,
+  EUR: 91,
+  SGD: 62,
+  MYR: 18.7,
+  VND: 0.0033,
+  PLN: 21.2,
+  RON: 18.3,
+  MXN: 4.9,
+  BRL: 14.7,
+  ZAR: 4.5,
+};
+
+const CURRENCY_LOCALES = {
+  INR: "en-IN",
+  PHP: "en-PH",
+  USD: "en-US",
+  GBP: "en-GB",
+  CAD: "en-CA",
+  AUD: "en-AU",
+  EUR: "en-IE",
+  SGD: "en-SG",
+  MYR: "ms-MY",
+  VND: "vi-VN",
+  PLN: "pl-PL",
+  RON: "ro-RO",
+  MXN: "es-MX",
+  BRL: "pt-BR",
+  ZAR: "en-ZA",
+};
+
+const CURRENCY_INPUT_CONFIG = {
+  INR: { step: 500, decimals: 0 },
+  VND: { step: 1000, decimals: 0 },
+  default: { step: 10, decimals: 2 },
+};
+
+const CURRENCY_FORMATTERS = Object.fromEntries(
+  CURRENCY_OPTIONS.map(({ code }) => [
+    code,
+    new Intl.NumberFormat(CURRENCY_LOCALES[code] || "en-US", {
+      style: "currency",
+      currency: code,
+      minimumFractionDigits: code === "INR" || code === "VND" ? 0 : 2,
+      maximumFractionDigits: code === "INR" || code === "VND" ? 0 : 2,
+    }),
+  ])
+);
 const DEFAULT_AVG_SALARY_PER_EMPLOYEE = 30000;
 
 const CALCULATOR_ASSUMPTIONS = {
@@ -93,9 +162,31 @@ function minutesToTime(totalMinutes) {
   return `${hours}h ${String(minutes).padStart(2, "0")}m`;
 }
 
-function formatCurrency(value) {
+function convertInrToCurrency(value, currencyCode = DEFAULT_CURRENCY) {
   const numericValue = Number(value);
-  return currencyFormatter.format(Number.isFinite(numericValue) ? numericValue : 0);
+  const safeValue = Number.isFinite(numericValue) ? numericValue : 0;
+  const inrPerUnit = INR_PER_CURRENCY[currencyCode] || INR_PER_CURRENCY.INR;
+  return safeValue / inrPerUnit;
+}
+
+function convertCurrencyToInr(value, currencyCode = DEFAULT_CURRENCY) {
+  const numericValue = Number(value);
+  const safeValue = Number.isFinite(numericValue) ? numericValue : 0;
+  const inrPerUnit = INR_PER_CURRENCY[currencyCode] || INR_PER_CURRENCY.INR;
+  return safeValue * inrPerUnit;
+}
+
+function formatCurrency(valueInInr, currencyCode = DEFAULT_CURRENCY) {
+  const formatter = CURRENCY_FORMATTERS[currencyCode] || CURRENCY_FORMATTERS.INR;
+  return formatter.format(convertInrToCurrency(valueInInr, currencyCode));
+}
+
+function getCurrencySymbol(currencyCode = DEFAULT_CURRENCY) {
+  const formatter = CURRENCY_FORMATTERS[currencyCode] || CURRENCY_FORMATTERS.INR;
+  const currencyPart = formatter
+    .formatToParts(0)
+    .find((part) => part.type === "currency");
+  return currencyPart?.value || currencyCode;
 }
 
 function formatHours(value) {
@@ -372,12 +463,25 @@ export default function Presentation4() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState("emp-1");
+  const [selectedCurrency, setSelectedCurrency] = useState(DEFAULT_CURRENCY);
+  const [isCurrencyModalOpen, setIsCurrencyModalOpen] = useState(false);
   const [calculatorEmployees, setCalculatorEmployees] = useState(50);
   const [calculatorAvgSalary, setCalculatorAvgSalary] = useState(
     DEFAULT_AVG_SALARY_PER_EMPLOYEE
   );
   const [calculatorLostHoursPerDay, setCalculatorLostHoursPerDay] = useState(
     CALCULATOR_ASSUMPTIONS.nonProductiveHoursPerDay
+  );
+  const formatMoney = (valueInInr) =>
+    formatCurrency(valueInInr, selectedCurrency);
+  const selectedCurrencySymbol = getCurrencySymbol(selectedCurrency);
+  const selectedCurrencyInputConfig =
+    CURRENCY_INPUT_CONFIG[selectedCurrency] || CURRENCY_INPUT_CONFIG.default;
+  const calculatorSalaryStep = selectedCurrencyInputConfig.step;
+  const calculatorSalaryDisplayValue = Number(
+    convertInrToCurrency(calculatorAvgSalary, selectedCurrency).toFixed(
+      selectedCurrencyInputConfig.decimals
+    )
   );
   const activeSlide = slides[currentSlide];
   const totalSlides = slides.length;
@@ -479,6 +583,14 @@ export default function Presentation4() {
 
   useEffect(() => {
     const onKeyDown = (event) => {
+      if (isCurrencyModalOpen) {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          setIsCurrencyModalOpen(false);
+        }
+        return;
+      }
+
       const target = event.target;
       const isTypingField =
         target instanceof HTMLElement &&
@@ -508,7 +620,7 @@ export default function Presentation4() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [totalSlides]);
+  }, [isCurrencyModalOpen, totalSlides]);
 
   return (
     <div className="fixed inset-0 z-[120] overflow-hidden bg-slate-950 text-white">
@@ -523,6 +635,17 @@ export default function Presentation4() {
           style={{ width: `${((currentSlide + 1) / totalSlides) * 100}%` }}
         />
       </div>
+      <button
+        type="button"
+        aria-label={`Open currency selector (current: ${selectedCurrency})`}
+        title={`Current currency: ${selectedCurrency}`}
+        onClick={() => setIsCurrencyModalOpen(true)}
+        className="absolute right-4 top-4 z-40 inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-slate-900/85 px-2 text-cyan-100 shadow-[0_10px_30px_rgba(8,145,178,0.2)] backdrop-blur-md transition hover:border-cyan-300/70 hover:bg-slate-800/90"
+      >
+        <span className="text-sm font-black leading-none">
+          {selectedCurrencySymbol}
+        </span>
+      </button>
 
       <main className="relative z-10 h-full w-full overflow-y-auto px-4 py-4 sm:px-6 sm:py-6 md:px-10 md:py-8">
         <div className="mx-auto grid h-full w-full max-w-[1600px] grid-rows-[auto_1fr] gap-5">
@@ -881,7 +1004,7 @@ export default function Presentation4() {
                   <div className="grid gap-5 md:grid-cols-3">
                     <BigValueCard
                       label="Salary Paid / Employee"
-                      value={formatCurrency(SLIDE7_STATIC.averageSalaryPerMonth)}
+                      value={formatMoney(SLIDE7_STATIC.averageSalaryPerMonth)}
                       toneClass="border-white/20 bg-slate-900/70 text-slate-100"
                     />
                     <BigValueCard
@@ -891,7 +1014,7 @@ export default function Presentation4() {
                     />
                     <BigValueCard
                       label="Salary Loss / Month"
-                      value={formatCurrency(SLIDE7_STATIC.monthlySalaryWaste)}
+                      value={formatMoney(SLIDE7_STATIC.monthlySalaryWaste)}
                       toneClass="border-red-300/35 bg-red-500/10 text-red-100"
                     />
                   </div>
@@ -899,17 +1022,17 @@ export default function Presentation4() {
                   <div className="mt-5 grid gap-5 md:grid-cols-3">
                     <BigValueCard
                       label="VisuN Ai Cost / System"
-                      value={`${formatCurrency(SLIDE7_STATIC.systemCostPerMonth)}/system`}
+                      value={`${formatMoney(SLIDE7_STATIC.systemCostPerMonth)}/system`}
                       toneClass="border-cyan-300/35 bg-cyan-500/10 text-cyan-100"
                     />
                     <BigValueCard
                       label="Recoverable Value (50%)"
-                      value={formatCurrency(slide7RecoveredAmount)}
+                      value={formatMoney(slide7RecoveredAmount)}
                       toneClass="border-emerald-300/35 bg-emerald-500/10 text-emerald-100"
                     />
                     <BigValueCard
                       label="Net Value Recovered"
-                      value={formatCurrency(slide7NetRecoveryAfterCost)}
+                      value={formatMoney(slide7NetRecoveryAfterCost)}
                       toneClass="border-lime-300/35 bg-lime-500/10 text-lime-100"
                     />
                   </div>
@@ -918,15 +1041,15 @@ export default function Presentation4() {
                     <p className="text-base leading-relaxed text-slate-200">
                       VisuN Ai costs{" "}
                       <span className="font-bold text-cyan-100">
-                        {formatCurrency(SLIDE7_STATIC.systemCostPerMonth)}
+                        {formatMoney(SLIDE7_STATIC.systemCostPerMonth)}
                       </span>{" "}
                       per system. In this example, it can recover{" "}
                       <span className="font-bold text-emerald-100">
-                        {formatCurrency(slide7RecoveredAmount)}
+                        {formatMoney(slide7RecoveredAmount)}
                       </span>
                       , resulting in a net monthly recovery of{" "}
                       <span className="font-bold text-lime-100">
-                        {formatCurrency(slide7NetRecoveryAfterCost)}
+                        {formatMoney(slide7NetRecoveryAfterCost)}
                       </span>
                       . That is about{" "}
                       <span className="font-bold text-lime-100">
@@ -971,18 +1094,23 @@ export default function Presentation4() {
 
                       <label className="block">
                         <p className="mb-2 text-xs uppercase tracking-[0.13em] text-slate-300">
-                          Avg Salary / Employee / Month
+                          Avg Salary / Employee / Month ({selectedCurrency})
                         </p>
                         <input
                           type="number"
                           min={0}
-                          step={500}
-                          value={calculatorAvgSalary}
+                          step={calculatorSalaryStep}
+                          value={calculatorSalaryDisplayValue}
                           onChange={(event) => {
                             const parsed = Number(event.target.value);
                             setCalculatorAvgSalary(
                               Number.isFinite(parsed)
-                                ? Math.max(Math.round(parsed), 0)
+                                ? Math.max(
+                                  Math.round(
+                                    convertCurrencyToInr(parsed, selectedCurrency)
+                                  ),
+                                  0
+                                )
                                 : 0
                             );
                           }}
@@ -1032,7 +1160,7 @@ export default function Presentation4() {
                       />
                       <AssumptionPill
                         label="VisuN Ai Cost / Employee"
-                        value={`${formatCurrency(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/employee`}
+                        value={`${formatMoney(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/employee`}
                       />
                       <AssumptionPill
                         label="Working Days / Month"
@@ -1069,7 +1197,7 @@ export default function Presentation4() {
                           Total Salary Loss / Month
                         </p>
                         <p className="mt-1 text-4xl font-black tracking-tight text-rose-100 md:text-5xl">
-                          {formatCurrency(calculatorData.monthlyLoss)}
+                          {formatMoney(calculatorData.monthlyLoss)}
                         </p>
                         <p className="mt-2 text-xs text-rose-50/95">
                           Before recovery and before tool savings.
@@ -1080,22 +1208,22 @@ export default function Presentation4() {
                     <div className="relative z-10 mt-4 grid gap-3 sm:grid-cols-2">
                       <CalculatorMetric
                         label="Total Salary Paid / Month"
-                        value={formatCurrency(calculatorData.monthlyPayroll)}
+                        value={formatMoney(calculatorData.monthlyPayroll)}
                         toneClass="border-slate-300/30 bg-slate-500/10 text-slate-100"
                       />
                       <CalculatorMetric
                         label="Potential Recovery / Month"
-                        value={formatCurrency(calculatorData.monthlyRecoverable)}
+                        value={formatMoney(calculatorData.monthlyRecoverable)}
                         toneClass="border-emerald-300/30 bg-emerald-500/10 text-emerald-100"
                       />
                       <CalculatorMetric
                         label="VisuN Ai Cost / Month"
-                        value={formatCurrency(calculatorData.monthlyToolCost)}
+                        value={formatMoney(calculatorData.monthlyToolCost)}
                         toneClass="border-cyan-300/30 bg-cyan-500/10 text-cyan-100"
                       />
                       <CalculatorMetric
                         label="Net Gain / Month"
-                        value={formatCurrency(calculatorData.monthlyNetGain)}
+                        value={formatMoney(calculatorData.monthlyNetGain)}
                         toneClass={
                           calculatorData.monthlyNetGain >= 0
                             ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100"
@@ -1115,7 +1243,7 @@ export default function Presentation4() {
                         Net Gain / Year
                       </p>
                       <p className="mt-1 text-3xl font-black md:text-4xl">
-                        {formatCurrency(calculatorData.annualNetGain)}
+                        {formatMoney(calculatorData.annualNetGain)}
                       </p>
                     </div>
 
@@ -1126,12 +1254,12 @@ export default function Presentation4() {
                       <p className="mt-2 text-sm leading-relaxed text-slate-200">
                         {`You are burning about ${formatHours(
                           calculatorData.monthlyWastedHours
-                        )} hours and ${formatCurrency(calculatorData.monthlyLoss)} every month before recovery. `}
+                        )} hours and ${formatMoney(calculatorData.monthlyLoss)} every month before recovery. `}
                         {calculatorData.monthlyNetGain >= 0
-                          ? `Estimated net gain after tool cost: ${formatCurrency(
+                          ? `Estimated net gain after tool cost: ${formatMoney(
                             calculatorData.monthlyNetGain
                           )} per month.`
-                          : `Estimated gap after tool cost: ${formatCurrency(
+                          : `Estimated gap after tool cost: ${formatMoney(
                             Math.abs(calculatorData.monthlyNetGain)
                           )} per month.`}
                       </p>
@@ -1214,6 +1342,64 @@ export default function Presentation4() {
         </div>
       </main>
 
+      {isCurrencyModalOpen && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
+          <button
+            type="button"
+            aria-label="Close currency selector"
+            onClick={() => setIsCurrencyModalOpen(false)}
+            className="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"
+          />
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-label="Currency selector"
+            className="relative z-10 w-full max-w-md rounded-2xl border border-cyan-300/30 bg-slate-900/95 p-4 shadow-[0_24px_80px_rgba(8,145,178,0.25)]"
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold uppercase tracking-[0.13em] text-cyan-100">
+                Select Currency
+              </p>
+              <button
+                type="button"
+                aria-label="Close currency selector"
+                onClick={() => setIsCurrencyModalOpen(false)}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-slate-950/65 text-slate-200 transition hover:border-cyan-300/55"
+              >
+                <X size={15} />
+              </button>
+            </div>
+
+            <p className="mt-2 text-xs text-slate-300/90">
+              All currency values in this presentation update instantly.
+            </p>
+
+            <div className="mt-3 max-h-[58vh] space-y-2 overflow-y-auto pr-1">
+              {CURRENCY_OPTIONS.map((option) => {
+                const isActive = option.code === selectedCurrency;
+                return (
+                  <button
+                    type="button"
+                    key={option.code}
+                    onClick={() => {
+                      setSelectedCurrency(option.code);
+                      setIsCurrencyModalOpen(false);
+                    }}
+                    className={`w-full rounded-xl border px-3 py-2 text-left text-sm font-semibold transition ${
+                      isActive
+                        ? "border-cyan-300/75 bg-cyan-500/15 text-cyan-100"
+                        : "border-white/12 bg-slate-950/60 text-slate-100 hover:border-cyan-300/45 hover:bg-slate-900/90"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        </div>
+      )}
+
       <button
         type="button"
         aria-label="Previous slide"
@@ -1285,3 +1471,4 @@ function CalculatorMetric({
     </article>
   );
 }
+
