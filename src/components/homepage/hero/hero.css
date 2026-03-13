@@ -129,26 +129,24 @@
 .cta-button.primary {
   background-color: var(--accent-color);
   color: white;
-  box-shadow: 0 4px 15px var(--accent-bg-strong);
 }
 
 .cta-button.primary:hover {
-  background-color: var(--light-blue);
+  background-color: #0ea5e9;
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(63, 169, 245, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.5);
 }
 
 .cta-button.secondary {
   background-color: var(--brand-lime);
   color: var(--brand-dark);
   border: none;
-  box-shadow: 0 4px 15px rgba(163, 230, 53, 0.3);
 }
 
 .cta-button.secondary:hover {
-  background-color: var(--brand-lime-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(163, 230, 53, 0.5);
+  background-color: #bef264;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(163, 230, 53, 0.4);
 }
 
 .cta-subtext {
@@ -310,3 +308,4 @@
   50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
+
