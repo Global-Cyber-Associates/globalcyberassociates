@@ -21,20 +21,35 @@
 }
 
 .section-title {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif !important;
   font-size: 2.5rem;
+  font-weight: 800;
   text-align: center;
-  color: var(--light-blue);
-  margin-bottom: 50px;
-  border-bottom: 2px solid var(--border-muted);
-  margin: 0;
-  margin-bottom: 10px;
+  color: #ffffff;
+  margin-bottom: 60px !important;
+  border-bottom: none;
+  position: relative;
+  margin-top: 0;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  margin: 20px auto 0;
+  border-radius: 2px;
 }
 
 .section-subtitle {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   color: var(--white-smoke);
-  border-left: 5px solid var(--accent-color);
-  padding-left: 12px;
+  border-left: none;
+  padding-left: 0;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 
@@ -75,14 +90,14 @@
 
 /* Services eyebrow label */
 .services-eyebrow {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent-color);
   text-align: center;
-  margin-top: 48px;
-  margin-bottom: 0.5rem;
+  margin-top: 60px;
+  margin-bottom: 12px !important;
 }
 
 /* Service overview — 4 pillars with imagery */
@@ -133,61 +148,88 @@
 
 /* Divider before detailed breakdown */
 .services-detail-header {
-  border-top: 1px solid var(--border-muted);
-  padding-top: 48px;
+  padding-top: 60px;
   margin-bottom: 32px;
 }
 
-/* ─── Category header: icon + title ─── */
 .category-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 16px;
 }
 
 .category-header-icon {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--accent-color);
+  background: rgba(0, 150, 255, 0.1);
+  padding: 10px 12px;
+  border-radius: 8px;
   flex-shrink: 0;
 }
 
-/* ─── Solution card: icon left + content right ─── */
 .solution-card {
-  background-color: var(--background-card);
-  border: 1px solid var(--border-muted);
-  border-radius: 10px;
-  padding: 20px;
+  background: rgba(5, 10, 18, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 24px;
   display: flex;
-  gap: 14px;
+  gap: 18px;
   align-items: flex-start;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .solution-card:hover {
-  border-color: var(--accent-color);
-  transform: translateY(-2px);
+  background: rgba(15, 25, 40, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.solution-card:hover::before {
+  opacity: 1;
 }
 
 .solution-card-icon {
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   color: var(--accent-color);
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: -2px;
 }
 
 .solution-card-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--light-blue);
-  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 600 !important;
+  color: #ffffff;
+  margin: 0 0 8px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .solution-card-desc {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 400 !important;
   color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ─── Shared: tag chips ─── */
@@ -198,15 +240,15 @@
 }
 
 .tag-chip {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent-color);
-  background: var(--accent-bg-mid);
-  border: 1px solid var(--accent-border-mid);
-  border-radius: 20px;
-  padding: 3px 10px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 4px 8px;
 }
 
 /* ─── VARIANT A: Icons + Tags ─── */
@@ -252,16 +294,27 @@
   flex: 1;
 }
 
-.icon-card-cta {
-  font-size: 0.8rem;
+.icon-card-cta, 
+.icon-card-cta:visited {
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent-color);
   text-decoration: none;
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.icon-card-cta:hover {
-  text-decoration: underline;
+.icon-card-cta:hover, 
+.icon-card-cta:active {
+  color: var(--accent-color);
+  filter: brightness(1.4);
+  text-decoration: none;
+  transform: translateX(5px);
+  text-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
 }
 
 /* ─── VARIANT B: Images + Tags ─── */
@@ -273,31 +326,44 @@
 }
 
 .image-tag-card {
-  background-color: var(--background-card);
-  border: 1px solid var(--border-muted);
-  border-radius: 12px;
+  background-color: rgba(8, 10, 28, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease;
+  height: 100%;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .image-tag-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .image-tag-img {
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
   display: block;
+  filter: brightness(0.75) contrast(1.1) grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.image-tag-card:hover .image-tag-img {
+  filter: brightness(0.9) contrast(1.1) grayscale(0%);
 }
 
 .image-tag-body {
-  padding: 18px 20px 22px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  flex-grow: 1;
 }
 
 .image-tag-title {

@@ -30,11 +30,12 @@ const ServicePage = () => {
                   </div>
                   <h3 className="image-tag-title">{service.title}</h3>
                   <p className="image-tag-short">{service.shortDescription}</p>
-                  <a className="icon-card-cta" href="#whats-included">See what's included ↓</a>
+                  <a className="icon-card-cta" href="#whats-included">See what's included &rarr;</a>
                 </div>
               </div>
             ))}
           </div>
+
 
           {/* Detailed Breakdown */}
           <div className="services-detail-header" id="whats-included">

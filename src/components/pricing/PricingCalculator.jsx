@@ -87,8 +87,8 @@ const PricingCalculator = () => {
                 <strong>Note:</strong> A 50% advance payment is required to initiate an engagement.
               </div>
 
-              <div className="result-depth-badge">
-                Get a Basic Cybersecurity Audit for just <strong style={{ color: 'white' }}>$100</strong> and gain actionable insights to strengthen your organization’s digital security.
+              <div className="promo-banner">
+                Get a Basic Cybersecurity Audit for just <strong>$100</strong> and gain actionable insights to strengthen your organization’s digital security.
               </div>
             </div>
 

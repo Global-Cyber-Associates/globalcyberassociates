@@ -5,7 +5,7 @@ const solutionsData = [
     solutions: [
       {
         icon: "bi-globe2",
-        title: "Web Application Testing",
+        title: "Web Application Penetration Testing",
         description: "Identify injection flaws, broken auth, misconfigurations, and OWASP Top 10 vulnerabilities in your web apps."
       },
       {
