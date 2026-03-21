@@ -106,12 +106,15 @@ function parseTags(tags) {
   if (!tags) return [];
 
   if (Array.isArray(tags)) {
-    return tags.map((tag) => String(tag).trim()).filter(Boolean);
+    return tags
+      .map((tag) => String(tag).replace(/[\[\]]/g, "").trim())
+      .filter(Boolean);
   }
 
   return String(tags)
+    .replace(/^\[|\]$/g, "")   // strips the outer [ ] brackets
     .split(",")
-    .map((tag) => tag.trim())
+    .map((tag) => tag.replace(/[\[\]]/g, "").trim())
     .filter(Boolean);
 }
 
@@ -145,11 +148,11 @@ function buildBlogRecord(slug, file) {
   const headingTitle = getFirstHeading(rawContent);
   const title = frontmatterTitle || headingTitle || slugToTitle(slug);
   const content = removeLeadHeading(rawContent);
-  const description = getStringValue(data.description) || createExcerpt(content || rawContent);
+  const description = getStringValue(data.description) || getStringValue(data.excerpt) || createExcerpt(content || rawContent);
   const tags = parseTags(data.tags);
   const rawDate = getStringValue(data.date);
   const timestamp = dateToTimestamp(rawDate);
-  const image = getStringValue(data.image) || getStringValue(data.cover);
+  const image = getStringValue(data.coverImage) || getStringValue(data.image) || getStringValue(data.cover);
   const author = getStringValue(data.author) || FALLBACK_AUTHOR;
   const readDuration = readingTime(content || rawContent);
 
