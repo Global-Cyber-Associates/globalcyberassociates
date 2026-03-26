@@ -173,8 +173,8 @@ import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 //import visunImg from '../homepage/vuln.png';
 //import visunPlusImg from '../homepage/staff.png';
-import visunVideo from '../products/visun.mp4';
-import visunPlusVideo from '../products/visun.mp4';
+import visunVideo from '../products/visun-demo.mp4';
+import visunPlusVideo from '../products/visun-demo.mp4';
 
 const visunImg = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000";
 const visunPlusImg = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000";

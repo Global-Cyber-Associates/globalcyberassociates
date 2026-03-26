@@ -98,12 +98,11 @@
 /* ── Cybersecurity FAQ Section Overhaul ── */
 
 .faq-section {
-  padding: 80px 20px;
-  background: transparent; /* Let the global dark theme show through */
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle section divider */
+  padding: 10px 20px;
+  background: transparent; 
+  border-top: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-/* ── Left Side: Title & Description ── */
 .faq-title {
   font-size: 2.2rem;
   font-weight: 800;
@@ -115,21 +114,19 @@
 
 .faq-description {
   font-size: 1.05rem;
-  color: #94a3b8; /* Sleek muted grey */
+  color: #94a3b8; 
   margin-bottom: 30px;
   line-height: 1.7;
 }
 
-/* ── Right Side: The Accordion ── */
 .faq-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* The standard closed state */
 .faq-item {
-  background: rgba(15, 23, 42, 0.6); /* Stealth dark panel */
+  background: rgba(15, 23, 42, 0.6); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -143,10 +140,9 @@
 
 .faq-item:hover {
   background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(63, 169, 245, 0.3); /* Subtle blue glow on hover */
+  border-color: rgba(63, 169, 245, 0.3); 
 }
 
-/* The neon glowing edge that appears when active */
 .faq-item::before {
   content: '';
   position: absolute;
@@ -154,7 +150,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: #3fa9f5; /* Cyber blue */
+  background: #3fa9f5;
   transform: scaleY(0);
   transition: transform 0.3s ease;
 }
@@ -163,22 +159,20 @@
   transform: scaleY(1);
 }
 
-/* The Question Text */
 .faq-item h3 {
   font-size: 1.05rem;
   font-weight: 600;
   margin: 0;
   color: #ffffff;
-  padding-right: 40px; /* Stops text from hitting the arrow icon */
+  padding-right: 40px; 
   line-height: 1.5;
   transition: color 0.3s ease;
 }
 
 .faq-item.faq-active h3 {
-  color: #3fa9f5; /* Highlights the question when open */
+  color: #3fa9f5; 
 }
 
-/* The Answer Text */
 .faq-item .faq-content {
   max-height: 0;
   overflow: hidden;
@@ -187,7 +181,7 @@
 }
 
 .faq-item.faq-active .faq-content {
-  max-height: 300px; /* Gives it room to slide open smoothly */
+  max-height: 300px; 
   opacity: 1;
   margin-top: 12px;
 }
@@ -199,14 +193,12 @@
   line-height: 1.7;
 }
 
-/* The Active Panel Background */
 .faq-item.faq-active {
   background: rgba(15, 25, 40, 0.9);
   border-color: rgba(63, 169, 245, 0.4);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Drops a shadow to lift it up */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* The Arrow Icon */
 .faq-toggle {
   position: absolute;
   top: 22px;
@@ -225,7 +217,6 @@
   color: #3fa9f5;
 }
 
-/* ── Mobile Responsiveness ── */
 @media (max-width: 768px) {
   .faq-title {
     font-size: 1.8rem;
