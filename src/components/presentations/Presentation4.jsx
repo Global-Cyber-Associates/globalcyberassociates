@@ -246,7 +246,7 @@ export default function Presentation4() {
         type: "cover-page",
         label: "Opening",
         title: "Global Cyber Associates",
-        subtitle: "VisuN Ai Productivity Presentation",
+        subtitle: "VisuN AI Productivity Presentation",
         openingLine: "Thank you for joining us today.",
         wish: "Wishing your team more focus, stronger output, and faster execution.",
       },
@@ -254,7 +254,7 @@ export default function Presentation4() {
         id: "vision",
         type: "image-grid",
         label: "Slide 1",
-        title: "What directors think their company looks like",
+        title: "What Leaders think their company looks like",
         subtitle: "Productive people. High ownership. Fast execution.",
         hookTag: "",
         hookText: "Strong team intent and visible energy drive confidence in execution.",
@@ -295,7 +295,7 @@ export default function Presentation4() {
         type: "solution-hero",
         label: "Slide 4",
         title: "Here is your solution.",
-        subtitle: "VisuN Ai",
+        subtitle: "VisuN AI",
         tagline: "AI-powered productivity engine",
       },
       {
@@ -304,7 +304,7 @@ export default function Presentation4() {
         label: "Slide 5",
         title: "How it helps",
         subtitle:
-          "VisuN Ai helps you monitor at organization level and employee level.",
+          "VisuN AI helps you monitor at organization level and employee level.",
         employees: [
           {
             id: "emp-1",
@@ -320,9 +320,9 @@ export default function Presentation4() {
             username: "Meera",
             photo:
               "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
-            productiveTime: "4h 40m",
-            idleTime: "1h 00m",
-            nonProductiveTime: "2h 20m",
+            productiveTime: "2h 20m",
+            idleTime: "2h 10m",
+            nonProductiveTime: "3h 30m",
             highNonProductive: true,
           },
           {
@@ -339,9 +339,9 @@ export default function Presentation4() {
             username: "Priya",
             photo:
               "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
-            productiveTime: "5h 00m",
-            idleTime: "0h 50m",
-            nonProductiveTime: "2h 10m",
+            productiveTime: "2h 10m",
+            idleTime: "2h 00m",
+            nonProductiveTime: "3h 50m",
             highNonProductive: true,
           },
           {
@@ -349,9 +349,9 @@ export default function Presentation4() {
             username: "Kabir",
             photo:
               "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
-            productiveTime: "4h 30m",
-            idleTime: "1h 10m",
-            nonProductiveTime: "2h 20m",
+            productiveTime: "2h 20m",
+            idleTime: "2h 10m",
+            nonProductiveTime: "3h 30m",
             highNonProductive: true,
           },
           {
@@ -369,7 +369,7 @@ export default function Presentation4() {
         id: "feature-highlights",
         type: "feature-highlights",
         label: "Slide 6",
-        title: "How VisuN Ai Helps You Manage Better",
+        title: "How VisuN AI Helps You Manage Better",
         subtitle:
           "Simple, clear features any manager can use without technical skills.",
         items: [
@@ -409,9 +409,9 @@ export default function Presentation4() {
         id: "comparison",
         type: "ceo-comparison",
         label: "Slide 7",
-        title: "Operational Comparison: Without vs With VisuN Ai",
+        title: "Operational Comparison: Without vs With VisuN AI",
         subtitle: "Executive view of visibility, control, and productivity outcomes.",
-        withoutTitle: "CEO Without VisuN Ai",
+        withoutTitle: "CEO Without VisuN AI",
         withoutPoints: [
           "No real-time visibility into employee activity.",
           "Organization productivity cannot be measured continuously.",
@@ -419,7 +419,7 @@ export default function Presentation4() {
           "File audit visibility is limited and accountability is weaker.",
           "Salary leakage is detected late, reducing corrective impact.",
         ],
-        withTitle: "CEO With VisuN Ai",
+        withTitle: "CEO With VisuN AI",
         withPoints: [
           "Live screen monitoring enables continuous operational oversight.",
           "Productivity, idle time, and non-productive time are measured in real time.",
@@ -432,7 +432,7 @@ export default function Presentation4() {
         id: "pricing-preview",
         type: "pricing-preview",
         label: "Slide 8",
-        title: "Why Invest in VisuN Ai?",
+        title: "Why Invest in VisuN AI?",
         subtitle:
           "A small monthly system cost can recover a much larger salary loss.",
       },
@@ -676,7 +676,7 @@ export default function Presentation4() {
                   <div className="relative z-10 flex flex-col items-center gap-3 text-center md:gap-4">
                     <img
                       src={logo}
-                      alt="VisuN Ai logo"
+                      alt="VisuN AI logo"
                       className="h-16 w-auto object-contain md:h-20"
                     />
 
@@ -752,7 +752,7 @@ export default function Presentation4() {
 
                     <img
                       src={logo}
-                      alt="VisuN Ai logo"
+                      alt="VisuN AI logo"
                       className="h-16 w-auto object-contain md:h-20"
                     />
 
@@ -1021,7 +1021,7 @@ export default function Presentation4() {
 
                   <div className="mt-5 grid gap-5 md:grid-cols-3">
                     <BigValueCard
-                      label="VisuN Ai Cost / System"
+                      label="VisuN AI Cost / System"
                       value={`${formatMoney(SLIDE7_STATIC.systemCostPerMonth)}/system`}
                       toneClass="border-cyan-300/35 bg-cyan-500/10 text-cyan-100"
                     />
@@ -1039,7 +1039,7 @@ export default function Presentation4() {
 
                   <div className="mt-5 rounded-xl border border-white/10 bg-slate-950/60 px-4 py-4">
                     <p className="text-base leading-relaxed text-slate-200">
-                      VisuN Ai costs{" "}
+                      VisuN AI costs{" "}
                       <span className="font-bold text-cyan-100">
                         {formatMoney(SLIDE7_STATIC.systemCostPerMonth)}
                       </span>{" "}
@@ -1159,7 +1159,7 @@ export default function Presentation4() {
                         value={`${CALCULATOR_ASSUMPTIONS.recoveryRatePercent}%`}
                       />
                       <AssumptionPill
-                        label="VisuN Ai Cost / Employee"
+                        label="VisuN AI Cost / Employee"
                         value={`${formatMoney(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/employee`}
                       />
                       <AssumptionPill
@@ -1217,7 +1217,7 @@ export default function Presentation4() {
                         toneClass="border-emerald-300/30 bg-emerald-500/10 text-emerald-100"
                       />
                       <CalculatorMetric
-                        label="VisuN Ai Cost / Month"
+                        label="VisuN AI Cost / Month"
                         value={formatMoney(calculatorData.monthlyToolCost)}
                         toneClass="border-cyan-300/30 bg-cyan-500/10 text-cyan-100"
                       />
