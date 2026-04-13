@@ -4,18 +4,12 @@ import precifastLogo from '../../assets/precifast.jpg';
 import eshwaricoLogo from '../../assets/eshwarico.png';
 import nligtenLogo from '../../assets/nligten.svg';
 import nsysLogo from '../../assets/nsys.svg';
-import gigitLogo from '../../assets/gigit.png';
-import savantLogo from '../../assets/savant.png';
-import sortinsLogo from '../../assets/Sortins.png';
 
 const clients = [
   { name: "PreciFast India", sector: "Manufacturing", logo: precifastLogo },
   { name: "NLigten Systems", sector: "Cloud & Collaboration", logo: nligtenLogo },
   { name: "NSys Technologies", sector: "Mobile & Web Apps", logo: nsysLogo },
   { name: "Eshwari & Co.", sector: "Network Infrastructure", logo: eshwaricoLogo },
-  { name: "Gigit Security", sector: "Cybersecurity", logo: gigitLogo },
-  { name: "Savant Solutions", sector: "IT Solutions", logo: savantLogo },
-  { name: "Sortins Technologies", sector: "Enterprise IT", logo: sortinsLogo },
 ];
 
 const loopedClients = [...clients, ...clients, ...clients];
@@ -38,7 +32,7 @@ export default function ClientLogoStrip() {
         animationFrameId = requestAnimationFrame(scroll);
         return;
       }
-      scroller.scrollLeft += 0.6;
+      scroller.scrollLeft += 0.35;
       if (scroller.scrollLeft >= scroller.scrollWidth / 3) {
         scroller.scrollLeft = 0;
       }

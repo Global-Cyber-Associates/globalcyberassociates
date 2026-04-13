@@ -47,7 +47,7 @@ import logo from "./logo.png";
 const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 40);
   const navRef = useRef();
 
   // Navbar shrink on scroll

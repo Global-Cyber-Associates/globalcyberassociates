@@ -173,8 +173,8 @@ import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 //import visunImg from '../homepage/vuln.png';
 //import visunPlusImg from '../homepage/staff.png';
-import visunVideo from '../products/visun.mp4';
-import visunPlusVideo from '../products/visun.mp4';
+import visunVideo from '../products/visun-demo.mp4';
+import visunPlusVideo from '../products/visun-demo.mp4';
 
 const visunImg = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000";
 const visunPlusImg = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000";
@@ -182,7 +182,7 @@ const visunPlusImg = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?
 
 // Video Player Component 
 
-const VideoPlayer = ({ src }) => {
+const VideoPlayer = ({ src, thumbnail }) => {
   const [playing, setPlaying] = React.useState(false);
   const videoRef = React.useRef(null);
 
@@ -196,6 +196,7 @@ const VideoPlayer = ({ src }) => {
       <video
         ref={videoRef}
         src={src}
+        poster={thumbnail}
         controls={playing}
         preload="metadata"
         className="demo-video-el"
@@ -253,7 +254,8 @@ const visunPlusFeatures = [
 const ProductCard = ({
   name, tag, tagline, description,
   image, imageAlt, features,
-  video, price, priceUnit, priceMeta,
+  video, thumbnail,
+  price, priceUnit, priceMeta,
   ctaHref, ctaLabel,
   colorClass,
 }) => (
@@ -286,7 +288,7 @@ const ProductCard = ({
       <p className="pc-video-heading">
         <span>▶</span> See {name} in Action
       </p>
-      <VideoPlayer src={video} />
+      <VideoPlayer src={video} thumbnail={thumbnail} />
     </div>
 
     {/* ── 4. FOOTER ── */}
@@ -337,6 +339,7 @@ const Products = () => (
           imageAlt="VisuN — Network Visibility"
           features={visunFeatures}
           video={visunVideo}
+          thumbnail={visunImg}
           price="$1"
           priceUnit="per endpoint / mo"
           priceMeta="30-day data retention · Cancel anytime"
@@ -354,6 +357,7 @@ const Products = () => (
           imageAlt="VisuN+ — Workforce Intelligence"
           features={visunPlusFeatures}
           video={visunPlusVideo}
+          thumbnail={visunPlusImg}
           price="$2"
           priceUnit="per user / mo"
           priceMeta="30-day data retention · Cancel anytime"
