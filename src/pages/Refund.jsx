@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/head";
+import Footer from "../components/footer/footer";
 
 function Refund() {
   return (
@@ -54,6 +55,7 @@ function Refund() {
           
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -5,7 +5,6 @@ import { Slide, SlideContent } from './Slide';
 import { cn } from '../../lib/utils';
 import './presentation2.css';
 
-// Placeholder images (can be replaced with generated ones when available)
 const IMAGES = {
     market: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070",
     houses: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=2070",
@@ -41,7 +40,6 @@ export default function Presentation2() {
 
     return (
         <div className="fixed inset-0 bg-slate-950 text-slate-100 overflow-hidden z-[100] presentation-2-root">
-            {/* Ambient Background */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-brand-cyan/5 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[120px] animate-pulse delay-1000" />

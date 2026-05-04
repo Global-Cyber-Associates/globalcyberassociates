@@ -654,10 +654,10 @@ export default function Presentation4() {
               <p className="min-h-[1rem] text-xs uppercase tracking-[0.16em] text-cyan-200/85">
                 {activeSlide.label || "\u00A0"}
               </p>
-              <h1 className="mt-2 w-full text-[clamp(0.95rem,3.4vw,3.5rem)] font-black tracking-tight">
+              <h1 className="mt-2 w-full text-[clamp(0.95rem,3.4vw,3.5rem)] font-black tracking-tight leading-none mb-1">
                 {activeSlide.title}
               </h1>
-              <p className="mt-3 min-h-[1.4rem] text-sm text-slate-300 md:text-lg">
+              <p className="min-h-[1.4rem] text-sm text-slate-300 md:text-lg relative z-20">
                 {activeSlide.subtitle || "\u00A0"}
               </p>
             </header>
@@ -665,7 +665,7 @@ export default function Presentation4() {
             <div className="h-0" aria-hidden />
           )}
 
-          <div className="min-h-0 flex items-center justify-center">
+          <div className="min-h-0 w-full flex flex-col items-center justify-center">
 
             {activeSlide.type === "cover-page" && (
               <section className="w-full flex items-center justify-center">
@@ -1064,15 +1064,15 @@ export default function Presentation4() {
 
             {activeSlide.type === "impact-calculator" && (
               <section className="w-full flex items-center justify-center">
-                <div className="grid w-full max-w-7xl gap-5 xl:grid-cols-[0.95fr_1.15fr]">
-                  <article className="rounded-2xl border border-white/15 bg-slate-900/65 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200/90">
+                <div className="grid w-full max-w-7xl gap-4 xl:grid-cols-[0.95fr_1.15fr]">
+                  <article className="rounded-2xl border border-white/15 bg-slate-900/65 p-4 md:p-5">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-200/90">
                       Enter Team Details
                     </p>
 
-                    <div className="mt-4 space-y-4">
+                    <div className="mt-3 space-y-3">
                       <label className="block">
-                        <p className="mb-2 text-xs uppercase tracking-[0.13em] text-slate-300">
+                        <p className="mb-1 text-[11px] uppercase tracking-[0.13em] text-slate-300">
                           Number of Employees
                         </p>
                         <input
@@ -1083,17 +1083,15 @@ export default function Presentation4() {
                           onChange={(event) => {
                             const parsed = Number(event.target.value);
                             setCalculatorEmployees(
-                              Number.isFinite(parsed)
-                                ? Math.max(Math.round(parsed), 1)
-                                : 1
+                              Number.isFinite(parsed) ? Math.max(Math.round(parsed), 1) : 1
                             );
                           }}
-                          className="w-full rounded-xl border border-white/15 bg-slate-950/80 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/60"
+                          className="w-full rounded-xl border border-white/15 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-cyan-300/60"
                         />
                       </label>
 
                       <label className="block">
-                        <p className="mb-2 text-xs uppercase tracking-[0.13em] text-slate-300">
+                        <p className="mb-1 text-[11px] uppercase tracking-[0.13em] text-slate-300">
                           Avg Salary / Employee / Month ({selectedCurrency})
                         </p>
                         <input
@@ -1105,21 +1103,16 @@ export default function Presentation4() {
                             const parsed = Number(event.target.value);
                             setCalculatorAvgSalary(
                               Number.isFinite(parsed)
-                                ? Math.max(
-                                  Math.round(
-                                    convertCurrencyToInr(parsed, selectedCurrency)
-                                  ),
-                                  0
-                                )
+                                ? Math.max(Math.round(convertCurrencyToInr(parsed, selectedCurrency)), 0)
                                 : 0
                             );
                           }}
-                          className="w-full rounded-xl border border-white/15 bg-slate-950/80 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/60"
+                          className="w-full rounded-xl border border-white/15 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-cyan-300/60"
                         />
                       </label>
 
                       <label className="block">
-                        <p className="mb-2 text-xs uppercase tracking-[0.13em] text-slate-300">
+                        <p className="mb-1 text-[11px] uppercase tracking-[0.13em] text-slate-300">
                           Lost Hours / Employee / Day
                         </p>
                         <div className="flex items-center gap-3">
@@ -1133,138 +1126,68 @@ export default function Presentation4() {
                               const parsed = Number(event.target.value);
                               setCalculatorLostHoursPerDay(
                                 Number.isFinite(parsed)
-                                  ? Math.max(
-                                    Math.min(parsed, CALCULATOR_ASSUMPTIONS.paidHoursPerDay),
-                                    0.5
-                                  )
+                                  ? Math.max(Math.min(parsed, CALCULATOR_ASSUMPTIONS.paidHoursPerDay), 0.5)
                                   : CALCULATOR_ASSUMPTIONS.nonProductiveHoursPerDay
                               );
                             }}
                             className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-700 accent-cyan-400"
                           />
-                          <span className="min-w-[62px] rounded-lg border border-cyan-300/35 bg-cyan-500/10 px-3 py-2 text-center text-sm font-bold text-cyan-100">
+                          <span className="min-w-[50px] rounded-lg border border-cyan-300/35 bg-cyan-500/10 px-2 py-1 text-center text-xs font-bold text-cyan-100">
                             {formatHours(calculatorLostHoursPerDay)}h
                           </span>
                         </div>
                       </label>
                     </div>
 
-                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                      <AssumptionPill
-                        label="Lost Hours (Daily)"
-                        value={`${formatHours(calculatorLostHoursPerDay)}h/day`}
-                      />
-                      <AssumptionPill
-                        label="Expected Recovery"
-                        value={`${CALCULATOR_ASSUMPTIONS.recoveryRatePercent}%`}
-                      />
-                      <AssumptionPill
-                        label="VisuN Ai Cost / Employee"
-                        value={`${formatMoney(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/employee`}
-                      />
-                      <AssumptionPill
-                        label="Working Days / Month"
-                        value={`${CALCULATOR_ASSUMPTIONS.workingDaysPerMonth}/month`}
-                      />
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      <AssumptionPill label="Lost Hours (Daily)" value={`${formatHours(calculatorLostHoursPerDay)}h/day`} />
+                      <AssumptionPill label="Expected Recovery" value={`${CALCULATOR_ASSUMPTIONS.recoveryRatePercent}%`} />
+                      <AssumptionPill label="VisuN Ai / Employee" value={`${formatMoney(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/emp.`} />
+                      <AssumptionPill label="Working Days / Month" value={`${CALCULATOR_ASSUMPTIONS.workingDaysPerMonth}/mo.`} />
                     </div>
                   </article>
 
-                  <article className="relative overflow-hidden rounded-2xl border border-cyan-300/30 bg-[linear-gradient(160deg,rgba(8,47,73,0.36)_0%,rgba(15,23,42,0.9)_52%,rgba(8,47,73,0.26)_100%)] p-4">
+                  <article className="relative overflow-hidden rounded-2xl border border-cyan-300/30 bg-[linear-gradient(160deg,rgba(8,47,73,0.36)_0%,rgba(15,23,42,0.9)_52%,rgba(8,47,73,0.26)_100%)] p-4 md:p-5">
                     <div className="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full bg-cyan-400/20 blur-[70px]" />
                     <div className="pointer-events-none absolute -left-20 bottom-0 h-44 w-44 rounded-full bg-emerald-400/15 blur-[80px]" />
 
-                    <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200/90">
+                    <p className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-200/90">
                       Monthly Loss Overview
                     </p>
 
-                    <div className="relative z-10 mt-4 grid gap-3 lg:grid-cols-2">
-                      <div className="rounded-2xl border border-red-300/40 bg-[linear-gradient(160deg,rgba(127,29,29,0.45)_0%,rgba(15,23,42,0.9)_55%,rgba(127,29,29,0.26)_100%)] px-4 py-4 shadow-[0_14px_40px_rgba(239,68,68,0.2)]">
-                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-red-100/90">
-                          Total Hours Lost / Month
-                        </p>
-                        <p className="mt-1 text-4xl font-black tracking-tight text-red-100 md:text-5xl">
-                          {formatHours(calculatorData.monthlyWastedHours)}h
-                        </p>
-                        <p className="mt-2 text-xs text-red-50/95">
-                          {`${calculatorData.employees} employees x ${formatHours(
-                            calculatorData.selectedLostHoursPerDay
-                          )}h/day x ${CALCULATOR_ASSUMPTIONS.workingDaysPerMonth} working days`}
-                        </p>
+                    <div className="relative z-10 mt-3 grid gap-3 lg:grid-cols-2">
+                      <div className="rounded-2xl border border-red-300/40 bg-[linear-gradient(160deg,rgba(127,29,29,0.45)_0%,rgba(15,23,42,0.9)_55%,rgba(127,29,29,0.26)_100%)] px-4 py-3 shadow-[0_14px_40px_rgba(239,68,68,0.2)]">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-red-100/90">Total Hours Lost / Month</p>
+                        <p className="mt-1 text-3xl font-black tracking-tight text-red-100">{formatHours(calculatorData.monthlyWastedHours)}h</p>
                       </div>
 
-                      <div className="rounded-2xl border border-rose-300/40 bg-[linear-gradient(160deg,rgba(131,24,67,0.38)_0%,rgba(15,23,42,0.9)_55%,rgba(131,24,67,0.24)_100%)] px-4 py-4 shadow-[0_14px_40px_rgba(244,63,94,0.2)]">
-                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-rose-100/90">
-                          Total Salary Loss / Month
-                        </p>
-                        <p className="mt-1 text-4xl font-black tracking-tight text-rose-100 md:text-5xl">
-                          {formatMoney(calculatorData.monthlyLoss)}
-                        </p>
-                        <p className="mt-2 text-xs text-rose-50/95">
-                          Before recovery and before tool savings.
-                        </p>
+                      <div className="rounded-2xl border border-rose-300/40 bg-[linear-gradient(160deg,rgba(131,24,67,0.38)_0%,rgba(15,23,42,0.9)_55%,rgba(131,24,67,0.24)_100%)] px-4 py-3 shadow-[0_14px_40px_rgba(244,63,94,0.2)]">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-100/90">Total Salary Loss / Month</p>
+                        <p className="mt-1 text-3xl font-black tracking-tight text-rose-100">{formatMoney(calculatorData.monthlyLoss)}</p>
                       </div>
                     </div>
 
-                    <div className="relative z-10 mt-4 grid gap-3 sm:grid-cols-2">
-                      <CalculatorMetric
-                        label="Total Salary Paid / Month"
-                        value={formatMoney(calculatorData.monthlyPayroll)}
-                        toneClass="border-slate-300/30 bg-slate-500/10 text-slate-100"
-                      />
-                      <CalculatorMetric
-                        label="Potential Recovery / Month"
-                        value={formatMoney(calculatorData.monthlyRecoverable)}
-                        toneClass="border-emerald-300/30 bg-emerald-500/10 text-emerald-100"
-                      />
-                      <CalculatorMetric
-                        label="VisuN Ai Cost / Month"
-                        value={formatMoney(calculatorData.monthlyToolCost)}
-                        toneClass="border-cyan-300/30 bg-cyan-500/10 text-cyan-100"
-                      />
-                      <CalculatorMetric
-                        label="Net Gain / Month"
-                        value={formatMoney(calculatorData.monthlyNetGain)}
-                        toneClass={
-                          calculatorData.monthlyNetGain >= 0
-                            ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100"
-                            : "border-red-300/30 bg-red-500/10 text-red-100"
-                        }
-                        emphasize
-                      />
+                    <div className="relative z-10 mt-3 grid gap-2 sm:grid-cols-2">
+                      <CalculatorMetric label="Salary Paid / Month" value={formatMoney(calculatorData.monthlyPayroll)} toneClass="border-slate-300/30 bg-slate-500/10 text-slate-100" />
+                      <CalculatorMetric label="Potential Recovery" value={formatMoney(calculatorData.monthlyRecoverable)} toneClass="border-emerald-300/30 bg-emerald-500/10 text-emerald-100" />
+                      <CalculatorMetric label="VisuN Ai Cost" value={formatMoney(calculatorData.monthlyToolCost)} toneClass="border-cyan-300/30 bg-cyan-500/10 text-cyan-100" />
+                      <CalculatorMetric label="Net Gain / Month" value={formatMoney(calculatorData.monthlyNetGain)} toneClass={calculatorData.monthlyNetGain >= 0 ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100" : "border-red-300/30 bg-red-500/10 text-red-100"} emphasize />
                     </div>
 
-                    <div
-                      className={`relative z-10 mt-4 rounded-xl border px-4 py-4 ${calculatorData.annualNetGain >= 0
-                        ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100"
-                        : "border-red-300/30 bg-red-500/10 text-red-100"
-                        }`}
-                    >
-                      <p className="text-xs uppercase tracking-[0.14em]">
-                        Net Gain / Year
-                      </p>
-                      <p className="mt-1 text-3xl font-black md:text-4xl">
-                        {formatMoney(calculatorData.annualNetGain)}
-                      </p>
+                    <div className={`relative z-10 mt-3 rounded-xl border px-4 py-3 ${calculatorData.annualNetGain >= 0 ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100" : "border-red-300/30 bg-red-500/10 text-red-100"}`}>
+                      <p className="text-[11px] uppercase tracking-[0.14em]">Net Gain / Year</p>
+                      <p className="mt-1 text-2xl font-black">{formatMoney(calculatorData.annualNetGain)}</p>
                     </div>
 
-                    <div className="relative z-10 mt-4 rounded-xl border border-white/10 bg-slate-950/55 px-4 py-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-100/90">
-                        Quick Summary
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-200">
-                        {`You are burning about ${formatHours(
-                          calculatorData.monthlyWastedHours
-                        )} hours and ${formatMoney(calculatorData.monthlyLoss)} every month before recovery. `}
-                        {calculatorData.monthlyNetGain >= 0
-                          ? `Estimated net gain after tool cost: ${formatMoney(
-                            calculatorData.monthlyNetGain
-                          )} per month.`
-                          : `Estimated gap after tool cost: ${formatMoney(
-                            Math.abs(calculatorData.monthlyNetGain)
-                          )} per month.`}
+                    <div className="relative z-10 mt-3 rounded-xl border border-white/10 bg-slate-950/55 px-4 py-2">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-cyan-100/90">Quick Summary</p>
+                      <p className="mt-1 text-xs leading-relaxed text-slate-200">
+                        {`Burning ${formatHours(calculatorData.monthlyWastedHours)}h and ${formatMoney(calculatorData.monthlyLoss)}/mo. `}
+                        {calculatorData.monthlyNetGain >= 0 ? `Estimated net gain after tool cost: ${formatMoney(calculatorData.monthlyNetGain)}/mo.` : `Estimated gap after tool cost: ${formatMoney(Math.abs(calculatorData.monthlyNetGain))}/mo.`}
                       </p>
                     </div>
                   </article>
+
                 </div>
               </section>
             )}

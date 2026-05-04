@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/head";
+import Footer from "../components/footer/footer";
 
 function Privacy() {
   return (
@@ -48,6 +49,7 @@ function Privacy() {
           
         </div>
       </div>
+      <Footer />
     </>
   );
 }

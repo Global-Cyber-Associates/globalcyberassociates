@@ -4,7 +4,6 @@
   overflow-x: hidden;
 }
 
-/* Hero Section */
 .visun-hero {
   height: 100vh;
   display: flex;
@@ -12,7 +11,7 @@
   justify-content: center;
   text-align: center;
   background: radial-gradient(circle at center, rgba(0, 102, 255, 0.1) 0%, transparent 70%),
-              url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') center/cover;
+    url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') center/cover;
   position: relative;
 }
 
@@ -64,7 +63,6 @@
   margin-top: 1rem;
 }
 
-/* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -105,12 +103,21 @@
 }
 
 @keyframes scrollAnim {
-  0% { transform: translate(-50%, 0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translate(-50%, 15px); opacity: 0; }
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, 15px);
+    opacity: 0;
+  }
 }
 
-/* Walkthrough Section */
 .walkthrough-section {
   padding: 10rem 0;
 }
@@ -183,7 +190,6 @@
   margin-right: 0.5rem;
 }
 
-/* CTA Section */
 .visun-cta {
   padding: 10rem 0;
   text-align: center;
@@ -202,7 +208,9 @@
 }
 
 @media (max-width: 1024px) {
-  .walkthrough-step, .walkthrough-step.reverse {
+
+  .walkthrough-step,
+  .walkthrough-step.reverse {
     flex-direction: column;
     text-align: center;
     gap: 3rem;
