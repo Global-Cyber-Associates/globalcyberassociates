@@ -1,6 +1,6 @@
 .hero.section {
-  background: var(--background-deep);
-  background: radial-gradient(circle at 50% 0%, rgba(14, 30, 50, 1) 0%, rgba(10, 15, 25, 1) 100%);
+  background: #0f172a;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30, 58, 100, 0.6) 0%, #0f172a 60%);
   color: var(--white-smoke);
   font-family: 'Inter', 'Segoe UI', sans-serif;
   padding: 60px 0 100px;
