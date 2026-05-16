@@ -226,7 +226,7 @@
 }
 
 .about-feature-card:hover {
-  border-color: rgba(0, 176, 216, 0.3);
+  border-color: rgba(59, 130, 246, 0.28);
   transform: translateX(5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -235,8 +235,8 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(0, 176, 216, 0.1);
-  border: 1px solid rgba(0, 176, 216, 0.2);
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;

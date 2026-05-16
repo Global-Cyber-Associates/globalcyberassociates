@@ -1,21 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 .cp-page {
-  background: #080c14;
+  background: #0f172a;
   color: #e2e8f0;
   font-family: 'Inter', 'Segoe UI', sans-serif;
   min-height: 100vh;
 }
 
 .cp-container {
-  max-width: 1140px;
+  max-width: 1100px;
   width: 90%;
   margin: 0 auto;
 }
 
+.cp-page-header {
+  text-align: center;
+  padding: 80px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+
+.cp-page-title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: #f1f5f9;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.cp-page-sub {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0;
+}
+
 .cp-section-label {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 
 .cp-section-tag {
@@ -25,276 +67,106 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #60a5fa;
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(59, 130, 246, 0.08);
   border: 1px solid rgba(59, 130, 246, 0.2);
   padding: 4px 12px;
   border-radius: 100px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .cp-section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
   font-weight: 800;
   color: #f1f5f9;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
 }
 
 .cp-section-sub {
   font-size: 1rem;
-  color: #64748b;
-  max-width: 560px;
+  color: #94a3b8;
+  max-width: 500px;
   margin: 0 auto;
   line-height: 1.7;
 }
 
-.cp-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 28px;
-  border-radius: 8px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #fff;
-  background: #1d4ed8;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 12px rgba(29, 78, 216, 0.3);
+.cp-culture {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.cp-btn-primary:hover {
-  background: #1e40af;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.4);
-}
-
-.cp-btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  padding: 13px 28px;
-  border-radius: 8px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
-
-.cp-btn-ghost:hover {
-  color: #e2e8f0;
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.cp-hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 24px 80px;
-  overflow: hidden;
-  min-height: 580px;
-}
-
-.cp-hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 75% 70% at 50% 0%, rgba(29, 78, 216, 0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(14, 165, 233, 0.07) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.cp-hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 80%);
-}
-
-.cp-hero-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-}
-
-.cp-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  padding: 5px 14px;
-  border-radius: 100px;
-}
-
-.cp-eyebrow::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #38bdf8;
-  box-shadow: 0 0 8px #38bdf8;
-  animation: cp-pulse 2s ease infinite;
-}
-
-@keyframes cp-pulse {
-
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.4;
-    transform: scale(0.8);
-  }
-}
-
-.cp-hero-title {
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: #f1f5f9;
-  margin: 0;
-}
-
-.cp-gradient-text {
-  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #818cf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cp-hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
-  color: #64748b;
-  max-width: 520px;
-  line-height: 1.75;
-  margin: 0;
-}
-
-.cp-hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 8px;
-}
-
-.cp-hero-stats {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 56px;
-}
-
-.cp-stat-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 100px;
-  font-size: 0.82rem;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.cp-stat-pill strong {
-  color: #e2e8f0;
-  font-weight: 700;
-}
-
-.cp-perks {
-  padding: 96px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cp-perks-grid {
+.cp-culture-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
-.cp-perk-card {
-  background: rgba(255, 255, 255, 0.03);
+@media (max-width: 900px) {
+  .cp-culture-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .cp-culture-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cp-culture-card {
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 16px;
-  padding: 28px 26px;
+  border-radius: 14px;
+  padding: 26px 24px;
   transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
-.cp-perk-card:hover {
-  background: rgba(59, 130, 246, 0.06);
-  border-color: rgba(59, 130, 246, 0.22);
-  transform: translateY(-4px);
+.cp-culture-card:hover {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.2);
+  transform: translateY(-3px);
 }
 
-.cp-perk-icon {
-  width: 44px;
-  height: 44px;
+.cp-culture-icon {
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 9px;
   background: rgba(59, 130, 246, 0.1);
   color: #60a5fa;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   transition: background 0.3s ease;
 }
 
-.cp-perk-card:hover .cp-perk-icon {
-  background: rgba(59, 130, 246, 0.18);
+.cp-culture-card:hover .cp-culture-icon {
+  background: rgba(59, 130, 246, 0.16);
 }
 
-.cp-perk-title {
-  font-size: 1rem;
+.cp-culture-title {
+  font-size: 0.98rem;
   font-weight: 700;
   color: #f1f5f9;
   margin: 0 0 8px;
 }
 
-.cp-perk-desc {
+.cp-culture-desc {
   font-size: 0.88rem;
-  color: #64748b;
+  color: #94a3b8;
   line-height: 1.65;
   margin: 0;
 }
 
 .cp-openings {
-  padding: 96px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 80px 0;
 }
 
 .cp-jobs-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .cp-job-card {
@@ -302,17 +174,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 28px 32px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 26px 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cp-job-card:hover,
 .cp-job-card--hovered {
-  background: rgba(29, 78, 216, 0.07);
-  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.06);
+  border-color: rgba(59, 130, 246, 0.25);
   transform: translateX(4px);
   box-shadow: -4px 0 0 0 #3b82f6, 0 8px 32px rgba(0, 0, 0, 0.25);
 }
@@ -326,21 +199,20 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .cp-job-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #f1f5f9;
   margin: 0;
-  white-space: nowrap;
 }
 
 .cp-job-tags {
   display: flex;
-  gap: 8px;
+  gap: 7px;
   flex-wrap: wrap;
 }
 
@@ -348,31 +220,31 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.72rem;
+  font-size: 0.70rem;
   font-weight: 600;
-  padding: 3px 10px;
+  padding: 3px 9px;
   border-radius: 100px;
   letter-spacing: 0.02em;
 }
 
 .cp-tag--location {
   color: #34d399;
-  background: rgba(52, 211, 153, 0.1);
+  background: rgba(52, 211, 153, 0.08);
   border: 1px solid rgba(52, 211, 153, 0.2);
 }
 
 .cp-tag--type {
   color: #a78bfa;
-  background: rgba(167, 139, 250, 0.1);
+  background: rgba(167, 139, 250, 0.08);
   border: 1px solid rgba(167, 139, 250, 0.2);
 }
 
 .cp-job-desc {
   font-size: 0.9rem;
-  color: #64748b;
+  color: #94a3b8;
   line-height: 1.65;
   margin: 0;
-  max-width: 600px;
+  max-width: 580px;
 }
 
 .cp-job-right {
@@ -383,23 +255,22 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 22px;
+  padding: 10px 20px;
   border-radius: 8px;
   font-size: 0.88rem;
   font-weight: 600;
   color: #60a5fa;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.22);
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .cp-apply-btn:hover {
-  background: #1d4ed8;
+  background: #3b82f6;
   color: #fff;
-  border-color: #1d4ed8;
-  transform: translateY(-1px);
+  border-color: #3b82f6;
 }
 
 .cp-no-role {
@@ -423,75 +294,20 @@
   color: #93c5fd;
 }
 
-.cp-cta-banner {
-  padding: 96px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cp-cta-inner {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 72px 40px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.cp-cta-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(29, 78, 216, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.cp-cta-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 800;
-  color: #f1f5f9;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.cp-cta-sub {
-  font-size: 1rem;
-  color: #64748b;
-  max-width: 480px;
-  line-height: 1.7;
-  margin: 0;
-}
-
-@media (max-width: 900px) {
-  .cp-perks-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 720px) {
-  .cp-hero {
-    padding: 90px 20px 60px;
-    min-height: auto;
+  .cp-page-header {
+    padding: 64px 20px 48px;
   }
 
-  .cp-perks-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cp-perks,
-  .cp-openings,
-  .cp-cta-banner {
-    padding: 64px 0;
+  .cp-culture,
+  .cp-openings {
+    padding: 60px 0;
   }
 
   .cp-job-card {
     flex-direction: column;
     align-items: flex-start;
-    padding: 24px;
+    padding: 22px 20px;
   }
 
   .cp-job-right {
@@ -503,17 +319,9 @@
     justify-content: center;
   }
 
-  .cp-cta-inner {
-    padding: 48px 24px;
-  }
-
-  .cp-hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .cp-no-role {
     flex-direction: column;
     gap: 4px;
+    text-align: center;
   }
 }
