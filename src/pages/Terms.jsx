@@ -1,17 +1,17 @@
 import React from "react";
 import Header from "../components/head";
+import Footer from "../components/footer/footer";
 
 function Terms() {
   return (
     <>
       <Header />
-      
-      
+
+
       <div className="pt-24 pb-20 px-6 min-h-screen flex justify-center text-white/80">
-        
-        {/* The document "Card" container */}
+
         <div className="max-w-4xl w-full bg-white/5 rounded-2xl p-8 md:p-12 shadow-xl border border-white/10">
-          
+
           <header className="mb-10 border-b border-white/10 pb-6">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Terms & Conditions
@@ -20,7 +20,6 @@ function Terms() {
           </header>
 
           <div className="space-y-10">
-            {/* Section 1 */}
             <section>
               <h2 className="text-2xl font-semibold text-blue-400 mb-4">1. Agreement to Terms</h2>
               <p className="leading-relaxed">
@@ -28,7 +27,6 @@ function Terms() {
               </p>
             </section>
 
-            {/* Section 2 */}
             <section>
               <h2 className="text-2xl font-semibold text-blue-400 mb-4">2. Use of Services</h2>
               <p className="leading-relaxed">
@@ -36,7 +34,6 @@ function Terms() {
               </p>
             </section>
 
-            {/* Section 3 */}
             <section>
               <h2 className="text-2xl font-semibold text-blue-400 mb-4">3. User Responsibilities & Restrictions</h2>
               <p className="leading-relaxed mb-4">As a user of our platform, you strictly agree not to:</p>
@@ -47,7 +44,6 @@ function Terms() {
               </ul>
             </section>
 
-            {/* Section 4 */}
             <section>
               <h2 className="text-2xl font-semibold text-blue-400 mb-4">4. Intellectual Property</h2>
               <p className="leading-relaxed">
@@ -55,7 +51,6 @@ function Terms() {
               </p>
             </section>
 
-            {/* Section 5 */}
             <section>
               <h2 className="text-2xl font-semibold text-blue-400 mb-4">5. Limitation of Liability</h2>
               <p className="leading-relaxed">
@@ -63,7 +58,6 @@ function Terms() {
               </p>
             </section>
 
-            {/* Section 6 */}
             <section>
               <h2 className="text-2xl font-semibold text-blue-400 mb-4">6. Changes to Terms</h2>
               <p className="leading-relaxed">
@@ -71,9 +65,10 @@ function Terms() {
               </p>
             </section>
           </div>
-          
+
         </div>
       </div>
+      <Footer />
     </>
   );
 }

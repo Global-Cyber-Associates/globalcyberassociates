@@ -1,9 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import pricingData from './pricingData';
 import './pricing.css';
 
 const DEPTHS = ['low', 'medium', 'high'];
 const DEPTH_LABELS = { low: 'Low', medium: 'Medium', high: 'High' };
+
+const CustomSelect = ({ value, onChange, options }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
+
+  const selected = options.find((o) => o.value === value);
+
+  return (
+    <div className="csel-wrap" ref={ref}>
+      <button
+        type="button"
+        className={`csel-trigger ${open ? 'open' : ''}`}
+        onClick={() => setOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span className="csel-value">{selected?.label}</span>
+        <i className={`bi bi-chevron-down csel-chevron ${open ? 'rotated' : ''}`}></i>
+      </button>
+
+      {open && (
+        <div className="csel-menu" role="listbox">
+          {options.map((opt) => (
+            <div
+              key={opt.value}
+              role="option"
+              aria-selected={opt.value === value}
+              className={`csel-option ${opt.value === value ? 'active' : ''}`}
+              onClick={() => {
+                onChange(opt.value);
+                setOpen(false);
+              }}
+            >
+              {opt.label}
+              {opt.value === value && (
+                <i className="bi bi-check2 csel-check"></i>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const PricingCalculator = () => {
   const [categoryIdx, setCategoryIdx] = useState(0);
@@ -14,8 +67,11 @@ const PricingCalculator = () => {
   const service = category.services[serviceIdx];
   const price = service[depth];
 
-  const handleCategoryChange = (e) => {
-    setCategoryIdx(Number(e.target.value));
+  const categoryOptions = pricingData.map((c, i) => ({ value: i, label: c.category }));
+  const serviceOptions = category.services.map((s, i) => ({ value: i, label: s.title }));
+
+  const handleCategoryChange = (val) => {
+    setCategoryIdx(val);
     setServiceIdx(0);
   };
 
@@ -31,51 +87,33 @@ const PricingCalculator = () => {
         <div className="calc-card">
           <div className="calc-fields">
 
-            {/* Category dropdown */}
             <div className="calc-field">
               <label className="calc-label">Service Category</label>
-              <div className="calc-select-wrap">
-                <select
-                  className="calc-select"
-                  value={categoryIdx}
-                  onChange={handleCategoryChange}
-                >
-                  {pricingData.map((c, i) => (
-                    <option key={i} value={i}>
-                      {c.category}
-                    </option>
-                  ))}
-                </select>
-                <i className="bi bi-chevron-down calc-select-icon"></i>
-              </div>
+              <CustomSelect
+                value={categoryIdx}
+                onChange={handleCategoryChange}
+                options={categoryOptions}
+              />
             </div>
 
-            {/* Sub-service dropdown */}
             <div className="calc-field">
               <label className="calc-label">Specific Service</label>
-              <div className="calc-select-wrap">
-                <select
-                  className="calc-select"
-                  value={serviceIdx}
-                  onChange={(e) => setServiceIdx(Number(e.target.value))}
-                >
-                  {category.services.map((s, i) => (
-                    <option key={i} value={i}>{s.title}</option>
-                  ))}
-                </select>
-                <i className="bi bi-chevron-down calc-select-icon"></i>
-              </div>
+              <CustomSelect
+                value={serviceIdx}
+                onChange={setServiceIdx}
+                options={serviceOptions}
+              />
             </div>
 
-            {/* Depth tabs */}
             <div className="calc-field">
               <label className="calc-label">Engagement Depth</label>
               <div className="depth-tabs">
-                {DEPTHS.map(d => (
+                {DEPTHS.map((d) => (
                   <button
                     key={d}
                     className={`depth-tab ${depth === d ? 'active' : ''}`}
                     onClick={() => setDepth(d)}
+                    type="button"
                   >
                     {DEPTH_LABELS[d]}
                   </button>
@@ -88,13 +126,12 @@ const PricingCalculator = () => {
               </div>
 
               <div className="promo-banner">
-                Get a Basic Cybersecurity Audit for just <strong>$100</strong> and gain actionable insights to strengthen your organization’s digital security.
+                Get a Basic Cybersecurity Audit for just <strong>$100</strong> and gain actionable insights to strengthen your organization's digital security.
               </div>
             </div>
 
           </div>
 
-          {/* Result */}
           <div className="calc-result">
             <p className="result-service-name">{service.title}</p>
             <div className="result-depth-badge">{DEPTH_LABELS[depth]} depth</div>
@@ -104,7 +141,7 @@ const PricingCalculator = () => {
             </div>
 
             <div className="result-range-bar">
-              {DEPTHS.map(d => (
+              {DEPTHS.map((d) => (
                 <div
                   key={d}
                   className={`range-segment ${d} ${depth === d ? 'active' : ''}`}
@@ -124,12 +161,12 @@ const PricingCalculator = () => {
               href="mailto:sales@globalcyberassociate.com?subject=Pricing%20Enquiry"
               className="calc-cta"
             >
-              GET ACCURATE QUOTE →
+              Get Accurate Quote →
             </a>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

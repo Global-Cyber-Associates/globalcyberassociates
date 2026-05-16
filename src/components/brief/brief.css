@@ -23,6 +23,7 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .brief-container__download-btn:hover {
   background: var(--doc-blue);
 }
@@ -33,7 +34,6 @@
   border-radius: 8px;
 }
 
-/* Header Section */
 .brief-container__header {
   display: flex;
   align-items: center;
@@ -56,6 +56,7 @@
   color: var(--doc-navy);
   font-weight: 700;
 }
+
 .brief-container__title h2 {
   margin: 0;
   font-size: 1.2rem;
@@ -63,10 +64,10 @@
   font-weight: 400;
 }
 
-/* Section Blocks */
 .brief-container__section {
   margin: 16px 0;
 }
+
 .brief-container__section-title {
   font-size: 1.1rem;
   font-weight: 600;
@@ -79,11 +80,13 @@
 .brief-container__reason {
   margin-bottom: 12px;
 }
+
 .brief-container__service-title,
 .brief-container__reason-title {
   font-weight: 600;
   color: var(--doc-blue);
 }
+
 .brief-container__service-desc,
 .brief-container__reason-desc {
   color: var(--doc-text);
@@ -91,36 +94,37 @@
   font-size: 0.98rem;
 }
 
-/* Contact Section */
 .brief-container__contact-info {
   margin-top: 8px;
   color: var(--doc-navy);
 }
+
 .brief-container__contact-item {
   margin-bottom: 6px;
   font-size: 1rem;
 }
+
 .brief-container__contact-label {
   font-weight: 500;
   color: var(--doc-navy);
 }
 
-/* CTA */
 .brief-container__cta {
   margin: 32px 0 16px 0;
   text-align: center;
 }
+
 .brief-container__cta-text {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--doc-navy);
 }
+
 .brief-container__cta-subtext {
   color: var(--doc-blue);
   font-size: 1rem;
 }
 
-/* Footer */
 .brief-container__footer {
   margin-top: 32px;
   text-align: center;

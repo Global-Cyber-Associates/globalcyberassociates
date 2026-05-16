@@ -47,6 +47,7 @@ const FaqSection = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-5">
+                      <p className="faq-eyebrow">Support</p>
             <h2 className="faq-title">Cybersecurity Audit FAQs</h2>
             <p className="faq-description">
               Find answers to commonly asked questions about our audit process, scope, compliance, and more.

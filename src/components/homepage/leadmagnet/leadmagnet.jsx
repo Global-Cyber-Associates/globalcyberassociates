@@ -6,23 +6,24 @@ const LeadMagnet = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="leadmagnet-section" data-aos="fade-up">
-      <div className="leadmagnet-container">
+    <section className="ent-lm-section" data-aos="fade-up">
+      <div className="ent-lm-container">
+        <div className="ent-lm-card">
+          {/* Subtle glowing orb in background */}
+          <div className="ent-lm-glow"></div>
 
-        <p className="leadmagnet-label">Where Do You Stand?</p>
-
-        <h2 className="leadmagnet-heading">Don't guess. Know.</h2>
-
-        <p className="leadmagnet-body">
-          Our <strong>Free Risk Assessment Tool</strong> gives you a clear picture of your
-          organization's security posture — in under 10 minutes. No jargon. No sales pitch.
-          Just honest, actionable intelligence so you know what to fix first.
-        </p>
-
-        <div className="leadmagnet-cta" onClick={() => navigate('/Assessment')}>
-          TAKE THE FREE ASSESSMENT →
+          <div className="ent-lm-content">
+            <p className="ent-lm-label">Where Do You Stand?</p>
+            <h2 className="ent-lm-heading">Don't guess. Know.</h2>
+            <p className="ent-lm-body">
+              Our <span className="ent-text-white">Free Risk Assessment Tool</span> gives you a clear picture of your organization's security posture — in under 10 minutes. No jargon. No sales pitch. Just honest, actionable intelligence so you know what to fix first.
+            </p>
+            <button className="ent-lm-cta" onClick={() => navigate('/assessment')}>
+              Take The Free Assessment
+              <span className="ent-cta-arrow">→</span>
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );

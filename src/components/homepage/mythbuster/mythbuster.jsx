@@ -3,35 +3,39 @@ import './mythbuster.css';
 
 const MythBuster = () => {
   return (
-    <section className="mythbuster-section" data-aos="fade-up">
-      <div className="mythbuster-container">
+    <section className="ent-myth-section" data-aos="fade-up">
+      <div className="ent-myth-container">
 
-        <p className="mythbuster-label">The Misconception We're Fixing</p>
+        <div className="ent-myth-card">
+          <p className="ent-myth-label">The Misconception We're Fixing</p>
+          <div className="ent-quote-bg-icon">"</div>
 
-        <h2 className="mythbuster-heading">
-          <span className="quote-mark">"</span>Cybersecurity is for big companies.<span className="quote-mark">"</span>
+          <div className="ent-myth-content">
+            <h2 className="ent-myth-heading">
+              Cybersecurity is for big companies.
+              <span className="ent-myth-subheading">
+                We hear this every day. It's also the most dangerous myth in business.
+              </span>
+            </h2>
 
-          <span className="mythbuster-subheading">
-            We hear this every day. It's also the most dangerous myth in business.
-          </span>
-        </h2>
+            <div className="ent-myth-body">
+              <p>
+                <span className="text-highlight">Ransomware</span> doesn't check your revenue. <span className="text-highlight">Email phishing</span> won't ignore your headcount. <span className="text-highlight">Insider threats and data theft</span> don't wait for an invite. A single leak can end a decade of growth overnight.
+              </p>
+              <p>
+                The truth is — <span className="text-highlight text-cyan">small and mid-size businesses are the #1 target</span>, precisely because attackers assume they're unprotected.
+              </p>
+              <p>
+                At GlobalCyberAssociates, we designed our entire practice around one belief: <strong className="text-white">every organization deserves a security posture that matches the threat they face</strong> — not just the budget they have.
+              </p>
+            </div>
 
-        <div className="mythbuster-body">
-          <p>
-            <strong>Ransomware</strong> doesn't check your revenue. <strong>Email phishing</strong> won't ignore your headcount. <strong>Insider threats and data theft</strong> don't wait for an invite. A single leak can end a decade of growth overnight.
-          </p>
-          <p>
-            The truth is — <strong>small and mid-size businesses are the #1 target</strong>, precisely because attackers assume they're unprotected.
-          </p>
-          <p>
-            At GlobalCyberAssociates, we designed our entire practice around one belief: <strong>every organization deserves a security posture that matches the threat they face</strong> — not just the budget they have.
-          </p>
-        </div>
-
-        <div className="mythbuster-chips">
-          <span className="chip">Startup Co-Pilot</span>
-          <span className="chip">MSME-Focused</span>
-          <span className="chip">Enterprise-Ready</span>
+            <div className="ent-myth-badges">
+              <span className="ent-badge">Startup Co-Pilot</span>
+              <span className="ent-badge">MSME-Focused</span>
+              <span className="ent-badge">Enterprise-Ready</span>
+            </div>
+          </div>
         </div>
 
       </div>

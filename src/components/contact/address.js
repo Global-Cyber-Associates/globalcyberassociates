@@ -15,7 +15,7 @@ const branchLocations = [
     state: "NC",
     zip: "28277",
     country: "USA",
-    email: "info@globalcyberassociate.com",
+    email: "info@globalcyberassociates.com",
   }
 ];
 

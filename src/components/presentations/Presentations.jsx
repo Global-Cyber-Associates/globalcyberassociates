@@ -118,7 +118,6 @@ const Presentation = () => {
     return (
         <div className="fixed inset-0 bg-black text-white font-sans overflow-hidden select-none cursor-default">
 
-            {/* BACKGROUND IMAGE LAYER */}
             {slides.map((slide, index) => (
                 <div
                     key={index}
@@ -133,7 +132,6 @@ const Presentation = () => {
                 </div>
             ))}
 
-            {/* TOP PROGRESS LINE */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-white/10 z-50">
                 <div
                     className="h-full bg-blue-600 transition-all duration-700 ease-out shadow-[0_0_10px_rgba(37,99,235,0.5)]"
@@ -141,7 +139,6 @@ const Presentation = () => {
                 ></div>
             </div>
 
-            {/* WATERMARK LOGO */}
             <div className="absolute top-10 left-10 z-[60] flex items-center gap-3 mix-blend-overlay opacity-30">
                 <div className="text-xl font-black tracking-tighter italic uppercase text-white">
                     GCA <span className="text-blue-600">Global</span>
@@ -150,13 +147,11 @@ const Presentation = () => {
                 <div className="text-[10px] font-bold tracking-[0.3rem] text-white/50">VISUN AI</div>
             </div>
 
-            {/* SLIDE CONTENT OVERLAY */}
             <div className={`h-full w-full relative z-10 flex ${isComparisonSlide ? 'items-stretch px-0' : 'items-center px-10 md:px-24 lg:px-32'}`}>
                 <div className={`w-full ${isComparisonSlide ? 'max-w-none h-full' : 'max-w-5xl'} transition-all duration-700 ease-out ${isTransitioning ? 'opacity-0 translate-y-4 blur-sm' : 'opacity-100 translate-y-0 blur-0'}`}>
 
                     <div className={isComparisonSlide ? 'h-full' : 'space-y-10 lg:space-y-16'}>
 
-                        {/* HERO COMPONENT */}
                         {(slides[activeSlide].type === 'hero' || slides[activeSlide].type === 'hero-final') && (
                             <div className="space-y-6 lg:space-y-8">
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight uppercase italic max-w-4xl transition-all">
@@ -188,7 +183,6 @@ const Presentation = () => {
                             </div>
                         )}
 
-                        {/* REALITY / METRICS COMPONENT */}
                         {slides[activeSlide].type === 'reality' && (
                             <div className="space-y-12 lg:space-y-16">
                                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase italic max-w-4xl">
@@ -206,7 +200,6 @@ const Presentation = () => {
                             </div>
                         )}
 
-                        {/* GRID COMPONENT */}
                         {(slides[activeSlide].type === 'grid' || slides[activeSlide].type === 'grid-3') && (
                             <div className="space-y-10 lg:space-y-12">
                                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase italic">
@@ -225,7 +218,6 @@ const Presentation = () => {
                             </div>
                         )}
 
-                        {/* ENHANCED SUMMARY SLIDE (SLIDE 6) */}
                         {slides[activeSlide].type === 'enhanced-summary' && (
                             <div className="space-y-12">
                                 <div className="space-y-4">
@@ -254,7 +246,6 @@ const Presentation = () => {
                             </div>
                         )}
 
-                        {/* WITH VS WITHOUT COMPARISON (NEW SLIDE 7) */}
                         {slides[activeSlide].type === 'comparison' && (
                             <div className="h-full w-full">
                                 <div className="h-full w-full flex flex-col">
@@ -267,28 +258,28 @@ const Presentation = () => {
                                         </p>
                                     </div>
                                     <div className="flex-1 grid grid-cols-1 md:grid-cols-2 min-h-0">
-                                    <div className="h-full bg-gradient-to-b from-rose-950/60 via-black to-black border-r border-red-400/30 px-8 md:px-12 lg:px-16 pt-10 pb-12 overflow-auto">
-                                        <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-red-300 italic mb-8">Without Visun-AI</h3>
-                                        <ul className="space-y-5">
-                                            {slides[activeSlide].withoutPoints.map((point, i) => (
-                                                <li key={i} className="flex items-start gap-3 text-base lg:text-lg text-white/90 leading-relaxed bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3">
-                                                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-red-300 shrink-0"></span>
-                                                    <span>{point}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className="h-full bg-gradient-to-b from-blue-950/70 via-black to-black px-8 md:px-12 lg:px-16 pt-10 pb-12 overflow-auto">
-                                        <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-cyan-300 italic mb-8">With Visun-AI</h3>
-                                        <ul className="space-y-5">
-                                            {slides[activeSlide].withPoints.map((point, i) => (
-                                                <li key={i} className="flex items-start gap-3 text-base lg:text-lg text-white/95 leading-relaxed bg-cyan-400/[0.06] border border-cyan-300/20 rounded-xl px-4 py-3">
-                                                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-cyan-300 shrink-0"></span>
-                                                    <span>{point}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                        <div className="h-full bg-gradient-to-b from-rose-950/60 via-black to-black border-r border-red-400/30 px-8 md:px-12 lg:px-16 pt-10 pb-12 overflow-auto">
+                                            <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-red-300 italic mb-8">Without Visun-AI</h3>
+                                            <ul className="space-y-5">
+                                                {slides[activeSlide].withoutPoints.map((point, i) => (
+                                                    <li key={i} className="flex items-start gap-3 text-base lg:text-lg text-white/90 leading-relaxed bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3">
+                                                        <span className="mt-2 h-2.5 w-2.5 rounded-full bg-red-300 shrink-0"></span>
+                                                        <span>{point}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div className="h-full bg-gradient-to-b from-blue-950/70 via-black to-black px-8 md:px-12 lg:px-16 pt-10 pb-12 overflow-auto">
+                                            <h3 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-cyan-300 italic mb-8">With Visun-AI</h3>
+                                            <ul className="space-y-5">
+                                                {slides[activeSlide].withPoints.map((point, i) => (
+                                                    <li key={i} className="flex items-start gap-3 text-base lg:text-lg text-white/95 leading-relaxed bg-cyan-400/[0.06] border border-cyan-300/20 rounded-xl px-4 py-3">
+                                                        <span className="mt-2 h-2.5 w-2.5 rounded-full bg-cyan-300 shrink-0"></span>
+                                                        <span>{point}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +289,6 @@ const Presentation = () => {
                 </div>
             </div>
 
-            {/* MINIMAL NAVIGATION CONTROLS */}
             <div className="absolute bottom-10 right-10 flex items-center gap-10 z-50">
                 <div className="flex items-center gap-4 md:gap-6 bg-black/60 backdrop-blur-md p-3 rounded-full border border-white/5">
                     <button onClick={() => goToSlide(activeSlide - 1)} className="text-white/20 hover:text-white transition-colors">

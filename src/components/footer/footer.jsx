@@ -24,7 +24,7 @@ const Footer = () => {
               className="linkedin-button"
               aria-label="LinkedIn"
             >
-              <FaLinkedin size={30} color="#0A66C2" />
+              <FaLinkedin size={28} />
             </a>
             <a
               href="https://wa.me/+919342167657" 
@@ -32,7 +32,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="WhatsApp"
             >
-              <FaWhatsapp size={30} color="#25D366" />
+              <FaWhatsapp size={28} />
             </a>
           </div>
         </div>
@@ -57,7 +57,7 @@ const Footer = () => {
 
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>info@globalcyberassociate.com</p>
+          <p>info@globalcyberassociates.com</p>
         </div>
       </div>
 

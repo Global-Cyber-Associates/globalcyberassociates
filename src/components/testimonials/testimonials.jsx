@@ -1,89 +1,48 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './testimonials.css';
 import precifastLogo from '../../assets/precifast.jpg';
 import eshwaricoLogo from '../../assets/eshwarico.png';
 import nligtenLogo from '../../assets/nligten.svg';
 import nsysLogo from '../../assets/nsys.svg';
+import idesLabsLogo from '../../assets/ideslabs.png';
 
 const clients = [
-  { name: "PreciFast India", sector: "Manufacturing", logo: precifastLogo },
-  { name: "NLigten Systems", sector: "Cloud & Collaboration", logo: nligtenLogo },
-  { name: "NSys Technologies", sector: "Mobile & Web Apps", logo: nsysLogo },
-  { name: "Eshwari & Co.", sector: "Network Infrastructure", logo: eshwaricoLogo },
+  { name: "PreciFast India", logo: precifastLogo, type: "img" },
+  { name: "NLigten Systems", logo: nligtenLogo, type: "img" },
+  { name: "NSys Technologies", logo: nsysLogo, type: "img" },
+  { name: "Eshwari & Co.", logo: eshwaricoLogo, type: "img" },
+  { name: "iDes Labs", logo: idesLabsLogo, type: "img" },
 ];
 
-const loopedClients = [...clients, ...clients, ...clients];
+const marqueeItems = [...clients, ...clients];
 
 export default function ClientLogoStrip() {
-  const scrollRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  useEffect(() => {
-    const scroller = scrollRef.current;
-    if (!scroller) return;
-
-    let animationFrameId;
-
-    const scroll = () => {
-      if (!scroller || isHovered || isDragging) {
-        animationFrameId = requestAnimationFrame(scroll);
-        return;
-      }
-      scroller.scrollLeft += 0.35;
-      if (scroller.scrollLeft >= scroller.scrollWidth / 3) {
-        scroller.scrollLeft = 0;
-      }
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isHovered, isDragging]);
-
-  const onMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-  };
-
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-    if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 3) {
-      scrollRef.current.scrollLeft -= scrollRef.current.scrollWidth / 3;
-    } else if (scrollRef.current.scrollLeft < 0) {
-      scrollRef.current.scrollLeft += scrollRef.current.scrollWidth / 3;
-    }
-  };
-
-  const onMouseUp = () => setIsDragging(false);
-
   return (
-    <div className="logo-strip-section">
-      <div
-        className="logo-strip-scroll"
-        ref={scrollRef}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => { setIsHovered(false); setIsDragging(false); }}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-      >
-        <div className="logo-strip-track">
-          {loopedClients.map((client, index) => (
-            <div className="logo-card" key={index}>
-              <img src={client.logo} alt={client.name} className="logo-card-img" />
+    <section className="ls-section">
+      <p className="ls-eyebrow">
+        <span className="ls-eyebrow-line" />
+        Trusted by industry leaders
+        <span className="ls-eyebrow-line" />
+      </p>
+
+      <div className="ls-marquee-outer">
+        <div className="ls-fade ls-fade-left" aria-hidden="true" />
+        <div className="ls-fade ls-fade-right" aria-hidden="true" />
+
+        <div className="ls-marquee-track" aria-label="Client logos">
+          {marqueeItems.map((client, i) => (
+            <div className="ls-logo-item" key={`${client.name}-${i}`}>
+              <img
+                src={client.logo}
+                alt={client.name}
+                className="ls-logo-img"
+                loading="lazy"
+                draggable="false"
+              />
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
