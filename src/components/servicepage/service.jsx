@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 import './service.css';
@@ -12,8 +12,19 @@ const ServicePage = () => {
   return (
     <>
       <Helmet>
-        <title>Services | Global Cyber Associates</title>
+        <title>Cybersecurity Services — VAPT, Compliance, SOC &amp; Training | Global Cyber Associates</title>
         <meta name="description" content="Comprehensive cybersecurity services including VAPT, Compliance Audits, SOC Operations, and Corporate Training tailored to your threat landscape." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.globalcyberassociates.com/solutions" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Cybersecurity Services — VAPT, Compliance, SOC &amp; Training | GCA" />
+        <meta property="og:description" content="Comprehensive cybersecurity services including VAPT, Compliance Audits, SOC Operations, and Corporate Training tailored to your threat landscape." />
+        <meta property="og:url" content="https://www.globalcyberassociates.com/solutions" />
+        <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cybersecurity Services — VAPT, Compliance, SOC &amp; Training | GCA" />
+        <meta name="twitter:description" content="Comprehensive cybersecurity services including VAPT, Compliance Audits, SOC Operations, and Corporate Training tailored to your threat landscape." />
+        <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
       </Helmet>
       <Header />
       <div className="services-page">

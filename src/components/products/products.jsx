@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import './products.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
@@ -53,8 +53,19 @@ const visunAIFeatures = [
 const Products = () => (
   <>
     <Helmet>
-      <title>Products | Global Cyber Associates</title>
-      <meta name="description" content="Discover VisuN — a purpose-built security tool for network visibility without the overhead of a full security operation." />
+      <title>VisuN Security Platform &amp; Cybersecurity Products | Global Cyber Associates</title>
+      <meta name="description" content="Discover VisuN — GCA's AI-powered network visibility platform. Real-time threat detection, rogue device alerts, and endpoint management without the overhead of a full SOC." />
+      <meta name="robots" content="index,follow" />
+      <link rel="canonical" href="https://www.globalcyberassociates.com/products" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="VisuN Security Platform &amp; Cybersecurity Products | GCA" />
+      <meta property="og:description" content="Discover VisuN — GCA's AI-powered network visibility platform. Real-time threat detection, rogue device alerts, and endpoint management without the overhead of a full SOC." />
+      <meta property="og:url" content="https://www.globalcyberassociates.com/products" />
+      <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="VisuN Security Platform &amp; Cybersecurity Products | GCA" />
+      <meta name="twitter:description" content="Discover VisuN — GCA's AI-powered network visibility platform. Real-time threat detection, rogue device alerts, and endpoint management without the overhead of a full SOC." />
+      <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
     </Helmet>
     <Header />
     <main className="products-page">

@@ -2,7 +2,7 @@ const FRONTMATTER_REGEX = /^---\s*([\s\S]*?)\s*---/;
 const FALLBACK_DESCRIPTION =
   "Practical insights from Global Cyber Associates on cybersecurity, AI, and digital growth.";
 const FALLBACK_AUTHOR = "Global Cyber Associates Team";
-const FALLBACK_SITE_URL = "https://www.globalcyberassociate.com";
+const FALLBACK_SITE_URL = "https://www.globalcyberassociates.com";
 
 export const blogFiles = import.meta.glob("../blogs/*.md", {
   query: "?raw",

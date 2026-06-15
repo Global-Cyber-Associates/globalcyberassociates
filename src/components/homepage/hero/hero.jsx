@@ -89,7 +89,7 @@ const HeroSection = () => {
               <div className="ent-glow-bg"></div>
 
               <div className="fluid-shape ent-image-wrapper">
-                <img src={image} alt="Security Illustration" className="fluid-img ent-img" />
+                <img src={image} alt="Global Cyber Associates cybersecurity platform dashboard overview" className="fluid-img ent-img" />
 
                 <div className="floating-badge badge-top-right">
                   <span className="status-dot"></span>

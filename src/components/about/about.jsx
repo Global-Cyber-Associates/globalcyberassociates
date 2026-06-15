@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import './about.css';
 import Head from '../head.jsx';
 import Footer from '../footer/footer.jsx';
@@ -48,6 +48,17 @@ const AboutSection = () => {
       <Helmet>
         <title>About Us | Global Cyber Associates</title>
         <meta name="description" content="Built by defenders, for every business. Learn about Global Cyber Associates — our mission, team, and approach to enterprise-grade cybersecurity." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.globalcyberassociates.com/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="About Us | Global Cyber Associates" />
+        <meta property="og:description" content="Built by defenders, for every business. Learn about Global Cyber Associates — our mission, team, and approach to enterprise-grade cybersecurity." />
+        <meta property="og:url" content="https://www.globalcyberassociates.com/about" />
+        <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us | Global Cyber Associates" />
+        <meta name="twitter:description" content="Built by defenders, for every business. Learn about Global Cyber Associates — our mission, team, and approach to enterprise-grade cybersecurity." />
+        <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
       </Helmet>
       <Head />
       <main className="about-page">

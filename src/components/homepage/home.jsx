@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import Header from "../head.jsx";
 import Footer from "../footer/footer.jsx";
 import TestimonialSection from "../testimonials/testimonials.jsx";
@@ -11,10 +12,42 @@ import Features from "../4phases/phases.jsx";
 import MythBuster from "./mythbuster/mythbuster.jsx";
 import LeadMagnet from "./leadmagnet/leadmagnet.jsx";
 
+const SITE_URL = "https://www.globalcyberassociates.com";
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Global Cyber Associates",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "info@globalcyberassociates.com",
+    contactType: "customer support"
+  },
+  sameAs: []
+};
+
 const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Cybersecurity Services for Startups &amp; MSMEs | Global Cyber Associates</title>
+        <meta name="description" content="Global Cyber Associates delivers enterprise-grade cybersecurity — VAPT, compliance, SOC, and training — right-sized for startups and MSMEs. Get your free risk assessment today." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={`${SITE_URL}/`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Cybersecurity Services for Startups &amp; MSMEs | Global Cyber Associates" />
+        <meta property="og:description" content="Enterprise-grade cybersecurity right-sized for your business. VAPT, compliance audits, SOC operations, and team training." />
+        <meta property="og:url" content={`${SITE_URL}/`} />
+        <meta property="og:image" content={`${SITE_URL}/logo.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cybersecurity Services for Startups &amp; MSMEs | GCA" />
+        <meta name="twitter:description" content="Enterprise-grade cybersecurity right-sized for your business. VAPT, compliance audits, SOC operations, and team training." />
+        <meta name="twitter:image" content={`${SITE_URL}/logo.png`} />
+        <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
+      </Helmet>
       <Header />
 
       <main>

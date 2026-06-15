@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import './careers.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
@@ -69,7 +69,18 @@ const CareersPage = () => {
     <>
       <Helmet>
         <title>Careers | Global Cyber Associates</title>
-        <meta name="description" content="Join the Global Cyber Associates team. Explore open roles in cybersecurity, penetration testing, SOC operations, and more." />
+        <meta name="description" content="Join Global Cyber Associates — work with elite security professionals in a hybrid-first culture. View open roles in cybersecurity, penetration testing, and SOC operations." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.globalcyberassociates.com/careers" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Careers | Global Cyber Associates" />
+        <meta property="og:description" content="Join Global Cyber Associates — work with elite security professionals in a hybrid-first culture. View open roles in cybersecurity, penetration testing, and SOC operations." />
+        <meta property="og:url" content="https://www.globalcyberassociates.com/careers" />
+        <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Careers | Global Cyber Associates" />
+        <meta name="twitter:description" content="Join Global Cyber Associates — work with elite security professionals in a hybrid-first culture. View open roles in cybersecurity, penetration testing, and SOC operations." />
+        <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
       </Helmet>
       <Header />
       <main className="cp-page">

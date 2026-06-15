@@ -58,8 +58,8 @@ const Header = () => {
             className="logo"
             onClick={() => setMenuOpen(false)}
           >
-            <img src={logo} alt="Company Logo" />
-            <h1>GlobalCyberAssociates</h1>
+            <img src={logo} alt="Global Cyber Associates" />
+            <span className="logo-text">GlobalCyberAssociates</span>
           </NavLink>
 
           <div

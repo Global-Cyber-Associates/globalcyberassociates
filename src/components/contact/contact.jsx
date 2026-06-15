@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import './contact.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
@@ -9,8 +9,19 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact | Global Cyber Associates</title>
-        <meta name="description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com." />
+        <title>Contact Us | Global Cyber Associates</title>
+        <meta name="description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com. We respond within one business day." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.globalcyberassociates.com/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Contact Us | Global Cyber Associates" />
+        <meta property="og:description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com. We respond within one business day." />
+        <meta property="og:url" content="https://www.globalcyberassociates.com/contact" />
+        <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us | Global Cyber Associates" />
+        <meta name="twitter:description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com." />
+        <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
       </Helmet>
       <Header />
       <div className="contact-page">
