@@ -7,7 +7,6 @@ import office from './team.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const stats = [
-  { value: '10+', label: 'Years in Security' },
   { value: '50+', label: 'Businesses Protected' },
   { value: '24/7', label: 'Monitoring & Response' },
   { value: '2', label: 'Proprietary Products' },

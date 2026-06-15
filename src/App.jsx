@@ -25,6 +25,7 @@ const Presentation4 = lazy(() => import("./components/presentations/Presentation
 const PresentationIndex = lazy(() => import("./components/presentations/PresentationIndex.jsx"));
 const AssessmentPage = lazy(() => import("./components/assessment/AssessmentPage.jsx"));
 const Products = lazy(() => import("./components/products/products.jsx"));
+const VisunAIShowcase = lazy(() => import("./components/products/VisunAIShowcase.jsx"));
 const Blogs = lazy(() => import("./pages/Blog.jsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 
@@ -115,6 +116,7 @@ const App = () => {
 
             <Route path="assessment" element={<PageTransition><AssessmentPage /></PageTransition>} />
             <Route path="products" element={<PageTransition><Products /></PageTransition>} />
+            <Route path="products/visunai" element={<VisunAIShowcase />} />
 
           </Routes>
 

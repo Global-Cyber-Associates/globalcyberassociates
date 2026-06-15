@@ -10,10 +10,18 @@
 }
 
 .service-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .service-grid { grid-template-columns: 1fr; }
 }
 
 
@@ -22,7 +30,7 @@
 
 .services-page .solution-card {
   background: rgba(5, 10, 18, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 24px;
   display: flex;
@@ -31,6 +39,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 .solution-card::before {
