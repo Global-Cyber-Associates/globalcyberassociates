@@ -70,6 +70,7 @@ const CareersPage = () => {
       <Helmet>
         <title>Careers | Global Cyber Associates</title>
         <meta name="description" content="Join Global Cyber Associates — work with elite security professionals in a hybrid-first culture. View open roles in cybersecurity, penetration testing, and SOC operations." />
+        <meta name="keywords" content="cybersecurity jobs, cybersecurity careers, penetration tester jobs, SOC analyst jobs, security jobs India, cybersecurity hiring, infosec careers, VAPT jobs, security engineer jobs" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="https://www.globalcyberassociates.com/careers" />
         <meta property="og:type" content="website" />

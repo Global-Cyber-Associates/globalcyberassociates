@@ -56,9 +56,18 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 22px;
   margin: 0;
   padding: 0;
+}
+
+/* Tighten the nav on mid-size desktops so both CTAs (Secure Browser +
+   Free Assessment) always stay visible before the mobile menu kicks in */
+@media (max-width: 1280px) and (min-width: 1101px) {
+  .site-nav ul { gap: 14px; }
+  .site-nav a { font-size: 0.9rem; }
+  .nav-cta,
+  .nav-download { padding: 8px 14px; font-size: 0.8rem; }
 }
 
 .site-nav a {
@@ -235,7 +244,7 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-@media (max-width:768px) {
+@media (max-width:1100px) {
   .menu-toggle {
     display: flex;
   }

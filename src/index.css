@@ -1,3 +1,19 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Custom design tokens — mirrors the former CDN tailwind.config so all
+   brand utility classes (bg-accent-color, text-light-blue, etc.) keep working */
+@theme {
+  --color-dark-primary: #0f172a;
+  --color-dark-secondary: #1e293b;
+  --color-accent-color: #314e8e;
+  --color-light-blue: #3fa9f5;
+  --color-brand-cyan: #06b6d4;
+  --color-brand-navy: #0f172a;
+  --color-brand-dark: #020617;
+  --color-brand-lime: #a3e635;
+}
+
 * {
   scrollbar-width: none;
 }

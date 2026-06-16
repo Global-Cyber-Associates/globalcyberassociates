@@ -47,6 +47,7 @@ const AboutSection = () => {
       <Helmet>
         <title>About Us | Global Cyber Associates</title>
         <meta name="description" content="Built by defenders, for every business. Learn about Global Cyber Associates — our mission, team, and approach to enterprise-grade cybersecurity." />
+        <meta name="keywords" content="about Global Cyber Associates, cybersecurity company, cybersecurity experts, security team, cybersecurity firm India, enterprise security provider, cybersecurity mission, trusted cybersecurity partner" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="https://www.globalcyberassociates.com/about" />
         <meta property="og:type" content="website" />
@@ -58,6 +59,14 @@ const AboutSection = () => {
         <meta name="twitter:title" content="About Us | Global Cyber Associates" />
         <meta name="twitter:description" content="Built by defenders, for every business. Learn about Global Cyber Associates — our mission, team, and approach to enterprise-grade cybersecurity." />
         <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.globalcyberassociates.com/" },
+            { "@type": "ListItem", position: 2, name: "About", item: "https://www.globalcyberassociates.com/about" }
+          ]
+        })}</script>
       </Helmet>
       <Head />
       <main className="about-page">
@@ -88,9 +97,10 @@ const AboutSection = () => {
               <div className="about-image-wrap">
                 <img
                   src={office}
-                  alt="GlobalCyberAssociates team collaborating"
+                  alt="Global Cyber Associates cybersecurity team collaborating in office"
                   className="about-image"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="about-image-badge">
                   <span className="about-badge-dot" />

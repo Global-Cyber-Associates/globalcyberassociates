@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /presentation
+Disallow: /presentation1
+Disallow: /presentation2
+Disallow: /presentation3
+Disallow: /presentation4
+Disallow: /presentations
+Disallow: /brief
+
 Sitemap: https://www.globalcyberassociates.com/sitemap.xml

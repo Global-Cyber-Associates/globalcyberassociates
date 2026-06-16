@@ -14,6 +14,7 @@ const ServicePage = () => {
       <Helmet>
         <title>Cybersecurity Services — VAPT, Compliance, SOC &amp; Training | Global Cyber Associates</title>
         <meta name="description" content="Comprehensive cybersecurity services including VAPT, Compliance Audits, SOC Operations, and Corporate Training tailored to your threat landscape." />
+        <meta name="keywords" content="cybersecurity services, VAPT services, penetration testing services, vulnerability assessment, compliance audit, ISO 27001, SOC 2 audit, SOC operations, security monitoring, cybersecurity training, security consulting, network security, web application security, cloud security audit, incident response, managed security services India" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="https://www.globalcyberassociates.com/solutions" />
         <meta property="og:type" content="website" />
@@ -25,6 +26,31 @@ const ServicePage = () => {
         <meta name="twitter:title" content="Cybersecurity Services — VAPT, Compliance, SOC &amp; Training | GCA" />
         <meta name="twitter:description" content="Comprehensive cybersecurity services including VAPT, Compliance Audits, SOC Operations, and Corporate Training tailored to your threat landscape." />
         <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Cybersecurity Services",
+          itemListElement: [
+            "Vulnerability Assessment & Penetration Testing (VAPT)",
+            "Compliance Audits (ISO 27001, SOC 2, GDPR)",
+            "SOC Operations & 24/7 Security Monitoring",
+            "Corporate Security Training",
+          ].map((name, i) => ({
+            "@type": "Service",
+            position: i + 1,
+            name,
+            provider: { "@type": "Organization", name: "Global Cyber Associates", url: "https://www.globalcyberassociates.com/" },
+            areaServed: ["IN", "US"],
+          })),
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.globalcyberassociates.com/" },
+            { "@type": "ListItem", position: 2, name: "Services", item: "https://www.globalcyberassociates.com/solutions" }
+          ]
+        })}</script>
       </Helmet>
       <Header />
       <div className="services-page">

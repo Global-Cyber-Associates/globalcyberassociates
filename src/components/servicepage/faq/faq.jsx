@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import './faq.css';
 import { BiChevronRight } from 'react-icons/bi';
 
@@ -44,6 +45,17 @@ const FaqSection = () => {
 
   return (
     <div className="faq-section" id="faq">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqData.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
+        })}</script>
+      </Helmet>
       <div className="container">
         <div className="row">
           <div className="col-lg-5">

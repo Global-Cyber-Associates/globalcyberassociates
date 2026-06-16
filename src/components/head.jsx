@@ -129,7 +129,7 @@ const Header = () => {
                   title="Download our exclusive secure browser"
                 >
                   <Download size={15} />
-                  Get Secure Browser
+                  Secure Browser
                 </a>
               </li>
 

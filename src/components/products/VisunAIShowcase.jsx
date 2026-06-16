@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeft, ArrowRight, Check, Play, Shield, AlertTriangle, Usb } from 'lucide-react';
@@ -524,7 +525,7 @@ function VideoPlayer() {
   return (
     <div className="va-video-wrap">
       <video ref={videoRef} src={visunVideo} poster={visunImg} controls={playing}
-        preload="metadata" className="va-video-el" onEnded={() => setPlaying(false)} />
+        preload="none" className="va-video-el" onEnded={() => setPlaying(false)} />
       {!playing && (
         <div className="va-video-overlay" onClick={handlePlay}>
           <div className="va-play-ring"><Play size={28} fill="currentColor" /></div>
@@ -662,6 +663,32 @@ export default function VisunAIShowcase() {
 
   return (
     <div className="va-page va">
+
+      <Helmet>
+        <title>VisuN AI — Employee &amp; Network Monitoring Software | Global Cyber Associates</title>
+        <meta name="description" content="VisuN AI is real-time employee and network monitoring software: live device visibility, user activity monitoring, USB &amp; file activity logging, insider threat detection, and vulnerability scanning. From $2 per endpoint/month." />
+        <meta name="keywords" content="VisuN AI, employee monitoring software, user activity monitoring, insider threat detection, endpoint monitoring, network monitoring tool, USB monitoring, file activity logging, DLP software, data loss prevention, remote workforce monitoring, employee productivity monitoring, UEBA, behavior analytics, real-time network visibility" />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://www.globalcyberassociates.com/products/visunai" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="VisuN AI — Employee &amp; Network Monitoring Software | GCA" />
+        <meta property="og:description" content="See every device, every employee, every file — live. Insider threat detection, USB &amp; file logging, and vulnerability scanning from $2 per endpoint/month." />
+        <meta property="og:url" content="https://www.globalcyberassociates.com/products/visunai" />
+        <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VisuN AI — Employee &amp; Network Monitoring Software | GCA" />
+        <meta name="twitter:description" content="Real-time employee and network monitoring with insider threat detection. From $2 per endpoint/month." />
+        <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.globalcyberassociates.com/" },
+            { "@type": "ListItem", position: 2, name: "Products", item: "https://www.globalcyberassociates.com/products" },
+            { "@type": "ListItem", position: 3, name: "VisuN AI", item: "https://www.globalcyberassociates.com/products/visunai" }
+          ]
+        })}</script>
+      </Helmet>
 
       {/* Top bar */}
       <div className="va-topbar">

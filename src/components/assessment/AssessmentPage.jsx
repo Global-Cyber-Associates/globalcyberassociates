@@ -13,6 +13,7 @@ const AssessmentPage = () => {
             <Helmet>
               <title>Free Cybersecurity Risk Assessment | Global Cyber Associates</title>
               <meta name="description" content="Take the free GCA cybersecurity risk assessment. Identify your organisation's exposure to threats in under 5 minutes — no commitment required." />
+              <meta name="keywords" content="free cybersecurity risk assessment, security risk assessment, cyber risk assessment tool, cybersecurity audit free, security posture assessment, cyber maturity assessment, free security audit, online cybersecurity assessment" />
               <meta name="robots" content="index,follow" />
               <link rel="canonical" href="https://www.globalcyberassociates.com/assessment" />
               <meta property="og:type" content="website" />

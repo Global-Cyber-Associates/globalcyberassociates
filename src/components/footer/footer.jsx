@@ -27,7 +27,7 @@ const Footer = () => {
               <FaLinkedin size={28} />
             </a>
             <a
-              href="https://wa.me/+919342167657" 
+              href="https://wa.me/918939851788"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -58,6 +58,16 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Contact</h4>
           <p>info@globalcyberassociates.com</p>
+          <p>
+            <a
+              href="https://wa.me/918939851788"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-whatsapp-link"
+            >
+              WhatsApp: +91 89398 51788
+            </a>
+          </p>
         </div>
       </div>
 

@@ -139,6 +139,7 @@ const Home = () => {
       <Helmet>
         <title>Cybersecurity Services for Startups &amp; MSMEs | Global Cyber Associates</title>
         <meta name="description" content="Global Cyber Associates delivers enterprise-grade cybersecurity — VAPT, compliance, SOC, and training — right-sized for startups and MSMEs. Get your free risk assessment today." />
+        <meta name="keywords" content="cybersecurity services, VAPT, penetration testing, vulnerability assessment, ISO 27001 compliance, SOC 2 audit, SOC monitoring, managed security services, MSSP, cybersecurity for startups, cybersecurity for MSMEs, cybersecurity company India, cybersecurity company Chennai, security audit, cyber security training, incident response, threat detection, data protection, network security, web application security, risk assessment" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={`${SITE_URL}/`} />
         <meta property="og:type" content="website" />
