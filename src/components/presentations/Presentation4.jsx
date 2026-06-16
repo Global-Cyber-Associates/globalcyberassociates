@@ -1139,7 +1139,6 @@ export default function Presentation4() {
                       </label>
                     </div>
 
-<<<<<<< HEAD
                     <div className="mt-5 grid gap-3 sm:grid-cols-2">
                       <AssumptionPill
                         label="Lost Hours (Daily)"
@@ -1157,13 +1156,6 @@ export default function Presentation4() {
                         label="Working Days / Month"
                         value={`${CALCULATOR_ASSUMPTIONS.workingDaysPerMonth}/month`}
                       />
-=======
-                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                      <AssumptionPill label="Lost Hours (Daily)" value={`${formatHours(calculatorLostHoursPerDay)}h/day`} />
-                      <AssumptionPill label="Expected Recovery" value={`${CALCULATOR_ASSUMPTIONS.recoveryRatePercent}%`} />
-                      <AssumptionPill label="VisuN Ai / Employee" value={`${formatMoney(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/emp.`} />
-                      <AssumptionPill label="Working Days / Month" value={`${CALCULATOR_ASSUMPTIONS.workingDaysPerMonth}/mo.`} />
->>>>>>> b93768a8d096eec25d568ee6d7481493385430ee
                     </div>
                   </article>
 
@@ -1187,7 +1179,6 @@ export default function Presentation4() {
                       </div>
                     </div>
 
-<<<<<<< HEAD
                     <div className="relative z-10 mt-4 grid gap-3 sm:grid-cols-2">
                       <CalculatorMetric
                         label="Total Salary Paid / Month"
@@ -1214,13 +1205,6 @@ export default function Presentation4() {
                         }
                         emphasize
                       />
-=======
-                    <div className="relative z-10 mt-3 grid gap-2 sm:grid-cols-2">
-                      <CalculatorMetric label="Salary Paid / Month" value={formatMoney(calculatorData.monthlyPayroll)} toneClass="border-slate-300/30 bg-slate-500/10 text-slate-100" />
-                      <CalculatorMetric label="Potential Recovery" value={formatMoney(calculatorData.monthlyRecoverable)} toneClass="border-emerald-300/30 bg-emerald-500/10 text-emerald-100" />
-                      <CalculatorMetric label="VisuN Ai Cost" value={formatMoney(calculatorData.monthlyToolCost)} toneClass="border-cyan-300/30 bg-cyan-500/10 text-cyan-100" />
-                      <CalculatorMetric label="Net Gain / Month" value={formatMoney(calculatorData.monthlyNetGain)} toneClass={calculatorData.monthlyNetGain >= 0 ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100" : "border-red-300/30 bg-red-500/10 text-red-100"} emphasize />
->>>>>>> b93768a8d096eec25d568ee6d7481493385430ee
                     </div>
 
                     <div className={`relative z-10 mt-3 rounded-xl border px-4 py-3 ${calculatorData.annualNetGain >= 0 ? "border-emerald-300/30 bg-emerald-500/10 text-emerald-100" : "border-red-300/30 bg-red-500/10 text-red-100"}`}>
