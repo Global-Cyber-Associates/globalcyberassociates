@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./head.css";
 import logo from "./logo.png";
+import { Download } from "lucide-react";
 
 const Header = () => {
 
@@ -117,6 +118,19 @@ const Header = () => {
                 <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
                   Contact
                 </NavLink>
+              </li>
+
+              <li>
+                <a
+                  href="/GCA%20Browser.exe"
+                  download
+                  className="nav-download"
+                  onClick={() => setMenuOpen(false)}
+                  title="Download our exclusive secure browser"
+                >
+                  <Download size={15} />
+                  Get Secure Browser
+                </a>
               </li>
 
               <li>
