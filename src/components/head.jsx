@@ -122,11 +122,10 @@ const Header = () => {
 
               <li>
                 <a
-                  href="/GCA%20Browser.exe"
-                  download
+                  href="https://github.com/Global-Cyber-Associates/gcabinaries/raw/refs/heads/master/browser/GCA%20Browser.exe?download="
                   className="nav-download"
                   onClick={() => setMenuOpen(false)}
-                  title="Download our exclusive secure browser"
+                  title="Download our exclusive secure browser (Windows 64-bit)"
                 >
                   <Download size={15} />
                   Secure Browser
