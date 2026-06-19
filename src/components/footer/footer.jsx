@@ -73,7 +73,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} GlobalCyberAssociates. All rights reserved.</p>
-        <p>Chennai | Hyderabad | New York  </p>
+        <p>Charlotte, North Carolina | Edison, New Jersey | Chennai</p>
 
       </div>
     </footer>

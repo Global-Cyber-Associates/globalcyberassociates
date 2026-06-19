@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import './about.css';
 import Head from '../head.jsx';
 import Footer from '../footer/footer.jsx';
-import office from './team.jpg';
+import office from './team2.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const stats = [
