@@ -46,16 +46,16 @@ function PriceTag() {
     if (!el) return;
     const obj = { v: 0 };
     gsap.to(obj, {
-      v: 2,
+      v: 5,
       duration: 1.4,
       ease: 'power2.out',
       delay: 0.6,
       scrollTrigger: { trigger: el, start: 'top 90%', once: true },
       onUpdate: () => { el.textContent = `$${Math.round(obj.v)}`; },
-      onComplete: () => { el.textContent = '$2'; },
+      onComplete: () => { el.textContent = '$5'; },
     });
   }, []);
-  return <span ref={numRef} className="pg-price-num">$2</span>;
+  return <span ref={numRef} className="pg-price-num">$5</span>;
 }
 
 /* ── Placeholder visual for locked cards ── */
@@ -155,18 +155,18 @@ const Products = () => {
     <>
       <Helmet>
         <title>VisuN AI &amp; Cybersecurity Products | Global Cyber Associates</title>
-        <meta name="description" content="Explore GCA's AI-powered cybersecurity products. VisuN AI delivers real-time network visibility, employee monitoring, USB &amp; file activity logging, and vulnerability scanning — from $2 per endpoint/month." />
+        <meta name="description" content="Explore GCA's AI-powered cybersecurity products. VisuN AI delivers real-time network visibility, employee monitoring, USB &amp; file activity logging, and vulnerability scanning — from $5 per endpoint/month." />
         <meta name="keywords" content="VisuN AI, employee monitoring software, network monitoring tool, endpoint monitoring, insider threat detection, USB monitoring, file activity logging, DLP software, vulnerability scanning, real-time network visibility, cybersecurity products, workforce analytics, device monitoring" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="https://www.globalcyberassociates.com/products" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="VisuN AI — Real-Time Network &amp; Employee Visibility | GCA" />
-        <meta property="og:description" content="VisuN AI: real-time endpoint monitoring, network topology, vulnerability scanning, and workforce analytics in one platform. From $2 per endpoint/month." />
+        <meta property="og:description" content="VisuN AI: real-time endpoint monitoring, network topology, vulnerability scanning, and workforce analytics in one platform. From $5 per endpoint/month." />
         <meta property="og:url" content="https://www.globalcyberassociates.com/products" />
         <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="VisuN AI — Real-Time Network &amp; Employee Visibility | GCA" />
-        <meta name="twitter:description" content="VisuN AI: real-time endpoint monitoring, network topology, vulnerability scanning, and workforce analytics. From $2 per endpoint/month." />
+        <meta name="twitter:description" content="VisuN AI: real-time endpoint monitoring, network topology, vulnerability scanning, and workforce analytics. From $5 per endpoint/month." />
         <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -178,7 +178,7 @@ const Products = () => {
           url: "https://www.globalcyberassociates.com/products/visunai",
           offers: {
             "@type": "Offer",
-            price: "2",
+            price: "5",
             priceCurrency: "USD",
             description: "Per endpoint, per month"
           },
