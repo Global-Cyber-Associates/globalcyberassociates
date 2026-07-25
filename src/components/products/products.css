@@ -236,6 +236,12 @@
   margin-bottom: 0.2rem;
 }
 
+.pg-price-starts {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-bottom: 0.6rem;
+}
+
 .pg-featured-cta {
   display: inline-flex;
   align-items: center;

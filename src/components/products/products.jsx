@@ -51,11 +51,11 @@ function PriceTag() {
       ease: 'power2.out',
       delay: 0.6,
       scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-      onUpdate: () => { el.textContent = `$${Math.round(obj.v)}`; },
-      onComplete: () => { el.textContent = '$5'; },
+      onUpdate: () => { el.textContent = `${Math.round(obj.v)}$`; },
+      onComplete: () => { el.textContent = '5$'; },
     });
   }, []);
-  return <span ref={numRef} className="pg-price-num">$5</span>;
+  return <span ref={numRef} className="pg-price-num">5$</span>;
 }
 
 /* ── Placeholder visual for locked cards ── */
@@ -264,6 +264,7 @@ const Products = () => {
 
                 <div className="pg-featured-footer">
                   <div className="pg-price-block">
+                    <span className="pg-price-starts">Starts from</span>
                     <PriceTag />
                     <span className="pg-price-unit">per endpoint / mo</span>
                   </div>
