@@ -666,18 +666,18 @@ export default function VisunAIShowcase() {
 
       <Helmet>
         <title>VisuN AI — Employee &amp; Network Monitoring Software | Global Cyber Associates</title>
-        <meta name="description" content="VisuN AI is real-time employee and network monitoring software: live device visibility, user activity monitoring, USB &amp; file activity logging, insider threat detection, and vulnerability scanning. From $2 per endpoint/month." />
+        <meta name="description" content="VisuN AI is real-time employee and network monitoring software: live device visibility, user activity monitoring, USB &amp; file activity logging, insider threat detection, and vulnerability scanning. Starts from $5 per endpoint/month." />
         <meta name="keywords" content="VisuN AI, employee monitoring software, user activity monitoring, insider threat detection, endpoint monitoring, network monitoring tool, USB monitoring, file activity logging, DLP software, data loss prevention, remote workforce monitoring, employee productivity monitoring, UEBA, behavior analytics, real-time network visibility" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="https://www.globalcyberassociates.com/products/visunai" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="VisuN AI — Employee &amp; Network Monitoring Software | GCA" />
-        <meta property="og:description" content="See every device, every employee, every file — live. Insider threat detection, USB &amp; file logging, and vulnerability scanning from $2 per endpoint/month." />
+        <meta property="og:description" content="See every device, every employee, every file — live. Insider threat detection, USB &amp; file logging, and vulnerability scanning starts from $5 per endpoint/month." />
         <meta property="og:url" content="https://www.globalcyberassociates.com/products/visunai" />
         <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="VisuN AI — Employee &amp; Network Monitoring Software | GCA" />
-        <meta name="twitter:description" content="Real-time employee and network monitoring with insider threat detection. From $2 per endpoint/month." />
+        <meta name="twitter:description" content="Real-time employee and network monitoring with insider threat detection. Starts from $5 per endpoint/month." />
         <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
