@@ -57,7 +57,7 @@ const Footer = () => {
 
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>info@globalcyberassociates.com</p>
+          <p>ram@globalcyberassociates.com</p>
           <p>
             <a
               href="https://wa.me/918939851788"

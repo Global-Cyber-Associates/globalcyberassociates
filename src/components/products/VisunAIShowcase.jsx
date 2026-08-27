@@ -894,7 +894,7 @@ export default function VisunAIShowcase() {
             <a href={VISUNAI} target="_blank" rel="noopener noreferrer" className="va-btn-p">
               Start Free Trial <ArrowRight size={16} />
             </a>
-            <a href="mailto:info@globalcyberassociates.com?subject=VisuN AI Demo" className="va-btn-s">
+            <a href="mailto:ram@globalcyberassociates.com?subject=VisuN AI Demo" className="va-btn-s">
               Talk to Sales
             </a>
           </div>

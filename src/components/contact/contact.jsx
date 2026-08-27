@@ -10,18 +10,18 @@ const ContactPage = () => {
     <>
       <Helmet>
         <title>Contact Us | Global Cyber Associates</title>
-        <meta name="description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com or WhatsApp +91 89398 51788. We respond within one business day." />
+        <meta name="description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — ram@globalcyberassociates.com or WhatsApp +91 89398 51788. We respond within one business day." />
         <meta name="keywords" content="contact cybersecurity company, cybersecurity company Chennai contact, cybersecurity support, cybersecurity consultation, get cybersecurity quote, cybersecurity company USA contact" />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="https://www.globalcyberassociates.com/contact" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Contact Us | Global Cyber Associates" />
-        <meta property="og:description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com. We respond within one business day." />
+        <meta property="og:description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — ram@globalcyberassociates.com. We respond within one business day." />
         <meta property="og:url" content="https://www.globalcyberassociates.com/contact" />
         <meta property="og:image" content="https://www.globalcyberassociates.com/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Us | Global Cyber Associates" />
-        <meta name="twitter:description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — info@globalcyberassociates.com." />
+        <meta name="twitter:description" content="Get in touch with Global Cyber Associates. One point of contact for all enquiries — ram@globalcyberassociates.com." />
         <meta name="twitter:image" content="https://www.globalcyberassociates.com/logo.png" />
       </Helmet>
       <Header />
@@ -55,11 +55,11 @@ const ContactPage = () => {
                 <p className="contact-email-sub">
                   For all enquiries — services, products, partnerships, and general questions.
                 </p>
-                <a href="mailto:info@globalcyberassociates.com" className="contact-email-address">
-                  info@globalcyberassociates.com
+                <a href="mailto:ram@globalcyberassociates.com" className="contact-email-address">
+                  ram@globalcyberassociates.com
                 </a>
               </div>
-              <a href="mailto:info@globalcyberassociates.com" className="contact-email-btn">
+              <a href="mailto:ram@globalcyberassociates.com" className="contact-email-btn">
                 Send an Email
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />

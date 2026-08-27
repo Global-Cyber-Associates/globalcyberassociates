@@ -29,6 +29,71 @@ const compactCurrencyFormatter = new Intl.NumberFormat("en-IN", {
   maximumFractionDigits: 1,
 });
 
+const CALCULATOR_CURRENCY_OPTIONS = [
+  { code: "INR", label: "India - INR" },
+  { code: "USD", label: "United States - USD" },
+  { code: "GBP", label: "United Kingdom - GBP" },
+  { code: "EUR", label: "Ireland - EUR" },
+  { code: "AUD", label: "Australia - AUD" },
+  { code: "SGD", label: "Singapore - SGD" },
+  { code: "CAD", label: "Canada - CAD" },
+];
+
+const CALC_INR_PER_CURRENCY = {
+  INR: 1,
+  USD: 83,
+  GBP: 106,
+  EUR: 91,
+  AUD: 54,
+  SGD: 62,
+  CAD: 61,
+};
+
+const CALC_CURRENCY_LOCALES = {
+  INR: "en-IN",
+  USD: "en-US",
+  GBP: "en-GB",
+  EUR: "en-IE",
+  AUD: "en-AU",
+  SGD: "en-SG",
+  CAD: "en-CA",
+};
+
+const CALC_CURRENCY_FORMATTERS = Object.fromEntries(
+  CALCULATOR_CURRENCY_OPTIONS.map(({ code }) => [
+    code,
+    new Intl.NumberFormat(CALC_CURRENCY_LOCALES[code], {
+      style: "currency",
+      currency: code,
+      maximumFractionDigits: 0,
+    }),
+  ])
+);
+
+const CALC_COMPACT_CURRENCY_FORMATTERS = Object.fromEntries(
+  CALCULATOR_CURRENCY_OPTIONS.map(({ code }) => [
+    code,
+    new Intl.NumberFormat(CALC_CURRENCY_LOCALES[code], {
+      style: "currency",
+      currency: code,
+      notation: "compact",
+      maximumFractionDigits: 1,
+    }),
+  ])
+);
+
+function convertInrToCalcCurrency(value, currencyCode) {
+  const numericValue = Number(value) || 0;
+  const rate = CALC_INR_PER_CURRENCY[currencyCode] || 1;
+  return numericValue / rate;
+}
+
+function convertCalcCurrencyToInr(value, currencyCode) {
+  const numericValue = Number(value) || 0;
+  const rate = CALC_INR_PER_CURRENCY[currencyCode] || 1;
+  return numericValue * rate;
+}
+
 const CHART_COLORS = {
   cyan: "#22d3ee",
   blue: "#60a5fa",
@@ -102,6 +167,15 @@ export default function Presentation3() {
     recoveryPercent: 20,
     toolCostPerEmployee: 200,
   });
+  const [calculatorCurrency, setCalculatorCurrency] = useState("INR");
+  const formatCalcMoney = useCallback(
+    (valueInInr) =>
+      (
+        CALC_CURRENCY_FORMATTERS[calculatorCurrency] ||
+        CALC_CURRENCY_FORMATTERS.INR
+      ).format(convertInrToCalcCurrency(valueInInr, calculatorCurrency)),
+    [calculatorCurrency]
+  );
 
   const sampleInputs = useMemo(
     () => ({
@@ -416,29 +490,29 @@ export default function Presentation3() {
     () => [
       {
         name: "Loss",
-        value: calculatorResult.monthlyLoss,
+        value: convertInrToCalcCurrency(calculatorResult.monthlyLoss, calculatorCurrency),
         color: CHART_COLORS.amber,
       },
       {
         name: "Recovered",
-        value: calculatorResult.monthlyRecovered,
+        value: convertInrToCalcCurrency(calculatorResult.monthlyRecovered, calculatorCurrency),
         color: CHART_COLORS.green,
       },
       {
         name: "Cost",
-        value: calculatorResult.monthlyCost,
+        value: convertInrToCalcCurrency(calculatorResult.monthlyCost, calculatorCurrency),
         color: CHART_COLORS.blue,
       },
       {
         name: "Net",
-        value: calculatorResult.netMonthlyBenefit,
+        value: convertInrToCalcCurrency(calculatorResult.netMonthlyBenefit, calculatorCurrency),
         color:
           calculatorResult.netMonthlyBenefit >= 0
             ? CHART_COLORS.cyan
             : CHART_COLORS.red,
       },
     ],
-    [calculatorResult]
+    [calculatorResult, calculatorCurrency]
   );
 
   return (
@@ -490,9 +564,23 @@ export default function Presentation3() {
             {active.type === "calculator" && (
               <div className="mt-5 grid gap-5 xl:grid-cols-[1fr_1.05fr]">
                 <div className="rounded-2xl border border-white/10 bg-slate-950/55 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100/90">
-                    Your Inputs
-                  </p>
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100/90">
+                      Your Inputs
+                    </p>
+                    <select
+                      value={calculatorCurrency}
+                      onChange={(event) => setCalculatorCurrency(event.target.value)}
+                      aria-label="Calculator currency"
+                      className="rounded-lg border border-white/15 bg-slate-900/80 px-2 py-1 text-xs font-semibold text-slate-100 outline-none transition focus:border-cyan-300/60"
+                    >
+                      {CALCULATOR_CURRENCY_OPTIONS.map((option) => (
+                        <option key={option.code} value={option.code}>
+                          {option.code}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
                   <div className="mt-4 space-y-4">
                     <NumberRow
@@ -505,23 +593,48 @@ export default function Presentation3() {
                       }
                     />
                     <NumberRow
-                      label="Average Salary Per Employee"
-                      value={calculator.avgSalary}
-                      min={1000}
-                      step={500}
-                      onChange={(value) =>
-                        setCalculator((prev) => ({ ...prev, avgSalary: value }))
-                      }
-                    />
-                    <NumberRow
-                      label="Tool Cost Per System"
-                      value={calculator.toolCostPerEmployee}
-                      min={0}
-                      step={10}
+                      label={`Average Salary Per Employee (${calculatorCurrency})`}
+                      value={Number(
+                        convertInrToCalcCurrency(
+                          calculator.avgSalary,
+                          calculatorCurrency
+                        ).toFixed(0)
+                      )}
+                      min={Math.round(convertInrToCalcCurrency(1000, calculatorCurrency))}
+                      step={Math.max(
+                        1,
+                        Math.round(convertInrToCalcCurrency(500, calculatorCurrency))
+                      )}
                       onChange={(value) =>
                         setCalculator((prev) => ({
                           ...prev,
-                          toolCostPerEmployee: value,
+                          avgSalary: Math.max(
+                            Math.round(convertCalcCurrencyToInr(value, calculatorCurrency)),
+                            0
+                          ),
+                        }))
+                      }
+                    />
+                    <NumberRow
+                      label={`Tool Cost Per System (${calculatorCurrency})`}
+                      value={Number(
+                        convertInrToCalcCurrency(
+                          calculator.toolCostPerEmployee,
+                          calculatorCurrency
+                        ).toFixed(0)
+                      )}
+                      min={0}
+                      step={Math.max(
+                        1,
+                        Math.round(convertInrToCalcCurrency(10, calculatorCurrency))
+                      )}
+                      onChange={(value) =>
+                        setCalculator((prev) => ({
+                          ...prev,
+                          toolCostPerEmployee: Math.max(
+                            Math.round(convertCalcCurrencyToInr(value, calculatorCurrency)),
+                            0
+                          ),
                         }))
                       }
                     />
@@ -566,7 +679,7 @@ export default function Presentation3() {
                       Total Salary Loss Per Month
                     </p>
                     <p className="mt-1 text-4xl font-black text-red-100 md:text-5xl">
-                      {formatMoney(calculatorResult.monthlyLoss)}
+                      {formatCalcMoney(calculatorResult.monthlyLoss)}
                     </p>
                   </div>
 
@@ -575,26 +688,30 @@ export default function Presentation3() {
                       Loss vs Recovery vs Cost
                     </p>
                     <div className="mt-2 h-32">
-                      <ValueBarChart data={calculatorChartData} unit="currency" />
+                      <ValueBarChart
+                        data={calculatorChartData}
+                        unit="currency"
+                        currencyCode={calculatorCurrency}
+                      />
                     </div>
                   </div>
 
                   <div className="mt-3 divide-y divide-white/10">
                     <ResultRow
                       label="Monthly Payroll"
-                      value={formatMoney(calculatorResult.monthlyPayroll)}
+                      value={formatCalcMoney(calculatorResult.monthlyPayroll)}
                     />
                     <ResultRow
                       label="Value Recovered Per Month"
-                      value={formatMoney(calculatorResult.monthlyRecovered)}
+                      value={formatCalcMoney(calculatorResult.monthlyRecovered)}
                     />
                     <ResultRow
                       label="Tool Cost Per Month"
-                      value={formatMoney(calculatorResult.monthlyCost)}
+                      value={formatCalcMoney(calculatorResult.monthlyCost)}
                     />
                     <ResultRow
                       label="Net Gain Per Month"
-                      value={formatMoney(calculatorResult.netMonthlyBenefit)}
+                      value={formatCalcMoney(calculatorResult.netMonthlyBenefit)}
                       emphasize
                     />
                     <ResultRow
@@ -771,7 +888,7 @@ function ChartCard({ chart, fullHeight = false }) {
   );
 }
 
-function ValueBarChart({ data, unit = "currency" }) {
+function ValueBarChart({ data, unit = "currency", currencyCode }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data}>
@@ -779,10 +896,10 @@ function ValueBarChart({ data, unit = "currency" }) {
         <XAxis dataKey="name" tick={{ fill: "#cbd5e1", fontSize: 11 }} />
         <YAxis
           tick={{ fill: "#cbd5e1", fontSize: 11 }}
-          tickFormatter={(value) => formatAxisValue(value, unit)}
+          tickFormatter={(value) => formatAxisValue(value, unit, currencyCode)}
         />
         <Tooltip
-          formatter={(value) => formatChartValue(Number(value), unit)}
+          formatter={(value) => formatChartValue(Number(value), unit, currencyCode)}
           contentStyle={tooltipStyle}
         />
         <Bar dataKey="value" radius={[8, 8, 0, 0]}>
@@ -805,13 +922,24 @@ const tooltipStyle = {
   color: "#e2e8f0",
 };
 
-function formatAxisValue(value, unit) {
+function formatAxisValue(value, unit, currencyCode) {
   if (unit === "percent") return `${Number(value).toFixed(0)}%`;
+  if (currencyCode) {
+    return (
+      CALC_COMPACT_CURRENCY_FORMATTERS[currencyCode] ||
+      CALC_COMPACT_CURRENCY_FORMATTERS.INR
+    ).format(value);
+  }
   return formatCompactMoney(value);
 }
 
-function formatChartValue(value, unit) {
+function formatChartValue(value, unit, currencyCode) {
   if (unit === "percent") return `${Number(value).toFixed(1)}%`;
+  if (currencyCode) {
+    return (
+      CALC_CURRENCY_FORMATTERS[currencyCode] || CALC_CURRENCY_FORMATTERS.INR
+    ).format(value);
+  }
   return formatMoney(value);
 }
 

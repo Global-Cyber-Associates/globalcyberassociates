@@ -109,7 +109,7 @@ const Brief = () => {
               </div>
               <div className="contact-item">
                 <span className="contact-label">✉️ Email:</span>{' '}
-                <a href="mailto:info@globalcyberassociates.com">info@globalcyberassociates.com</a>
+                <a href="mailto:ram@globalcyberassociates.com">ram@globalcyberassociates.com</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">🌐 Website:</span>{' '}

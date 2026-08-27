@@ -6,7 +6,7 @@ const branchLocations = [
     state: "North Carolina",
     zip: "28277",
     country: "United States",
-    email: "info@globalcyberassociates.com",
+    email: "ram@globalcyberassociates.com",
   },
   {
     title: "R&D | Sales",
@@ -15,7 +15,7 @@ const branchLocations = [
     state: "New Jersey",
     zip: "08817",
     country: "United States",
-    email: "info@globalcyberassociates.com",
+    email: "ram@globalcyberassociates.com",
   },
   {
     title: "Engineering | Sales",
@@ -24,7 +24,7 @@ const branchLocations = [
     state: "Tamil Nadu",
     zip: "600090",
     country: "India",
-    email: "info@globalcyberassociates.com",
+    email: "ram@globalcyberassociates.com",
   }
 ];
 

@@ -319,7 +319,7 @@ const Products = () => {
                 <div className="pg-locked-footer">
                   <span className="pg-price-tbd">TBD</span>
                   <a
-                    href={`mailto:info@globalcyberassociates.com?subject=Product Interest: ${p.name}`}
+                    href={`mailto:ram@globalcyberassociates.com?subject=Product Interest: ${p.name}`}
                     className="pg-notify-btn"
                     onClick={e => e.stopPropagation()}
                   >

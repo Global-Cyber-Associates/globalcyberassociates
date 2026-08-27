@@ -162,7 +162,7 @@ const CareersPage = () => {
 
             <div className="cp-no-role">
               <p>Don't see a fit?</p>
-              <a href="mailto:info@globalcyberassociates.com" className="cp-link">
+              <a href="mailto:ram@globalcyberassociates.com" className="cp-link">
                 Send us your CV anyway →
               </a>
             </div>

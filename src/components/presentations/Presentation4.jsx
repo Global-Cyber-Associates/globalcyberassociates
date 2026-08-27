@@ -1,54 +1,59 @@
 import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import {
+  Activity,
   ArrowLeft,
   ArrowRight,
+  BellRing,
+  DollarSign,
+  Globe,
+  Lock,
+  Monitor,
+  ShieldAlert,
+  Usb,
+  Users,
   X,
 } from "lucide-react";
 import logo from "../logo.png";
-import slide1TlImage from "./assets/slide1 Tl.jpg";
-import slide2TlImage from "./assets/slide2-TL.png";
 import slide1DeveloperImage from "./assets/slide1-developer.jpg";
 import slide2DeveloperImage from "./assets/Deloperslide2.png";
 import slide1RemoteImage from "./assets/Remoteslide1.png";
 import slide2RemoteImage from "./assets/Remoteslide2.png";
-import slide1SalesImage from "./assets/slide1-sales.jpg";
-import slide2SalesImage from "./assets/sales2 slide.png";
+
+const TEAM_PHOTOS = {
+  rohan:
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+  aarav:
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+  meera:
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+  priya:
+    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+};
 
 const slideOneCards = [
   {
-    word: "Manager",
-    image: slide1TlImage,
-  },
-  {
-    word: "Operational Staff",
+    word: "Office",
     image: slide1DeveloperImage,
+    teamPhoto: TEAM_PHOTOS.rohan,
   },
   {
-    word: "Sales",
-    image: slide1SalesImage,
-  },
-  {
-    word: "Remote Employee",
+    word: "WFH",
     image: slide1RemoteImage,
+    teamPhoto: TEAM_PHOTOS.aarav,
   },
 ];
 
 const slideTwoCards = [
   {
-    word: "Manager",
-    image: slide2TlImage,
-  },
-  {
-    word: "Operational Staff",
+    word: "Office",
     image: slide2DeveloperImage,
+    teamPhoto: TEAM_PHOTOS.meera,
   },
   {
-    word: "Sales",
-    image: slide2SalesImage,
-  },
-  {
-    word: "Remote Employee",
+    word: "WFH",
     image: slide2RemoteImage,
+    teamPhoto: TEAM_PHOTOS.priya,
   },
 ];
 
@@ -137,14 +142,6 @@ const CALCULATOR_ASSUMPTIONS = {
   toolCostPerEmployee: 150,
   paidHoursPerDay: 8,
   workingDaysPerMonth: 22,
-};
-
-const SLIDE7_STATIC = {
-  systemCostPerMonth: 150,
-  averageSalaryPerMonth: 30000,
-  wastedHoursPerDay: 4,
-  monthlySalaryWaste: 15000,
-  recoveryPercent: 50,
 };
 
 function timeToMinutes(timeValue) {
@@ -239,6 +236,8 @@ function calculateBusinessImpact(
 }
 
 export default function Presentation4() {
+  const MotionArticle = motion.article;
+  const MotionDiv = motion.div;
   const slides = useMemo(
     () => [
       {
@@ -377,31 +376,55 @@ export default function Presentation4() {
             title: "See Any Screen in One Click",
             sentence:
               "Open any employee screen instantly from your desk.",
+            icon: Monitor,
           },
           {
             title: "Know Who Is Working and Who Is Stuck",
             sentence:
               "See productive time and idle time clearly, every day.",
+            icon: Activity,
           },
           {
             title: "Find Time-Wasting Apps and Websites",
             sentence:
               "Spot distractions quickly and bring focus back to real work.",
+            icon: Globe,
+          },
+          {
+            title: "Catch USB and File Risks Instantly",
+            sentence:
+              "Get alerted the moment a USB drive connects or a sensitive file is copied, with a full audit trail.",
+            icon: Usb,
+          },
+          {
+            title: "Spot Weak Points Before Attackers Do",
+            sentence:
+              "Automatic vulnerability scanning with CVE risk scoring across your endpoints.",
+            icon: ShieldAlert,
           },
           {
             title: "See How Lost Time Becomes Lost Money",
             sentence:
               "Understand monthly money loss from unproductive hours.",
+            icon: DollarSign,
           },
           {
             title: "Get Alerts Before Work Falls Behind",
             sentence:
               "Receive early warnings so you can act before deadlines are missed.",
+            icon: BellRing,
           },
           {
             title: "View Full Team or One Employee",
             sentence:
               "View analytics for the entire organization or one particular employee.",
+            icon: Users,
+          },
+          {
+            title: "Control Who Sees What",
+            sentence:
+              "Role-based access keeps sensitive data visible only to the right people.",
+            icon: Lock,
           },
         ],
       },
@@ -429,17 +452,9 @@ export default function Presentation4() {
         ],
       },
       {
-        id: "pricing-preview",
-        type: "pricing-preview",
-        label: "Slide 8",
-        title: "Why Invest in VisuN AI?",
-        subtitle:
-          "A small monthly system cost can recover a much larger salary loss.",
-      },
-      {
         id: "calculator",
         type: "impact-calculator",
-        label: "Slide 9",
+        label: "Slide 8",
         title: "ROI Calculator",
         subtitle:
           "Enter employees and average salary.",
@@ -453,7 +468,7 @@ export default function Presentation4() {
         hook: "If your team saves even one extra productive hour per person daily, your monthly output changes dramatically.",
         thanks: "Thank you for your time.",
         contactPrompt: "Let us connect and plan your rollout.",
-        contactEmail: "info@globalcyberassociates.com",
+        contactEmail: "ram@globalcyberassociates.com",
         contactPhone: "+91 89398 51788",
         contactWebsite: "globalcyberassociates.com",
       },
@@ -571,16 +586,6 @@ export default function Presentation4() {
       ),
     [calculatorEmployees, calculatorAvgSalary, calculatorLostHoursPerDay]
   );
-  const slide7RecoveredAmount = Math.round(
-    (SLIDE7_STATIC.monthlySalaryWaste * SLIDE7_STATIC.recoveryPercent) / 100
-  );
-  const slide7NetRecoveryAfterCost =
-    slide7RecoveredAmount - SLIDE7_STATIC.systemCostPerMonth;
-  const slide7RecoveryMultiple =
-    SLIDE7_STATIC.systemCostPerMonth > 0
-      ? slide7NetRecoveryAfterCost / SLIDE7_STATIC.systemCostPerMonth
-      : 0;
-
   useEffect(() => {
     const onKeyDown = (event) => {
       if (isCurrencyModalOpen) {
@@ -700,15 +705,19 @@ export default function Presentation4() {
 
             {activeSlide.type === "image-grid" && (
               <section className="w-full flex items-center justify-center">
-                <div className="w-full max-w-[1500px]">
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-                    {activeSlide.cards.map((card) => (
-                      <article
+                <div className="w-full max-w-2xl">
+                  <div className="grid grid-cols-2 gap-6 sm:gap-10">
+                    {activeSlide.cards.map((card, index) => (
+                      <MotionArticle
                         key={`${activeSlide.id}-${card.word}`}
-                        className="group"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.15 }}
+                        whileHover={{ y: -4 }}
+                        className="group relative mx-auto w-full max-w-[210px] pb-4 pr-4 sm:max-w-[250px]"
                       >
-                        <div className="overflow-hidden rounded-2xl border border-white/15 bg-slate-900/60">
-                          <div className="relative aspect-[4/3] overflow-hidden">
+                        <div className="overflow-hidden rounded-2xl border border-white/15 bg-slate-900/60 shadow-[0_18px_50px_rgba(2,6,23,0.45)] transition duration-500 group-hover:border-cyan-300/40 group-hover:shadow-[0_18px_60px_rgba(8,145,178,0.25)]">
+                          <div className="relative aspect-square overflow-hidden">
                             <img
                               src={card.image}
                               alt={card.word}
@@ -717,18 +726,34 @@ export default function Presentation4() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                           </div>
                         </div>
+
+                        {card.teamPhoto && (
+                          <MotionDiv
+                            initial={{ opacity: 0, scale: 0.7 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.4, delay: index * 0.15 + 0.3 }}
+                            className="absolute bottom-1 right-1 h-14 w-14 overflow-hidden rounded-full border-[3px] border-slate-950 shadow-[0_8px_20px_rgba(2,6,23,0.5)] sm:h-16 sm:w-16"
+                          >
+                            <img
+                              src={card.teamPhoto}
+                              alt={`${card.word} team member`}
+                              className="h-full w-full object-cover"
+                            />
+                          </MotionDiv>
+                        )}
+
                         <span
-                          className={`mt-2 inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${activeSlide.badgeClass}`}
+                          className={`mt-2 flex justify-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${activeSlide.badgeClass}`}
                         >
                           {card.word}
                         </span>
-                      </article>
+                      </MotionArticle>
                     ))}
                   </div>
 
                   {(activeSlide.hookTag || activeSlide.hookText) && (
                     <div
-                      className={`mt-5 rounded-xl border px-4 py-3 ${activeSlide.hookClass || "border-white/15 bg-slate-900/65 text-slate-100"}`}
+                      className={`mt-6 rounded-xl border px-4 py-3 ${activeSlide.hookClass || "border-white/15 bg-slate-900/65 text-slate-100"}`}
                     >
                       <p className="text-xs font-semibold uppercase tracking-[0.14em] opacity-90">
                         {activeSlide.hookTag}
@@ -975,90 +1000,31 @@ export default function Presentation4() {
               <section className="w-full flex items-center justify-center">
                 <div className="w-full max-w-7xl">
                   <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                    {activeSlide.items.map((item, index) => (
-                      <article
-                        key={item.title}
-                        className="h-full rounded-2xl border border-[var(--border-muted)] bg-[var(--background-card)] p-5 shadow-md transition hover:border-[var(--accent-color)]"
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <h2 className="text-base font-bold leading-snug tracking-tight text-[var(--white-smoke)] md:text-lg">
-                            {item.title}
-                          </h2>
-                          <span className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-[var(--accent-border-mid)] bg-[var(--accent-bg-mid)] text-xs font-bold text-[var(--light-blue)]">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-                        </div>
-                        <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)] md:text-[0.95rem]">
-                          {item.sentence}
-                        </p>
-                      </article>
-                    ))}
+                    {activeSlide.items.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <article
+                          key={item.title}
+                          className="h-full rounded-2xl border border-[var(--border-muted)] bg-[var(--background-card)] p-5 shadow-md transition hover:border-[var(--accent-color)]"
+                        >
+                          <div className="flex items-center gap-3">
+                            {Icon && (
+                              <span className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-[var(--accent-border-mid)] bg-[var(--accent-bg-mid)] text-[var(--light-blue)]">
+                                <Icon size={22} strokeWidth={2} />
+                              </span>
+                            )}
+                            <h2 className="text-base font-bold leading-snug tracking-tight text-[var(--white-smoke)] md:text-lg">
+                              {item.title}
+                            </h2>
+                          </div>
+                          <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)] md:text-[0.95rem]">
+                            {item.sentence}
+                          </p>
+                        </article>
+                      );
+                    })}
                   </div>
                 </div>
-              </section>
-            )}
-
-            {activeSlide.type === "pricing-preview" && (
-              <section className="w-full flex items-center justify-center">
-                <article className="w-full max-w-7xl rounded-[2rem] border border-cyan-300/25 bg-slate-900/70 p-5 shadow-[0_24px_80px_rgba(8,145,178,0.16)] md:p-7">
-                  <div className="grid gap-5 md:grid-cols-3">
-                    <BigValueCard
-                      label="Salary Paid / Employee"
-                      value={formatMoney(SLIDE7_STATIC.averageSalaryPerMonth)}
-                      toneClass="border-white/20 bg-slate-900/70 text-slate-100"
-                    />
-                    <BigValueCard
-                      label="Non-Productive Time"
-                      value={`${SLIDE7_STATIC.wastedHoursPerDay}h/day`}
-                      toneClass="border-amber-300/35 bg-amber-500/10 text-amber-100"
-                    />
-                    <BigValueCard
-                      label="Salary Loss / Month"
-                      value={formatMoney(SLIDE7_STATIC.monthlySalaryWaste)}
-                      toneClass="border-red-300/35 bg-red-500/10 text-red-100"
-                    />
-                  </div>
-
-                  <div className="mt-5 grid gap-5 md:grid-cols-3">
-                    <BigValueCard
-                      label="VisuN AI Cost / System"
-                      value={`${formatMoney(SLIDE7_STATIC.systemCostPerMonth)}/system`}
-                      toneClass="border-cyan-300/35 bg-cyan-500/10 text-cyan-100"
-                    />
-                    <BigValueCard
-                      label="Recoverable Value (50%)"
-                      value={formatMoney(slide7RecoveredAmount)}
-                      toneClass="border-emerald-300/35 bg-emerald-500/10 text-emerald-100"
-                    />
-                    <BigValueCard
-                      label="Net Value Recovered"
-                      value={formatMoney(slide7NetRecoveryAfterCost)}
-                      toneClass="border-lime-300/35 bg-lime-500/10 text-lime-100"
-                    />
-                  </div>
-
-                  <div className="mt-5 rounded-xl border border-white/10 bg-slate-950/60 px-4 py-4">
-                    <p className="text-base leading-relaxed text-slate-200">
-                      VisuN AI costs{" "}
-                      <span className="font-bold text-cyan-100">
-                        {formatMoney(SLIDE7_STATIC.systemCostPerMonth)}
-                      </span>{" "}
-                      per system. In this example, it can recover{" "}
-                      <span className="font-bold text-emerald-100">
-                        {formatMoney(slide7RecoveredAmount)}
-                      </span>
-                      , resulting in a net monthly recovery of{" "}
-                      <span className="font-bold text-lime-100">
-                        {formatMoney(slide7NetRecoveryAfterCost)}
-                      </span>
-                      . That is about{" "}
-                      <span className="font-bold text-lime-100">
-                        {slide7RecoveryMultiple.toFixed(1)}x
-                      </span>{" "}
-                      return over system cost every month.
-                    </p>
-                  </div>
-                </article>
               </section>
             )}
 
@@ -1377,23 +1343,6 @@ export default function Presentation4() {
         <ArrowRight size={18} />
       </button>
     </div>
-  );
-}
-
-function BigValueCard({
-  label,
-  value,
-  note = "",
-  toneClass = "border-white/10 bg-slate-950/55 text-slate-100",
-}) {
-  return (
-    <article className={`rounded-xl border px-4 py-4 ${toneClass}`}>
-      <p className="whitespace-nowrap text-xs uppercase tracking-[0.13em] opacity-90">
-        {label}
-      </p>
-      <p className="mt-2 text-3xl font-black md:text-4xl">{value}</p>
-      {note && <p className="mt-2 text-sm opacity-85">{note}</p>}
-    </article>
   );
 }
 

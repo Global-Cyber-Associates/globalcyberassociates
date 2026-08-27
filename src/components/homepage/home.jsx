@@ -20,7 +20,7 @@ const orgSchema = {
   logo: `${SITE_URL}/logo.png`,
   contactPoint: {
     "@type": "ContactPoint",
-    email: "info@globalcyberassociates.com",
+    email: "ram@globalcyberassociates.com",
     contactType: "customer support"
   },
   sameAs: []
