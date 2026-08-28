@@ -7,9 +7,9 @@ import {
   BellRing,
   DollarSign,
   Globe,
+  ImagePlus,
   Lock,
   Monitor,
-  ShieldAlert,
   Usb,
   Users,
   X,
@@ -33,27 +33,27 @@ const TEAM_PHOTOS = {
 
 const slideOneCards = [
   {
-    word: "Office",
-    image: slide1DeveloperImage,
-    teamPhoto: TEAM_PHOTOS.rohan,
+    word: "Branch A",
+    onsitePhoto: slide1DeveloperImage,
+    wfhPhoto: slide1RemoteImage,
   },
   {
-    word: "WFH",
-    image: slide1RemoteImage,
-    teamPhoto: TEAM_PHOTOS.aarav,
+    word: "Branch B",
+    onsitePhoto: null,
+    wfhPhoto: TEAM_PHOTOS.aarav,
   },
 ];
 
 const slideTwoCards = [
   {
-    word: "Office",
-    image: slide2DeveloperImage,
-    teamPhoto: TEAM_PHOTOS.meera,
+    word: "Branch A",
+    onsitePhoto: slide2DeveloperImage,
+    wfhPhoto: slide2RemoteImage,
   },
   {
-    word: "WFH",
-    image: slide2RemoteImage,
-    teamPhoto: TEAM_PHOTOS.priya,
+    word: "Branch B",
+    onsitePhoto: null,
+    wfhPhoto: TEAM_PHOTOS.priya,
   },
 ];
 
@@ -196,7 +196,8 @@ function formatHours(value) {
 function calculateBusinessImpact(
   employeeCount,
   avgSalaryPerEmployee,
-  lostHoursPerDay = CALCULATOR_ASSUMPTIONS.nonProductiveHoursPerDay
+  lostHoursPerDay = CALCULATOR_ASSUMPTIONS.nonProductiveHoursPerDay,
+  toolCostPerEmployee = CALCULATOR_ASSUMPTIONS.toolCostPerEmployee
 ) {
   const employees = Math.max(Number(employeeCount) || 0, 0);
   const salaryPerEmployee = Math.max(Number(avgSalaryPerEmployee) || 0, 0);
@@ -207,14 +208,17 @@ function calculateBusinessImpact(
     ),
     0
   );
+  const selectedToolCostPerEmployee = Math.max(
+    Number(toolCostPerEmployee) || 0,
+    0
+  );
   const monthlyPayroll = employees * salaryPerEmployee;
   const nonProductivePercent =
     selectedLostHoursPerDay / CALCULATOR_ASSUMPTIONS.paidHoursPerDay;
   const monthlyLoss = monthlyPayroll * nonProductivePercent;
   const monthlyRecoverable =
     monthlyLoss * (CALCULATOR_ASSUMPTIONS.recoveryRatePercent / 100);
-  const monthlyToolCost =
-    employees * CALCULATOR_ASSUMPTIONS.toolCostPerEmployee;
+  const monthlyToolCost = employees * selectedToolCostPerEmployee;
   const monthlyNetGain = monthlyRecoverable - monthlyToolCost;
   const annualNetGain = monthlyNetGain * 12;
   const monthlyWastedHours =
@@ -237,7 +241,6 @@ function calculateBusinessImpact(
 
 export default function Presentation4() {
   const MotionArticle = motion.article;
-  const MotionDiv = motion.div;
   const slides = useMemo(
     () => [
       {
@@ -397,12 +400,6 @@ export default function Presentation4() {
             icon: Usb,
           },
           {
-            title: "Spot Weak Points Before Attackers Do",
-            sentence:
-              "Automatic vulnerability scanning with CVE risk scoring across your endpoints.",
-            icon: ShieldAlert,
-          },
-          {
             title: "See How Lost Time Becomes Lost Money",
             sentence:
               "Understand monthly money loss from unproductive hours.",
@@ -487,6 +484,8 @@ export default function Presentation4() {
   const [calculatorLostHoursPerDay, setCalculatorLostHoursPerDay] = useState(
     CALCULATOR_ASSUMPTIONS.nonProductiveHoursPerDay
   );
+  const [calculatorToolCostPerEmployee, setCalculatorToolCostPerEmployee] =
+    useState(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee);
   const formatMoney = (valueInInr) =>
     formatCurrency(valueInInr, selectedCurrency);
   const selectedCurrencySymbol = getCurrencySymbol(selectedCurrency);
@@ -497,6 +496,12 @@ export default function Presentation4() {
     convertInrToCurrency(calculatorAvgSalary, selectedCurrency).toFixed(
       selectedCurrencyInputConfig.decimals
     )
+  );
+  const calculatorToolCostDisplayValue = Number(
+    convertInrToCurrency(
+      calculatorToolCostPerEmployee,
+      selectedCurrency
+    ).toFixed(selectedCurrencyInputConfig.decimals)
   );
   const activeSlide = slides[currentSlide];
   const totalSlides = slides.length;
@@ -582,9 +587,15 @@ export default function Presentation4() {
       calculateBusinessImpact(
         calculatorEmployees,
         calculatorAvgSalary,
-        calculatorLostHoursPerDay
+        calculatorLostHoursPerDay,
+        calculatorToolCostPerEmployee
       ),
-    [calculatorEmployees, calculatorAvgSalary, calculatorLostHoursPerDay]
+    [
+      calculatorEmployees,
+      calculatorAvgSalary,
+      calculatorLostHoursPerDay,
+      calculatorToolCostPerEmployee,
+    ]
   );
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -705,8 +716,8 @@ export default function Presentation4() {
 
             {activeSlide.type === "image-grid" && (
               <section className="w-full flex items-center justify-center">
-                <div className="w-full max-w-2xl">
-                  <div className="grid grid-cols-2 gap-6 sm:gap-10">
+                <div className="w-full max-w-5xl">
+                  <div className="grid grid-cols-2 gap-8 sm:gap-14">
                     {activeSlide.cards.map((card, index) => (
                       <MotionArticle
                         key={`${activeSlide.id}-${card.word}`}
@@ -714,39 +725,51 @@ export default function Presentation4() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.15 }}
                         whileHover={{ y: -4 }}
-                        className="group relative mx-auto w-full max-w-[210px] pb-4 pr-4 sm:max-w-[250px]"
+                        className="group mx-auto w-full max-w-[360px] sm:max-w-[440px]"
                       >
-                        <div className="overflow-hidden rounded-2xl border border-white/15 bg-slate-900/60 shadow-[0_18px_50px_rgba(2,6,23,0.45)] transition duration-500 group-hover:border-cyan-300/40 group-hover:shadow-[0_18px_60px_rgba(8,145,178,0.25)]">
-                          <div className="relative aspect-square overflow-hidden">
-                            <img
-                              src={card.image}
-                              alt={card.word}
-                              className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                        <div className="rounded-2xl border border-white/15 bg-slate-900/60 p-1.5 shadow-[0_18px_50px_rgba(2,6,23,0.45)] transition duration-500 group-hover:border-cyan-300/40 group-hover:shadow-[0_18px_60px_rgba(8,145,178,0.25)]">
+                          <span
+                            className={`mb-1.5 flex justify-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${activeSlide.badgeClass}`}
+                          >
+                            {card.word}
+                          </span>
+
+                          <div className="grid grid-cols-2 gap-1.5">
+                            {card.onsitePhoto ? (
+                              <div className="relative aspect-square overflow-hidden rounded-xl">
+                                <img
+                                  src={card.onsitePhoto}
+                                  alt={`${card.word} onsite`}
+                                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                                <span className="absolute bottom-1 left-1 right-1 rounded-md bg-slate-950/70 px-1.5 py-0.5 text-center text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-100">
+                                  Onsite
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="relative flex aspect-square flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl border border-dashed border-white/25 bg-slate-950/60 text-slate-400">
+                                <ImagePlus size={22} strokeWidth={1.5} />
+                                <span className="text-[9px] font-semibold uppercase tracking-[0.1em]">
+                                  Onsite
+                                </span>
+                              </div>
+                            )}
+                            {card.wfhPhoto && (
+                              <div className="relative aspect-square overflow-hidden rounded-xl">
+                                <img
+                                  src={card.wfhPhoto}
+                                  alt={`${card.word} WFH`}
+                                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                                <span className="absolute bottom-1 left-1 right-1 rounded-md bg-slate-950/70 px-1.5 py-0.5 text-center text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-100">
+                                  WFH
+                                </span>
+                              </div>
+                            )}
                           </div>
                         </div>
-
-                        {card.teamPhoto && (
-                          <MotionDiv
-                            initial={{ opacity: 0, scale: 0.7 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: index * 0.15 + 0.3 }}
-                            className="absolute bottom-1 right-1 h-14 w-14 overflow-hidden rounded-full border-[3px] border-slate-950 shadow-[0_8px_20px_rgba(2,6,23,0.5)] sm:h-16 sm:w-16"
-                          >
-                            <img
-                              src={card.teamPhoto}
-                              alt={`${card.word} team member`}
-                              className="h-full w-full object-cover"
-                            />
-                          </MotionDiv>
-                        )}
-
-                        <span
-                          className={`mt-2 flex justify-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${activeSlide.badgeClass}`}
-                        >
-                          {card.word}
-                        </span>
                       </MotionArticle>
                     ))}
                   </div>
@@ -1079,6 +1102,27 @@ export default function Presentation4() {
 
                       <label className="block">
                         <p className="mb-1 text-[11px] uppercase tracking-[0.13em] text-slate-300">
+                          VisuN AI Cost / Employee / Month ({selectedCurrency})
+                        </p>
+                        <input
+                          type="number"
+                          min={0}
+                          step={calculatorSalaryStep}
+                          value={calculatorToolCostDisplayValue}
+                          onChange={(event) => {
+                            const parsed = Number(event.target.value);
+                            setCalculatorToolCostPerEmployee(
+                              Number.isFinite(parsed)
+                                ? Math.max(Math.round(convertCurrencyToInr(parsed, selectedCurrency)), 0)
+                                : 0
+                            );
+                          }}
+                          className="w-full rounded-xl border border-white/15 bg-slate-950/80 px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-cyan-300/60"
+                        />
+                      </label>
+
+                      <label className="block">
+                        <p className="mb-1 text-[11px] uppercase tracking-[0.13em] text-slate-300">
                           Lost Hours / Employee / Day
                         </p>
                         <div className="flex items-center gap-3">
@@ -1116,7 +1160,7 @@ export default function Presentation4() {
                       />
                       <AssumptionPill
                         label="VisuN AI Cost / Employee"
-                        value={`${formatMoney(CALCULATOR_ASSUMPTIONS.toolCostPerEmployee)}/employee`}
+                        value={`${formatMoney(calculatorToolCostPerEmployee)}/employee`}
                       />
                       <AssumptionPill
                         label="Working Days / Month"
