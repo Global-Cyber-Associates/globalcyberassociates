@@ -103,6 +103,12 @@ const Header = () => {
               </li>
 
               <li>
+                <NavLink to="/news" onClick={() => setMenuOpen(false)}>
+                  News
+                </NavLink>
+              </li>
+
+              <li>
                 <NavLink to="/about" onClick={() => setMenuOpen(false)}>
                   About
                 </NavLink>
