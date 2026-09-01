@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
+import { Newspaper } from "lucide-react";
 import Header from "../components/head";
 import Footer from "../components/footer/footer";
 import { buildBlogsIndex, getSiteUrl, toAbsoluteUrl } from "./blogUtils";
@@ -34,30 +35,21 @@ function buildBlogSchema(siteUrl, items) {
 function Blog() {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("latest");
-  const [activeTag, setActiveTag] = useState("All");
   const siteUrl = getSiteUrl();
   const canonicalUrl = `${siteUrl}/blog`;
-
-  // Auto-generate tag list from all blog posts
-  const allTags = useMemo(() => {
-    const tagSet = new Set();
-    blogs.forEach((blog) => blog.tags.forEach((tag) => tagSet.add(tag)));
-    return ["All", ...Array.from(tagSet)];
-  }, []);
 
   const filteredBlogs = useMemo(() => {
     const term = search.trim().toLowerCase();
     const filtered = blogs.filter((blog) => {
-      const matchesSearch =
+      return (
         !term ||
         blog.title.toLowerCase().includes(term) ||
         blog.description.toLowerCase().includes(term) ||
-        blog.tags.join(" ").toLowerCase().includes(term);
-      const matchesTag = activeTag === "All" || blog.tags.includes(activeTag);
-      return matchesSearch && matchesTag;
+        blog.tags.join(" ").toLowerCase().includes(term)
+      );
     });
     return sortBlogs(filtered, sortBy);
-  }, [search, sortBy, activeTag]);
+  }, [search, sortBy]);
 
   const socialImage = filteredBlogs[0]?.image
     ? toAbsoluteUrl(filteredBlogs[0].image, siteUrl)
@@ -66,6 +58,10 @@ function Blog() {
     () => buildBlogSchema(siteUrl, filteredBlogs),
     [filteredBlogs, siteUrl]
   );
+
+  const isDefaultView = !search.trim() && sortBy === "latest";
+  const featuredBlog = isDefaultView ? filteredBlogs[0] : null;
+  const gridBlogs = featuredBlog ? filteredBlogs.slice(1) : filteredBlogs;
 
   return (
     <div className="blog-page">
@@ -144,26 +140,9 @@ function Blog() {
           </label>
         </section>
 
-        {allTags.length > 1 && (
-          <div className="blog-tag-filters" role="group" aria-label="Filter by topic">
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                className={`blog-tag-btn ${activeTag === tag ? "active" : ""}`}
-                onClick={() => setActiveTag(tag)}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        )}
-
         {filteredBlogs.length > 0 && (
           <p className="blog-result-count">
             {filteredBlogs.length} article{filteredBlogs.length === 1 ? "" : "s"}
-            {activeTag !== "All" && (
-              <span className="blog-result-tag"> in {activeTag}</span>
-            )}
           </p>
         )}
 
@@ -171,21 +150,48 @@ function Blog() {
           <section className="blog-empty">
             <div className="blog-empty-icon">🔍</div>
             <h2>No articles found</h2>
-            <p>Try a different keyword or select a different topic.</p>
+            <p>Try a different keyword.</p>
             <button
               className="blog-empty-reset"
-              onClick={() => {
-                setSearch("");
-                setActiveTag("All");
-              }}
+              onClick={() => setSearch("")}
             >
-              Clear filters
+              Clear search
             </button>
           </section>
         ) : (
+          <>
+          {featuredBlog && (
+            <Link to={`/blog/${featuredBlog.slug}`} className="blog-featured">
+              <div className="blog-featured-media">
+                {featuredBlog.image ? (
+                  <img src={featuredBlog.image} alt={featuredBlog.title} />
+                ) : (
+                  <div className="blog-featured-placeholder">
+                    <Newspaper size={48} />
+                  </div>
+                )}
+              </div>
+              <div className="blog-featured-body">
+                <p className="blog-featured-kicker">
+                  {featuredBlog.tags[0] || "Latest"}
+                </p>
+                <h2>{featuredBlog.title}</h2>
+                <p className="blog-featured-description">
+                  {featuredBlog.description}
+                </p>
+                <p className="blog-featured-meta">
+                  <span className="blog-featured-author">{featuredBlog.author}</span>
+                  <span className="blog-meta-dot">·</span>
+                  <span>{featuredBlog.dateLabel || "Date not set"}</span>
+                  <span className="blog-meta-dot">·</span>
+                  <span>{featuredBlog.reading}</span>
+                </p>
+              </div>
+            </Link>
+          )}
 
           <section className="blog-grid">
-            {filteredBlogs.map((blog) => (
+            {gridBlogs.map((blog) => (
               <article key={blog.slug} className="blog-card">
                 <Link to={`/blog/${blog.slug}`} className="blog-card-media">
                   {blog.image ? (
@@ -196,7 +202,7 @@ function Blog() {
                     />
                   ) : (
                     <div className="blog-card-placeholder">
-                      <span>{blog.title}</span>
+                      <Newspaper size={30} />
                     </div>
                   )}
                   <div className="blog-card-img-overlay" />
@@ -228,6 +234,7 @@ function Blog() {
 
                   <p className="blog-card-meta">
                     <span>{blog.dateLabel || "Date not set"}</span>
+                    <span className="blog-meta-dot">·</span>
                     <span>{blog.reading}</span>
                   </p>
 
@@ -241,6 +248,7 @@ function Blog() {
               </article>
             ))}
           </section>
+          </>
         )}
 
         <section className="blog-newsletter">
