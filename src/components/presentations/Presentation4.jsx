@@ -18,18 +18,13 @@ import logo from "../logo.png";
 import slide1DeveloperImage from "./assets/slide1-developer.jpg";
 import slide2DeveloperImage from "./assets/Deloperslide2.png";
 import slide1RemoteImage from "./assets/Remoteslide1.png";
-import slide2RemoteImage from "./assets/Remoteslide2.png";
+import slide1GroupWorkingImage from "../about/team2.jpg";
+import slide1SecondWfhImage from "./assets/slide1-branchB-wfh.png";
+import slide2GroupRelaxedImage from "../about/team.jpg";
+import slide2WfhCricketImage from "./assets/slide2-wfh-cricket.jpg";
 
-const TEAM_PHOTOS = {
-  rohan:
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-  aarav:
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
-  meera:
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
-  priya:
-    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
-};
+const SLIDE2_WFH_STOCKS_IMAGE =
+  "https://images.unsplash.com/photo-1707762890671-52ef6d6f51e7?auto=format&fit=crop&w=800&q=80";
 
 const slideOneCards = [
   {
@@ -39,8 +34,8 @@ const slideOneCards = [
   },
   {
     word: "Branch B",
-    onsitePhoto: null,
-    wfhPhoto: TEAM_PHOTOS.aarav,
+    onsitePhoto: slide1GroupWorkingImage,
+    wfhPhoto: slide1SecondWfhImage,
   },
 ];
 
@@ -48,12 +43,12 @@ const slideTwoCards = [
   {
     word: "Branch A",
     onsitePhoto: slide2DeveloperImage,
-    wfhPhoto: slide2RemoteImage,
+    wfhPhoto: slide2WfhCricketImage,
   },
   {
     word: "Branch B",
-    onsitePhoto: null,
-    wfhPhoto: TEAM_PHOTOS.priya,
+    onsitePhoto: slide2GroupRelaxedImage,
+    wfhPhoto: SLIDE2_WFH_STOCKS_IMAGE,
   },
 ];
 
