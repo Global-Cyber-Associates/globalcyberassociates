@@ -36,6 +36,15 @@ const presentationCards = [
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015",
   },
+  {
+    id: "presentation-5",
+    title: "Insurance Industry Briefing",
+    description:
+      "Classic pitch deck for insurance companies, linking real industry problems to VisuN AI's solution.",
+    path: "/presentation5",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2070",
+  },
 ];
 
 export default function PresentationIndex() {
