@@ -45,6 +45,24 @@ const presentationCards = [
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2070",
   },
+  {
+    id: "presentation-6",
+    title: "Banking & Finance Briefing",
+    description:
+      "Pitch deck for banks, NBFCs, and fintech back-offices, linking real industry problems to VisuN AI's solution.",
+    path: "/presentation6",
+    image:
+      "https://images.pexels.com/photos/5847340/pexels-photo-5847340.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    id: "presentation-7",
+    title: "BPO Industry Briefing",
+    description:
+      "Pitch deck for BPOs and call centers, linking real industry problems to VisuN AI's solution.",
+    path: "/presentation7",
+    image:
+      "https://images.pexels.com/photos/5453821/pexels-photo-5453821.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
 ];
 
 export default function PresentationIndex() {
