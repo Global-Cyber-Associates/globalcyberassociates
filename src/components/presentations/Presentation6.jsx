@@ -60,8 +60,8 @@ const BANKING_PROBLEMS = [
     icon: DollarSign,
   },
   {
-    title: "Regulatory Deadlines Get Missed Without Warning",
-    description: "An audit or filing deadline slips by, and you find out after the penalty notice arrives.",
+    title: "Critical Processing Slips Past SLAs Without Warning",
+    description: "High-priority queues and customer files stall, and managers only find out after turnaround targets are breached.",
     icon: BellRing,
   },
   {
@@ -70,7 +70,7 @@ const BANKING_PROBLEMS = [
     icon: Users,
   },
   {
-    title: "Sensitive Data Isn't Access-Controlled",
+    title: "Sensitive Data Isn't Monitored",
     description: "Anyone in the office can open account files only a few people should see.",
     icon: Lock,
   },
@@ -117,7 +117,7 @@ const COMPANY_LOSS_CASES = [
 
 const BANKING_IMPACT_EVIDENCE = [
   {
-    category: "Loan & Account Processing Speed",
+    category: "Loan & Account Processing",
     icon: Clock,
     visual: "range",
     rangeMax: 60,
@@ -125,7 +125,7 @@ const BANKING_IMPACT_EVIDENCE = [
     bandStart: 30,
     bandEnd: 45,
     stat: "30–45 days",
-    line: "That's how long a loan file can sit in process — every extra day is a customer one call away from a competitor.",
+    line: "A typical mortgage can take 30–45 days from application to closing, with documentation review and underwriting contributing to the timeline.",
     sourceLabel: "Chase",
     sourceUrl: "https://www.chase.com/personal/mortgage/education/financing-a-home/how-long-do-mortgage-loan-approvals-take",
   },
@@ -135,7 +135,7 @@ const BANKING_IMPACT_EVIDENCE = [
     visual: "donut",
     percent: 17,
     stat: "17%",
-    line: "That many employees are actively disengaged — and finance is called out as one of the hardest-hit sectors.",
+    line: "17% of U.S. employees were actively disengaged in late 2024, with disengagement particularly affecting sectors including finance.",
     sourceLabel: "Gallup, via HR Dive",
     sourceUrl: "https://www.hrdive.com/news/us-employee-engagement-falls-to-10-year-low/737270/",
   },
@@ -145,72 +145,72 @@ const BANKING_IMPACT_EVIDENCE = [
     visual: "donut",
     percent: 43,
     stat: "43%",
-    line: "That many workplace frauds are only caught because someone tipped it off — not because anyone was watching.",
+    line: "43% of occupational fraud cases were initially detected through tips, making tips the most common detection method.",
     sourceLabel: "ACFE",
-    sourceUrl: "https://www.acfe.com/about-the-acfe/newsroom-for-media/press-releases/press-release-detail?s=2024-Report-to-the-Nations",
+    sourceUrl: "https://www.acfe.com/en-us/-/media/files/acfe/pdfs/rttn/2024/2024-report-to-the-nations.pdf",
   },
 ];
 
 const SOLUTION_PROBLEM_PAIRS = [
   {
-    id: "activity",
-    solution: "Know Who Is Working and Who Is Stuck",
-    problem: "Hybrid teams have zero visibility",
-    icon: Activity,
+    id: "analysts",
+    solution: "See Where Analysts Spend Their Working Hours",
+    problem: "KYC and AML teams spend hours on low-value activities",
+    icon: Clock,
   },
   {
-    id: "screen",
-    solution: "See Any Screen in One Click",
-    problem: "Loan approvals take too long to process",
-    icon: Monitor,
+    id: "data-risks",
+    solution: "Monitor Screens, Files and USB Activity for Data Risks",
+    problem: "Customer financial data can be exposed through unauthorized activity",
+    icon: ShieldAlert,
   },
   {
-    id: "apps",
-    solution: "Find Time-Wasting Apps and Websites",
-    problem: "KYC and AML checks pile up unreviewed",
-    icon: Globe,
-  },
-  {
-    id: "usb",
-    solution: "Catch USB and File Risks Instantly",
-    problem: "Customer account data is a target for attackers",
-    icon: Usb,
-  },
-  {
-    id: "money",
-    solution: "See How Lost Time Becomes Lost Money",
-    problem: "Idle time quietly drains your payroll",
+    id: "idle-time",
+    solution: "Measure Idle Time and Turn Lost Hours Into Capacity",
+    problem: "Idle time quietly increases workforce costs",
     icon: DollarSign,
   },
   {
-    id: "alerts",
-    solution: "Get Alerts Before Work Falls Behind",
-    problem: "Regulatory deadlines get missed without warning",
-    icon: BellRing,
+    id: "compliance-logs",
+    solution: "Keep Searchable Activity Logs for Every Employee",
+    problem: "Manual compliance reviews make employee activity difficult to audit",
+    icon: ClipboardCheck,
   },
   {
-    id: "view",
-    solution: "View Full Team or One Employee",
-    problem: "Branches have no single view of performance",
+    id: "compare-productivity",
+    solution: "Compare Productivity Across Teams, Branches and Employees",
+    problem: "Branch and back-office performance is difficult to compare",
     icon: Users,
   },
   {
-    id: "access",
-    solution: "Control Who Sees What",
-    problem: "Sensitive data isn't access-controlled",
+    id: "access-control",
+    solution: "Monitor Who Is Accessing Sensitive Applications",
+    problem: "Sensitive application usage goes unmonitored",
     icon: Lock,
+  },
+  {
+    id: "instant-alerts",
+    solution: "Detect Unusual Activity and Trigger Instant Alerts",
+    problem: "Suspicious employee activity may remain unnoticed for hours",
+    icon: BellRing,
+  },
+  {
+    id: "live-dashboard",
+    solution: "See Real-Time Workforce Activity From One Dashboard",
+    problem: "Managers rely on end-of-day reports instead of live operational data",
+    icon: Monitor,
   },
 ];
 
 const SOLUTION_MATCH_RIGHT_ORDER = [
-  "activity",
-  "screen",
-  "apps",
-  "usb",
-  "money",
-  "alerts",
-  "view",
-  "access",
+  "analysts",
+  "data-risks",
+  "idle-time",
+  "compliance-logs",
+  "compare-productivity",
+  "access-control",
+  "instant-alerts",
+  "live-dashboard",
 ];
 
 const ORGANIZATION_IMAGE =
@@ -423,7 +423,7 @@ export default function Presentation6() {
         title: "The Problems These Stories Reveal",
         subtitle: "Loan queues, compliance backlogs, and hybrid teams — all running with blind spots.",
         problems: BANKING_PROBLEMS,
-        impactTitle: "The Real Impact",
+        impactTitle: "The Industry Context",
         evidence: BANKING_IMPACT_EVIDENCE,
       },
       {
@@ -651,9 +651,9 @@ export default function Presentation6() {
       selectedEmployeeId === "org"
         ? organizationData
         : {
-            ...selectedEmployee,
-            attendanceLabel: `Present · ${selectedEmployee.checkIn} – ${selectedEmployee.checkOut}`,
-          };
+          ...selectedEmployee,
+          attendanceLabel: `Present · ${selectedEmployee.checkIn} – ${selectedEmployee.checkOut}`,
+        };
 
     const metrics = [
       {
@@ -985,7 +985,7 @@ export default function Presentation6() {
                                 href={metric.sourceUrl}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-2 text-[9px] text-slate-500 transition hover:text-cyan-200"
+                                className="mt-auto pt-2 text-[9px] text-slate-500 transition hover:text-cyan-200"
                               >
                                 Source: {metric.sourceLabel}
                               </a>
@@ -1545,11 +1545,10 @@ export default function Presentation6() {
                       setSelectedCurrency(option.code);
                       setIsCurrencyModalOpen(false);
                     }}
-                    className={`w-full rounded-xl border px-3 py-2 text-left text-sm font-semibold transition ${
-                      isActive
-                        ? "border-cyan-300/75 bg-cyan-500/15 text-cyan-100"
-                        : "border-white/12 bg-slate-950/60 text-slate-100 hover:border-cyan-300/45 hover:bg-slate-900/90"
-                    }`}
+                    className={`w-full rounded-xl border px-3 py-2 text-left text-sm font-semibold transition ${isActive
+                      ? "border-cyan-300/75 bg-cyan-500/15 text-cyan-100"
+                      : "border-white/12 bg-slate-950/60 text-slate-100 hover:border-cyan-300/45 hover:bg-slate-900/90"
+                      }`}
                   >
                     {option.label}
                   </button>
@@ -1618,9 +1617,8 @@ function DonutStat({ percent, label, size = "md" }) {
         />
       </svg>
       <span
-        className={`absolute font-black tracking-tight text-amber-200 ${
-          isSmall ? "text-lg" : "text-2xl"
-        }`}
+        className={`absolute font-black tracking-tight text-amber-200 ${isSmall ? "text-lg" : "text-2xl"
+          }`}
       >
         {label}
       </span>
@@ -1635,14 +1633,12 @@ function RangeStat({ max, unit, bandStart, bandEnd, label, size = "md" }) {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center ${
-        isSmall ? "h-24 w-32" : "h-32 w-40"
-      }`}
+      className={`flex flex-col items-center justify-center ${isSmall ? "h-24 w-32" : "h-32 w-40"
+        }`}
     >
       <p
-        className={`font-black tracking-tight text-amber-200 ${
-          isSmall ? "text-lg" : "text-2xl"
-        }`}
+        className={`font-black tracking-tight text-amber-200 ${isSmall ? "text-lg" : "text-2xl"
+          }`}
       >
         {label}
       </p>
@@ -1870,16 +1866,14 @@ function SolutionMatchBoard({ pairs, rightOrder }) {
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
                   style={{ touchAction: "none" }}
-                  className={`flex select-none items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${
-                    isConnected
-                      ? "cursor-default border-emerald-300/40 bg-emerald-500/10"
-                      : "cursor-grab border-red-300/30 bg-red-500/8 hover:border-red-300/55"
-                  }`}
+                  className={`flex select-none items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${isConnected
+                    ? "cursor-default border-emerald-300/40 bg-emerald-500/10"
+                    : "cursor-grab border-red-300/30 bg-red-500/8 hover:border-red-300/55"
+                    }`}
                 >
                   <span
-                    className={`flex-1 text-sm font-semibold leading-snug ${
-                      isConnected ? "text-emerald-100" : "text-red-100"
-                    }`}
+                    className={`flex-1 text-sm font-semibold leading-snug ${isConnected ? "text-emerald-100" : "text-red-100"
+                      }`}
                   >
                     {rightPair.problem}
                   </span>
@@ -1899,25 +1893,22 @@ function SolutionMatchBoard({ pairs, rightOrder }) {
                   rightRefs.current[leftPair.id] = el;
                 }}
                 data-problem-id={leftPair.id}
-                className={`flex items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${
-                  isConnected
-                    ? "border-emerald-300/40 bg-emerald-500/10"
-                    : "border-cyan-300/30 bg-slate-900/70"
-                }`}
+                className={`flex items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${isConnected
+                  ? "border-emerald-300/40 bg-emerald-500/10"
+                  : "border-cyan-300/30 bg-slate-900/70"
+                  }`}
               >
                 <span
-                  className={`h-3 w-3 flex-shrink-0 rounded-full border-2 ${
-                    isConnected
-                      ? "border-emerald-300 bg-emerald-400"
-                      : "border-cyan-300/70 bg-slate-950"
-                  }`}
+                  className={`h-3 w-3 flex-shrink-0 rounded-full border-2 ${isConnected
+                    ? "border-emerald-300 bg-emerald-400"
+                    : "border-cyan-300/70 bg-slate-950"
+                    }`}
                 />
                 <span
-                  className={`inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border ${
-                    isConnected
-                      ? "border-emerald-300/40 bg-emerald-500/15 text-emerald-200"
-                      : "border-cyan-300/35 bg-cyan-500/10 text-cyan-200"
-                  }`}
+                  className={`inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border ${isConnected
+                    ? "border-emerald-300/40 bg-emerald-500/15 text-emerald-200"
+                    : "border-cyan-300/35 bg-cyan-500/10 text-cyan-200"
+                    }`}
                 >
                   <SolutionIcon size={16} strokeWidth={2} />
                 </span>

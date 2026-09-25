@@ -22,9 +22,9 @@ import {
   X,
 } from "lucide-react";
 import logo from "../logo.png";
-import bpoOffice1 from "./assets/bpo-office-1.jpg";
-import bpoOffice2 from "./assets/bpo-office-2.jpg";
-import bpoOffice3 from "./assets/bpo-office-3.jpg";
+import caduceusHealthImg from "./assets/caduceus-health.jpg";
+import am2pmSupportImg from "./assets/am2pm-support.png";
+import phoenixVirtualSolutionsImg from "./assets/phoenix-virtual-solutions.png";
 import frustratedAgent from "./assets/bpo-frustrated-agent.jpg";
 import happyAgent from "./assets/bpo-happy-agent.jpg";
 
@@ -80,37 +80,38 @@ const COMPANY_LOSS_CASES = [
   {
     company: "Caduceus Health",
     flag: "🇺🇸",
-    image: bpoOffice1,
+    image: caduceusHealthImg,
     stat: "14%",
-    statLabel: "call abandonment rate, no floor visibility",
-    loss: "Remote billing and call teams had no real-time visibility. Call abandonment kept climbing and managers couldn't tell why.",
+    statLabel: "call abandonment rate before real-time workforce visibility",
+    loss: "Managers lacked real-time visibility into workforce activity, making it harder to identify workflow gaps and address rising call abandonment.",
     tool: "Workforce Productivity Tracking Tool",
-    result: "Call abandonment dropped to under 3%, productivity rose 20%, and employee engagement climbed 30%.",
+    result: "Call abandonment dropped from 14% to 3%, productivity increased 20%, and employee engagement climbed 30%.",
     sourceLabel: "Caduceus Health Case Study",
     sourceUrl: "https://www.insightful.io/customer/caduceus-health",
   },
   {
-    company: "SupportZebra",
-    flag: "🇵🇭",
-    image: bpoOffice2,
-    statLabel: "700+ agents, zero real-time visibility after going hybrid",
-    loss: "When the floor went hybrid, managers lost the ability to see who was actually working — and their old monitoring tool couldn't fix it.",
+    company: "AM2PM Support",
+    flag: "🇮🇳",
+    image: am2pmSupportImg,
+    stat: "24.9%",
+    statLabel: "monitored idle time before automated tracking",
+    loss: "AM2PM could not distinguish logged-in hours from actual productive work, with 24.9% of monitored time spent idle and team leads spending 2–3 hours per day on manual monitoring.",
     tool: "Workforce Productivity Tracking Tool",
-    result: "Real-time dashboards and client-facing reports restored full transparency, strengthening trust with the clients whose accounts they run.",
-    sourceLabel: "SupportZebra Case Study",
-    sourceUrl: "https://www.insightful.io/customers/supportzebra",
+    result: "After implementing automated activity tracking, AM2PM reduced idle time from 24.9% to 15.1%, increased activity rates from 75.1% to 84.9%, and increased productive hours by 14.6%, while scaling from 66 to 96 agents without additional headcount.",
+    sourceLabel: "AM2PM Support Case Study",
+    sourceUrl: "#",
   },
   {
-    company: "A Global Contact Center*",
-    flag: "🌐",
-    image: bpoOffice3,
-    stat: "$800,000",
-    statLabel: "spent yearly on unused software licenses alone",
-    loss: "Agents drifted to secondary tasks during peak hours, call wait times crept up, and licenses nobody used kept renewing.",
-    tool: "Workforce Productivity Tracking Tool",
-    result: "Peak-hour call wait times fell 30%, and $800,000 in unused software licenses was recovered in year one.",
-    sourceLabel: "Contact Center Case Study",
-    sourceUrl: "https://www.activtrak.com/blog/case-study-inside-sales-call-centers/",
+    company: "Phoenix Virtual Solutions",
+    flag: "🇵🇭",
+    image: phoenixVirtualSolutionsImg,
+    stat: "12%",
+    statLabel: "estimated revenue leakage due to time theft & manual payroll",
+    loss: "15–20 hours spent manually processing payroll every week and an estimated 12% revenue leakage due to overpaying for unworked hours (\"time theft\").",
+    tool: "Automated Time & Activity Tracking",
+    result: "75% reduction in weekly payroll administrative time and 50%–75% drop in client compliance issues.",
+    sourceLabel: "Phoenix Virtual Solutions Case Study",
+    sourceUrl: "#",
   },
 ];
 
@@ -653,9 +654,9 @@ export default function Presentation7() {
       selectedEmployeeId === "org"
         ? organizationData
         : {
-            ...selectedEmployee,
-            attendanceLabel: `Present · ${selectedEmployee.checkIn} – ${selectedEmployee.checkOut}`,
-          };
+          ...selectedEmployee,
+          attendanceLabel: `Present · ${selectedEmployee.checkIn} – ${selectedEmployee.checkOut}`,
+        };
 
     const metrics = [
       {
@@ -1553,11 +1554,10 @@ export default function Presentation7() {
                       setSelectedCurrency(option.code);
                       setIsCurrencyModalOpen(false);
                     }}
-                    className={`w-full rounded-xl border px-3 py-2 text-left text-sm font-semibold transition ${
-                      isActive
+                    className={`w-full rounded-xl border px-3 py-2 text-left text-sm font-semibold transition ${isActive
                         ? "border-cyan-300/75 bg-cyan-500/15 text-cyan-100"
                         : "border-white/12 bg-slate-950/60 text-slate-100 hover:border-cyan-300/45 hover:bg-slate-900/90"
-                    }`}
+                      }`}
                   >
                     {option.label}
                   </button>
@@ -1626,9 +1626,8 @@ function DonutStat({ percent, label, size = "md" }) {
         />
       </svg>
       <span
-        className={`absolute font-black tracking-tight text-amber-200 ${
-          isSmall ? "text-lg" : "text-2xl"
-        }`}
+        className={`absolute font-black tracking-tight text-amber-200 ${isSmall ? "text-lg" : "text-2xl"
+          }`}
       >
         {label}
       </span>
@@ -1643,14 +1642,12 @@ function RangeStat({ max, unit, bandStart, bandEnd, label, size = "md" }) {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center ${
-        isSmall ? "h-24 w-32" : "h-32 w-40"
-      }`}
+      className={`flex flex-col items-center justify-center ${isSmall ? "h-24 w-32" : "h-32 w-40"
+        }`}
     >
       <p
-        className={`font-black tracking-tight text-amber-200 ${
-          isSmall ? "text-lg" : "text-2xl"
-        }`}
+        className={`font-black tracking-tight text-amber-200 ${isSmall ? "text-lg" : "text-2xl"
+          }`}
       >
         {label}
       </p>
@@ -1878,16 +1875,14 @@ function SolutionMatchBoard({ pairs, rightOrder }) {
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
                   style={{ touchAction: "none" }}
-                  className={`flex select-none items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${
-                    isConnected
+                  className={`flex select-none items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${isConnected
                       ? "cursor-default border-emerald-300/40 bg-emerald-500/10"
                       : "cursor-grab border-red-300/30 bg-red-500/8 hover:border-red-300/55"
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`flex-1 text-sm font-semibold leading-snug ${
-                      isConnected ? "text-emerald-100" : "text-red-100"
-                    }`}
+                    className={`flex-1 text-sm font-semibold leading-snug ${isConnected ? "text-emerald-100" : "text-red-100"
+                      }`}
                   >
                     {rightPair.problem}
                   </span>
@@ -1907,25 +1902,22 @@ function SolutionMatchBoard({ pairs, rightOrder }) {
                   rightRefs.current[leftPair.id] = el;
                 }}
                 data-problem-id={leftPair.id}
-                className={`flex items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${
-                  isConnected
+                className={`flex items-center gap-3 rounded-xl border px-3.5 py-2.5 transition ${isConnected
                     ? "border-emerald-300/40 bg-emerald-500/10"
                     : "border-cyan-300/30 bg-slate-900/70"
-                }`}
+                  }`}
               >
                 <span
-                  className={`h-3 w-3 flex-shrink-0 rounded-full border-2 ${
-                    isConnected
+                  className={`h-3 w-3 flex-shrink-0 rounded-full border-2 ${isConnected
                       ? "border-emerald-300 bg-emerald-400"
                       : "border-cyan-300/70 bg-slate-950"
-                  }`}
+                    }`}
                 />
                 <span
-                  className={`inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border ${
-                    isConnected
+                  className={`inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border ${isConnected
                       ? "border-emerald-300/40 bg-emerald-500/15 text-emerald-200"
                       : "border-cyan-300/35 bg-cyan-500/10 text-cyan-200"
-                  }`}
+                    }`}
                 >
                   <SolutionIcon size={16} strokeWidth={2} />
                 </span>
