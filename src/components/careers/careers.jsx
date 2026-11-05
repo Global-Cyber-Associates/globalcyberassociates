@@ -151,7 +151,7 @@ const CareersPage = () => {
                     <p className="cp-job-desc">{job.description}</p>
                   </div>
                   <div className="cp-job-right">
-                    <a href={job.applyLink} className="cp-apply-btn" target="_blank" rel="noopener noreferrer">
+                    <a href={job.applyLink} className="cp-apply-btn">
                       Apply Now
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                     </a>
