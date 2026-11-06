@@ -10,7 +10,7 @@ tags: Zero Trust, Access Control, Security Architecture, Cybersecurity
 
 The old security model was a castle and moat: build a strong perimeter, then trust everything inside. That model is broken. Remote work, cloud apps, and insider threats mean the "inside" is no longer safe by default.
 
-**Zero Trust** flips the assumption: *never trust, always verify.*
+**Zero Trust** flips the assumption: *never trust, always verify.* It's a foundational piece of [cybersecurity risk management](https://www.globalcyberassociates.com/cybersecurity-risk-management).
 
 ---
 

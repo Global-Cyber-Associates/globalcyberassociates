@@ -11,6 +11,7 @@ import Refund from "./pages/Refund";
 
 import ScrollToTop from "./components/ScrollToTop";
 import PageTransition from "./components/PageTransition";
+import NoIndex from "./components/NoIndex";
 
 const Home = lazy(() => import("./components/homepage/home.jsx"));
 const About = lazy(() => import("./components/about/about.jsx"));
@@ -32,6 +33,8 @@ const VisunAIShowcase = lazy(() => import("./components/products/VisunAIShowcase
 const Blogs = lazy(() => import("./pages/Blog.jsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 const News = lazy(() => import("./pages/News.jsx"));
+const EmployeeMonitoringPillar = lazy(() => import("./pages/pillars/EmployeeMonitoringPillar.jsx"));
+const CyberRiskPillar = lazy(() => import("./pages/pillars/CyberRiskPillar.jsx"));
 
 const App = () => {
 
@@ -103,24 +106,26 @@ const App = () => {
             <Route path="/blog" element={<PageTransition><Blogs /></PageTransition>} />
             <Route path="blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
             <Route path="/news" element={<PageTransition><News /></PageTransition>} />
+            <Route path="employee-monitoring-software" element={<PageTransition><EmployeeMonitoringPillar /></PageTransition>} />
+            <Route path="cybersecurity-risk-management" element={<PageTransition><CyberRiskPillar /></PageTransition>} />
 
             <Route path="about" element={<PageTransition><About /></PageTransition>} />
             <Route path="solutions" element={<PageTransition><Services /></PageTransition>} />
             <Route path="careers" element={<PageTransition><CareersPage /></PageTransition>} />
             <Route path="contact" element={<PageTransition><Contact /></PageTransition>} />
 
-            <Route path="brief" element={<PageTransition><Brief /></PageTransition>} />
+            <Route path="brief" element={<NoIndex><PageTransition><Brief /></PageTransition></NoIndex>} />
 
-            <Route path="presentation" element={<PageTransition><PresentationIndex /></PageTransition>} />
-            <Route path="presentations" element={<PageTransition><PresentationIndex /></PageTransition>} />
+            <Route path="presentation" element={<NoIndex><PageTransition><PresentationIndex /></PageTransition></NoIndex>} />
+            <Route path="presentations" element={<NoIndex><PageTransition><PresentationIndex /></PageTransition></NoIndex>} />
 
-            <Route path="presentation1" element={<PageTransition><Presentations /></PageTransition>} />
-            <Route path="presentation2" element={<PageTransition><Presentation2 /></PageTransition>} />
-            <Route path="presentation3" element={<PageTransition><Presentation3 /></PageTransition>} />
-            <Route path="presentation4" element={<PageTransition><Presentation4 /></PageTransition>} />
-            <Route path="presentation5" element={<PageTransition><Presentation5 /></PageTransition>} />
-            <Route path="presentation6" element={<PageTransition><Presentation6 /></PageTransition>} />
-            <Route path="presentation7" element={<PageTransition><Presentation7 /></PageTransition>} />
+            <Route path="presentation1" element={<NoIndex><PageTransition><Presentations /></PageTransition></NoIndex>} />
+            <Route path="presentation2" element={<NoIndex><PageTransition><Presentation2 /></PageTransition></NoIndex>} />
+            <Route path="presentation3" element={<NoIndex><PageTransition><Presentation3 /></PageTransition></NoIndex>} />
+            <Route path="presentation4" element={<NoIndex><PageTransition><Presentation4 /></PageTransition></NoIndex>} />
+            <Route path="presentation5" element={<NoIndex><PageTransition><Presentation5 /></PageTransition></NoIndex>} />
+            <Route path="presentation6" element={<NoIndex><PageTransition><Presentation6 /></PageTransition></NoIndex>} />
+            <Route path="presentation7" element={<NoIndex><PageTransition><Presentation7 /></PageTransition></NoIndex>} />
 
             <Route path="assessment" element={<PageTransition><AssessmentPage /></PageTransition>} />
             <Route path="products" element={<PageTransition><Products /></PageTransition>} />

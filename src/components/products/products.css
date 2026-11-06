@@ -9,6 +9,12 @@
   font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
+.pg-breadcrumb-row {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 2rem 0;
+}
+
 /* ── Hero ── */
 .pg-hero {
   text-align: center;

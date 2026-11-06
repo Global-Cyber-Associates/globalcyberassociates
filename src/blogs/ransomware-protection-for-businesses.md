@@ -10,7 +10,7 @@ tags: Ransomware, Threat Detection, Backup, Cybersecurity
 
 Ransomware remains one of the most expensive and disruptive cyber threats facing businesses today. A single successful attack can lock your files, halt operations, and demand a large payment — with no guarantee of recovery.
 
-The good news: ransomware is **largely preventable** with the right layered defences.
+The good news: ransomware is **largely preventable** with the right layered defences — part of the broader [cybersecurity risk management](https://www.globalcyberassociates.com/cybersecurity-risk-management) approach, including a [zero trust](https://www.globalcyberassociates.com/blog/zero-trust-security-explained) architecture.
 
 ---
 

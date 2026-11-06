@@ -10,7 +10,7 @@ tags: UEBA, Behavior Analytics, Threat Detection, Cybersecurity
 
 Traditional security tools ask *"is this a known threat?"* **UEBA** asks a smarter question: *"is this behaviour normal for this user?"*
 
-That shift — from signatures to behaviour — is what lets organisations catch insider threats, compromised accounts, and novel attacks that slip past rule-based defences.
+That shift — from signatures to behaviour — is what lets organisations catch insider threats, compromised accounts, and novel attacks that slip past rule-based defences. UEBA is one of the analytical layers in a complete [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) program.
 
 ---
 

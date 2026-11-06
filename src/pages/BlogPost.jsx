@@ -59,6 +59,38 @@ function buildArticleSchema(blog, canonicalUrl, siteUrl, imageUrl) {
   return schema;
 }
 
+function buildFaqSchema(blog) {
+  if (!blog.faq || blog.faq.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: blog.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+}
+
+function buildHowToSchema(blog) {
+  if (!blog.howTo || blog.howTo.steps.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: blog.howTo.name,
+    step: blog.howTo.steps.map((step) => ({
+      "@type": "HowToStep",
+      name: step.name,
+      text: step.text
+    }))
+  };
+}
+
 function buildBreadcrumbSchema(blog, siteUrl, canonicalUrl) {
   return {
     "@context": "https://schema.org",
@@ -107,6 +139,8 @@ function BlogPost() {
   const imageUrl = blog.image ? toAbsoluteUrl(blog.image, siteUrl) : "";
   const schema = buildArticleSchema(blog, canonicalUrl, siteUrl, imageUrl);
   const breadcrumbSchema = buildBreadcrumbSchema(blog, siteUrl, canonicalUrl);
+  const faqSchema = buildFaqSchema(blog);
+  const howToSchema = buildHowToSchema(blog);
   const relatedBlogs = getRelatedBlogs(blog);
 
   return (
@@ -135,6 +169,12 @@ function BlogPost() {
         {imageUrl ? <meta name="twitter:image" content={imageUrl} /> : null}
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        {faqSchema ? (
+          <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        ) : null}
+        {howToSchema ? (
+          <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
+        ) : null}
       </Helmet>
 
       <Header />

@@ -138,8 +138,106 @@ function formatDate(dateText) {
   });
 }
 
+// A few guides already contain a real numbered procedure — either an
+// explicit "## How to ..." section written as a markdown ordered list, or a
+// "## <Heading>" section whose direct children are 3+ "### N. Title" steps
+// (e.g. "A Layered Defence That Actually Works"). Extracting it gives
+// genuine HowTo schema straight from existing content, never invented.
+function extractHowTo(markdown) {
+  const howToHeading = markdown.match(/^##\s+(How to [^\n]+)$/im);
+  if (howToHeading) {
+    const name = howToHeading[1].trim();
+    const rest = markdown.slice(howToHeading.index + howToHeading[0].length);
+    const endMatch = rest.match(/^(##\s|---\s*$)/m);
+    const sectionText = endMatch ? rest.slice(0, endMatch.index) : rest;
+    const steps = [];
+    const stepRegex = /^\d+\.\s+\*\*(.+?)\*\*\s*[—-]\s*(.+)$/gm;
+    let match;
+    while ((match = stepRegex.exec(sectionText)) !== null) {
+      steps.push({ name: cleanInlineMarkdown(match[1]), text: cleanInlineMarkdown(match[2]) });
+    }
+    if (steps.length >= 2) return { name, steps };
+  }
+
+  const sectionRegex = /^##\s+([^\n]+)$([\s\S]*?)(?=^##\s|$(?![\r\n]))/gm;
+  let sectionMatch;
+  while ((sectionMatch = sectionRegex.exec(markdown)) !== null) {
+    const headingText = sectionMatch[1].trim();
+    const body = sectionMatch[2];
+    const stepHeadings = [...body.matchAll(/^###\s+\d+\.\s*([^\n]+)$/gm)];
+
+    if (stepHeadings.length >= 3) {
+      const steps = stepHeadings.map((stepMatch, i) => {
+        const start = stepMatch.index + stepMatch[0].length;
+        const end = i + 1 < stepHeadings.length ? stepHeadings[i + 1].index : body.length;
+        const stepBody = body
+          .slice(start, end)
+          .split("\n")
+          .map((line) => line.trim())
+          .filter((line) => line && !line.startsWith("#") && line !== "---")
+          .join(" ");
+        return { name: cleanInlineMarkdown(stepMatch[1]), text: cleanInlineMarkdown(stepBody) };
+      });
+      return { name: headingText, steps };
+    }
+  }
+
+  return null;
+}
+
 function getStringValue(value) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function cleanInlineMarkdown(text) {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`]/g, "")
+    .trim();
+}
+
+// Many guides already end with a real "## Frequently Asked Questions" section
+// written as **Question?** followed by its answer. Extracting it gives us
+// FAQPage schema straight from real, existing content — never invented.
+function extractFaq(markdown) {
+  const headingMatch = markdown.match(/^##\s+Frequently Asked Questions\s*$/im);
+  if (!headingMatch) return [];
+
+  const rest = markdown.slice(headingMatch.index + headingMatch[0].length);
+  const endMatch = rest.match(/^(##\s|---\s*$)/m);
+  const sectionText = endMatch ? rest.slice(0, endMatch.index) : rest;
+
+  const faqs = [];
+  let current = null;
+
+  sectionText.split("\n").forEach((rawLine) => {
+    const line = rawLine.trim();
+    const questionMatch = line.match(/^\*\*(.+?)\*\*$/);
+
+    if (questionMatch) {
+      if (current && current.answer.trim()) {
+        faqs.push({
+          question: cleanInlineMarkdown(current.question),
+          answer: cleanInlineMarkdown(current.answer)
+        });
+      }
+      current = { question: questionMatch[1], answer: "" };
+      return;
+    }
+
+    if (current && line) {
+      current.answer = current.answer ? `${current.answer} ${line}` : line;
+    }
+  });
+
+  if (current && current.answer.trim()) {
+    faqs.push({
+      question: cleanInlineMarkdown(current.question),
+      answer: cleanInlineMarkdown(current.answer)
+    });
+  }
+
+  return faqs;
 }
 
 function buildBlogRecord(slug, file) {
@@ -155,6 +253,8 @@ function buildBlogRecord(slug, file) {
   const image = getStringValue(data.coverImage) || getStringValue(data.image) || getStringValue(data.cover);
   const author = getStringValue(data.author) || FALLBACK_AUTHOR;
   const readDuration = readingTime(content || rawContent);
+  const faq = extractFaq(rawContent);
+  const howTo = extractHowTo(rawContent);
 
   return {
     slug,
@@ -163,6 +263,8 @@ function buildBlogRecord(slug, file) {
     image,
     author,
     tags,
+    faq,
+    howTo,
     content: content || rawContent,
     reading: readDuration,
     readingMinutes: Number.parseInt(readDuration, 10) || 1,

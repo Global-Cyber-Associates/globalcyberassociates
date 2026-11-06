@@ -5,6 +5,9 @@ Disallow: /presentation1
 Disallow: /presentation2
 Disallow: /presentation3
 Disallow: /presentation4
+Disallow: /presentation5
+Disallow: /presentation6
+Disallow: /presentation7
 Disallow: /presentations
 Disallow: /brief
 

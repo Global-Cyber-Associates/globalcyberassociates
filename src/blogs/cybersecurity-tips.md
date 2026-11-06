@@ -14,7 +14,7 @@ Because of this, protecting digital systems and information has become extremely
 Cybersecurity simply means **keeping systems, applications, and personal data safe from misuse or attacks**.
 
 Even small mistakes can create big security problems.  
-That is why **basic security habits matter for everyone.**
+That is why **basic security habits matter for everyone.** These habits are the starting point for the fuller [cybersecurity risk management](https://www.globalcyberassociates.com/cybersecurity-risk-management) picture — including defenses against [phishing](https://www.globalcyberassociates.com/blog/phishing-attacks-how-to-prevent) and [ransomware](https://www.globalcyberassociates.com/blog/ransomware-protection-for-businesses).
 
 ---
 
@@ -104,3 +104,5 @@ When systems are designed with security in mind, they become safer for everyone 
 Technology continues to grow, and so do cyber threats.
 
 By following basic cybersecurity practices and staying aware, we can build and use digital systems more safely.
+
+**Want a professional read on where your business stands?** [Get a free cybersecurity risk assessment](https://www.globalcyberassociates.com/assessment).

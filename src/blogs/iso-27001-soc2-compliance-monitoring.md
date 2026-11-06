@@ -10,7 +10,7 @@ tags: Compliance, ISO 27001, SOC 2, Audit, Cybersecurity
 
 Passing an ISO 27001 or SOC 2 audit isn't a one-time event — it's a state you have to *maintain*. Auditors don't just want policies on paper; they want **evidence** that controls are working continuously.
 
-That evidence comes from **monitoring**.
+That evidence comes from **monitoring** — a core piece of [cybersecurity risk management](https://www.globalcyberassociates.com/cybersecurity-risk-management), built on the same activity logs covered in our [user activity monitoring guide](https://www.globalcyberassociates.com/blog/user-activity-monitoring-guide).
 
 ---
 

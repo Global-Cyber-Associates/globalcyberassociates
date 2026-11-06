@@ -9,7 +9,7 @@ tags: IT Companies, Employee Monitoring, Workforce Intelligence, Shadow AI, Cybe
 
 The IT industry is entering a new phase where AI, cloud, remote work, software development and global collaboration are becoming part of everyday operations. But there is another side to this transformation: IT companies are managing enormous amounts of source code, intellectual property, customer information, credentials, cloud resources and confidential business data through thousands of employees, contractors and third-party partners.
 
-The question is no longer simply *"are our employees working?"* The more important questions are: are our people productive? Is company data being handled responsibly? Are employees using approved applications and AI tools? Can we identify unusual activity early? This is where VisuN AI can become an important workforce intelligence layer.
+The question is no longer simply *"are our employees working?"* The more important questions are: are our people productive? Is company data being handled responsibly? Are employees using approved applications and AI tools? Can we identify unusual activity early? This is where VisuN AI can become an important workforce intelligence layer — see our [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) hub and [UEBA guide](https://www.globalcyberassociates.com/blog/what-is-ueba-behavior-analytics) for how anomaly detection fits in.
 
 ---
 

@@ -11,7 +11,7 @@ Banking and financial services are undergoing a massive digital transformation. 
 
 But this transformation creates a critical challenge: **how can banks and financial institutions ensure that their workforce is productive, accountable and handling sensitive financial information securely?**
 
-For banking and finance, workforce intelligence is no longer just an HR requirement. It is becoming part of operational resilience and cybersecurity.
+For banking and finance, workforce intelligence is no longer just an HR requirement. It is becoming part of operational resilience and cybersecurity — see our broader [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) hub for the underlying controls, including [insider threat detection](https://www.globalcyberassociates.com/blog/insider-threat-detection-guide).
 
 ---
 

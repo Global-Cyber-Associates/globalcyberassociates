@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { ChevronDown, Check } from 'lucide-react';
 import pricingData from './pricingData';
 import './pricing.css';
 
@@ -30,7 +31,7 @@ const CustomSelect = ({ value, onChange, options }) => {
         aria-expanded={open}
       >
         <span className="csel-value">{selected?.label}</span>
-        <i className={`bi bi-chevron-down csel-chevron ${open ? 'rotated' : ''}`}></i>
+        <ChevronDown className={`csel-chevron ${open ? 'rotated' : ''}`} size={14} />
       </button>
 
       {open && (
@@ -48,7 +49,7 @@ const CustomSelect = ({ value, onChange, options }) => {
             >
               {opt.label}
               {opt.value === value && (
-                <i className="bi bi-check2 csel-check"></i>
+                <Check className="csel-check" size={14} />
               )}
             </div>
           ))}

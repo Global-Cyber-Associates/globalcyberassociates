@@ -7,7 +7,7 @@ tags: Data Loss Prevention, USB Monitoring, Employee Monitoring, Cybersecurity
 
 # USB and File Transfer Monitoring — Stopping Data Exfiltration Before It Happens
 
-Firewalls, endpoint protection, and email filters get most of the security budget — but a huge share of real-world data loss still happens the simple way: someone copies a file to a USB drive, or uploads it somewhere it shouldn't go.
+Firewalls, endpoint protection, and email filters get most of the security budget — but a huge share of real-world data loss still happens the simple way: someone copies a file to a USB drive, or uploads it somewhere it shouldn't go. This is one of the data-loss paths covered in our [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) hub.
 
 ---
 

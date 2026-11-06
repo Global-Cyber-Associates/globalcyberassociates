@@ -10,7 +10,7 @@ tags: Employee Monitoring, Productivity, Remote Work, Cybersecurity
 
 With hybrid and remote work now the norm, businesses need a clear answer to a simple question: **what is actually happening on company devices and networks?**
 
-That's the job of **employee monitoring software** — and when done responsibly, it improves both security *and* productivity.
+That's the job of **employee monitoring software** — and when done responsibly, it improves both security *and* productivity. This guide is part of our broader [employee monitoring & insider threat protection](https://www.globalcyberassociates.com/employee-monitoring-software) hub.
 
 ---
 
