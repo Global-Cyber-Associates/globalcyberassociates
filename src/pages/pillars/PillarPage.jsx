@@ -79,9 +79,11 @@ function PillarPage({ pillarKey }) {
         <meta property="og:title" content={pillar.metaTitle} />
         <meta property="og:description" content={pillar.metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={`${siteUrl}/logo.png`} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={pillar.metaTitle} />
         <meta name="twitter:description" content={pillar.metaDescription} />
+        <meta name="twitter:image" content={`${siteUrl}/logo.png`} />
         <script type="application/ld+json">{JSON.stringify(webPage)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
         {faqSchema ? (
