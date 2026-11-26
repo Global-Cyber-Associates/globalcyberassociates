@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './products.css';
 import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
+import Breadcrumbs from '../Breadcrumbs.jsx';
 import visunImg from '../products/visun-dashboard.png';
 import { Shield, Lock, ArrowRight, Zap, Network, BarChart3, Check, Monitor, Usb, FileSearch } from 'lucide-react';
 
@@ -200,6 +201,9 @@ const Products = () => {
 
       <Header />
       <main className="products-page">
+        <div className="pg-breadcrumb-row">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Products' }]} />
+        </div>
 
         {/* ── Hero ── */}
         <div className="pg-hero" ref={heroRef}>

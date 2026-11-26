@@ -10,7 +10,7 @@ tags: User Activity Monitoring, UAM, Security Monitoring, Cybersecurity
 
 You can't secure what you can't see. **User Activity Monitoring (UAM)** gives organisations a clear, real-time picture of what's happening on their endpoints and networks — who is doing what, where, and when.
 
-It's the foundation of insider risk programs, compliance audits, and modern security operations.
+It's the foundation of insider risk programs, compliance audits, and modern security operations — and a core pillar of [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software).
 
 ---
 

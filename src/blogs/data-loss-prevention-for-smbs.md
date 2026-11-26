@@ -36,7 +36,7 @@ Most data loss isn't a Hollywood-style hack. It's mundane:
 - 💬 Sharing data through chat apps and unmanaged tools
 - 👋 **Departing employees** taking files on their way out
 
-Notice the pattern: most of these are *file movements by insiders*. That's why file and USB activity monitoring is the backbone of practical DLP.
+Notice the pattern: most of these are *file movements by insiders*. That's why [USB and file transfer monitoring](https://www.globalcyberassociates.com/blog/usb-file-transfer-monitoring-data-exfiltration) is the backbone of practical DLP, and why DLP sits alongside the rest of our [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) hub.
 
 ---
 

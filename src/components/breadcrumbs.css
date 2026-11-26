@@ -1,0 +1,32 @@
+.site-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  color: var(--text-slate-muted);
+  font-size: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.site-breadcrumb a {
+  color: var(--text-slate-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-breadcrumb a:hover {
+  color: var(--brand-cyan);
+}
+
+.site-breadcrumb svg {
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.site-breadcrumb span {
+  color: var(--text-slate);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}

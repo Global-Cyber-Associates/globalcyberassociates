@@ -10,7 +10,7 @@ tags: Insider Threat, Threat Detection, Employee Monitoring, Cybersecurity
 
 Most security tools are built to keep attackers *out*. But some of the most damaging breaches come from people who are already **inside** — employees, contractors, and partners who already have access to your systems.
 
-**Insider threat detection** is the practice of identifying risky or malicious behaviour from people inside your organisation *before* it turns into a data breach.
+**Insider threat detection** is the practice of identifying risky or malicious behaviour from people inside your organisation *before* it turns into a data breach. It's one piece of a broader [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) strategy.
 
 ---
 
@@ -57,13 +57,13 @@ No single signal proves malice — but **a combination of signals, tracked over 
 Modern detection combines several techniques:
 
 ### 🔍 User Activity Monitoring
-Tracking what users do across endpoints — applications opened, files moved, devices connected — to build a complete activity timeline.
+Tracking what users do across endpoints — applications opened, files moved, devices connected — to build a complete activity timeline. See our [user activity monitoring guide](https://www.globalcyberassociates.com/blog/user-activity-monitoring-guide) for how this works in practice.
 
 ### 📊 Behavior Analytics (UEBA)
-Establishing a "normal" baseline for each user, then flagging deviations from that baseline automatically.
+Establishing a "normal" baseline for each user, then flagging deviations from that baseline automatically — covered in depth in [what is UEBA?](https://www.globalcyberassociates.com/blog/what-is-ueba-behavior-analytics)
 
 ### 💾 File and USB Monitoring
-Logging every file copy, rename, and transfer — particularly to external or removable devices — so nothing leaves quietly.
+Logging every file copy, rename, and transfer — particularly to external or removable devices — so nothing leaves quietly. Related: [USB and file transfer monitoring](https://www.globalcyberassociates.com/blog/usb-file-transfer-monitoring-data-exfiltration).
 
 ### 🚨 Real-Time Alerts
 Notifying security admins the moment a high-risk action occurs, with full context: who, what, when, and where.

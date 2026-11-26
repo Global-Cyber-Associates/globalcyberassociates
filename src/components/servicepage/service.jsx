@@ -4,6 +4,8 @@ import Header from '../head.jsx';
 import Footer from '../footer/footer.jsx';
 import './service.css';
 import FaqSection from './faq/faq.jsx';
+import ServiceIcon from './ServiceIcon.jsx';
+import Breadcrumbs from '../Breadcrumbs.jsx';
 import solutionsData from './services.js';
 import core from '../homepage/service.js';
 import PricingCalculator from '../pricing/PricingCalculator.jsx';
@@ -55,6 +57,7 @@ const ServicePage = () => {
       <Header />
       <div className="services-page">
         <div className="container">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
 
           <div className="ent-services-header">
             <p className="ent-services-eyebrow">What We Do</p>
@@ -69,7 +72,7 @@ const ServicePage = () => {
               <div className="ent-bento-card" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
 
                 <div className="ent-bento-icon-box">
-                  <i className={`bi ${service.icon}`}></i>
+                  <ServiceIcon name={service.icon} size={26} />
                 </div>
 
                 <div className="ent-bento-content">
@@ -100,14 +103,14 @@ const ServicePage = () => {
             <div className="service-section" key={index}>
               <div className="ent-category-header">
                 <div className="ent-category-icon-box">
-                  <i className={`bi ${categoryBlock.categoryIcon}`}></i>
+                  <ServiceIcon name={categoryBlock.categoryIcon} size={22} />
                 </div>
                 <h3 className="ent-category-title">{categoryBlock.category}</h3>
               </div>
               <div className="service-grid">
                 {categoryBlock.solutions.map((solution, idx) => (
                   <div className="solution-card" key={idx}>
-                    <i className={`bi ${solution.icon} solution-card-icon`}></i>
+                    <ServiceIcon name={solution.icon} size={26} className="solution-card-icon" />
                     <div>
                       <h4 className="solution-card-title">{solution.title}</h4>
                       <p className="solution-card-desc">{solution.description}</p>

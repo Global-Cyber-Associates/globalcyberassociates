@@ -9,7 +9,7 @@ tags: Healthcare Security, Employee Monitoring, Workforce Intelligence, Patient 
 
 Healthcare is undergoing a major digital transformation. Hospitals, diagnostic centers, health-tech companies, medical billing organizations, insurance providers and healthcare BPOs are increasingly dependent on digital patient records, cloud applications, electronic health records, telemedicine, AI and connected systems.
 
-But as healthcare becomes more digital, another challenge is growing: **how can healthcare organizations improve workforce productivity while protecting highly sensitive patient information?** This is where VisuN AI can become an important workforce intelligence layer.
+But as healthcare becomes more digital, another challenge is growing: **how can healthcare organizations improve workforce productivity while protecting highly sensitive patient information?** This is where VisuN AI can become an important workforce intelligence layer — see our [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) hub and [user activity monitoring guide](https://www.globalcyberassociates.com/blog/user-activity-monitoring-guide) for how the underlying visibility works.
 
 ---
 

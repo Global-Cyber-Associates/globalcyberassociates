@@ -10,7 +10,7 @@ tags: Phishing, Social Engineering, Awareness, Cybersecurity
 
 Phishing is the **starting point of most cyberattacks**. Before ransomware encrypts files or an attacker steals data, there's usually a phishing message that tricked someone into clicking, logging in, or replying.
 
-The good news: once you know the patterns, phishing becomes far easier to spot and stop.
+The good news: once you know the patterns, phishing becomes far easier to spot and stop — part of the broader [cybersecurity risk management](https://www.globalcyberassociates.com/cybersecurity-risk-management) picture.
 
 ---
 

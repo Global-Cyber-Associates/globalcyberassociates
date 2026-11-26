@@ -10,7 +10,7 @@ tags: Endpoint Monitoring, Endpoint Security, Visibility, Cybersecurity
 
 Every laptop, desktop, server, and mobile device on your network is an **endpoint** — and each one is a potential entry point for attackers. **Endpoint monitoring** is how you keep eyes on all of them at once.
 
-In a world of remote work and BYOD, the endpoint *is* the new perimeter.
+In a world of remote work and BYOD, the endpoint *is* the new perimeter — one of the core controls in any [employee monitoring software](https://www.globalcyberassociates.com/employee-monitoring-software) strategy.
 
 ---
 
@@ -41,7 +41,7 @@ If you can't see your endpoints, you can't defend them.
 - **Device inventory** — know every device, instantly spot rogue ones.
 - **Running software & processes** — detect unauthorised or malicious apps.
 - **File activity** — track copies, transfers, and deletions of sensitive data.
-- **USB / removable media** — the quiet exit route for data.
+- **USB / removable media** — the quiet exit route for data; see our [USB and file transfer monitoring guide](https://www.globalcyberassociates.com/blog/usb-file-transfer-monitoring-data-exfiltration).
 - **Network connections** — see what each device talks to.
 - **Vulnerabilities & patch status** — find weak spots before attackers do.
 
@@ -51,7 +51,7 @@ If you can't see your endpoints, you can't defend them.
 
 - **Antivirus** — blocks known malware.
 - **EDR** — detects and responds to threats on endpoints.
-- **Endpoint monitoring** — provides the continuous *visibility and activity logging* that powers both, plus insider-risk and compliance use cases.
+- **Endpoint monitoring** — provides the continuous *visibility and activity logging* that powers both, plus [insider-risk](https://www.globalcyberassociates.com/blog/insider-threat-detection-guide) and compliance use cases.
 
 For many SMBs, lightweight endpoint monitoring delivers the highest visibility-per-dollar.
 

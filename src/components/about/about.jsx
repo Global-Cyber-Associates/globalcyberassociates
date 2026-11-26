@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import './about.css';
 import Head from '../head.jsx';
 import Footer from '../footer/footer.jsx';
+import Breadcrumbs from '../Breadcrumbs.jsx';
 import office from './team2.jpg';
 import { useNavigate } from 'react-router-dom';
 
@@ -70,6 +71,9 @@ const AboutSection = () => {
       </Helmet>
       <Head />
       <main className="about-page">
+        <div className="about-breadcrumb-row">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
+        </div>
 
         <div className="about-hero" data-aos="fade-up">
           <p className="about-label">Who We Are</p>
