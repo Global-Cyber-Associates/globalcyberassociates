@@ -40,6 +40,7 @@ const freshState = () => ({
   gstRate: 0,
   discountPct: 0,
   discountLabel: "Promotional discount",
+  billingType: "auto", // "auto" | "one-time" | "recurring"
   subject: "",
   client: { name: "", address: "", gstin: "", email: "" },
   items: [],
@@ -53,6 +54,7 @@ const stateFromParams = (params) => {
   s.client.name = params.get("client") || "";
   s.discountPct = Number(params.get("discount")) || 0;
   s.gstRate = Number(params.get("gst")) || 0;
+  if (["one-time", "recurring"].includes(params.get("billing"))) s.billingType = params.get("billing");
   s.items = raw.split(",").map((part) => {
     const [id, qty, rate] = part.split(":");
     const svc = SERVICES.find((x) => x.id === id);
@@ -193,8 +195,16 @@ function QuoteGenerator() {
   const gst = (taxable * gstRate) / 100;
   const total = taxable + gst;
   const advance = (total * ADVANCE_PCT) / 100;
-  const recurring = lines.filter((l) => l.monthly).reduce((a, l) => a + l.amount, 0)
-    * (1 - discountPct / 100) * (1 + gstRate / 100);
+  // Billing type: "auto" follows the services (any monthly item => recurring); the toggle overrides it.
+  const hasMonthly = lines.some((l) => l.monthly);
+  const billing = q.billingType === "one-time" || q.billingType === "recurring"
+    ? q.billingType
+    : (hasMonthly ? "recurring" : "one-time");
+  const isRecurring = billing === "recurring";
+  // Monthly amount = the monthly items, or the whole quote if recurring is forced on one-time items.
+  const monthlyBase = hasMonthly ? lines.filter((l) => l.monthly).reduce((a, l) => a + l.amount, 0) : subtotal;
+  const recurring = isRecurring ? monthlyBase * (1 - discountPct / 100) * (1 + gstRate / 100) : 0;
+  const recurringQualifiers = [gstRate > 0 && "incl. tax", discountPct > 0 && "after discount"].filter(Boolean);
   const discountLabel = q.discountLabel.trim() || "Discount";
 
   const groupIds = [...new Set(q.items.map((it) => it.group))];
@@ -220,7 +230,7 @@ function QuoteGenerator() {
   const subject = q.subject.trim() || autoSubject;
 
   const note = [
-    ...lines.map((l) => `${l.qty} ${pluralize(l.unit, l.qty)} x ₹ ${formatINR(l.rate)} per ${l.unit}${l.monthly ? " per month" : ""}.`),
+    ...lines.map((l) => `${l.qty} ${pluralize(l.unit, l.qty)} x ₹ ${formatINR(l.rate)} per ${l.unit}${l.monthly && isRecurring ? " per month" : ""}.`),
     discountPct ? `${discountLabel} of ${discountPct}% applied.` : "",
     gstRate ? `GST @ ${gstRate}% included in the total.` : "Taxes extra as applicable.",
   ].filter(Boolean).join(" ");
@@ -368,7 +378,37 @@ function QuoteGenerator() {
             ))}
           </Step>
 
-          <Step n={3} title="Discount & tax">
+          <Step n={3} title="Billing, discount & tax">
+            <Field
+              label="Payment type (shown below the total)"
+              hint={q.billingType === "auto"
+                ? "Picked automatically from the services. Click to change it."
+                : "Set manually for this quote."}
+            >
+              <div className="grid grid-cols-2 gap-1 rounded-xl border border-slate-600 bg-slate-950 p-1">
+                {[
+                  ["one-time", "One-time payment"],
+                  ["recurring", "Recurring (monthly)"],
+                ].map(([value, text]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => set({ billingType: value })}
+                    aria-pressed={billing === value}
+                    className={`rounded-lg px-3 py-2 text-sm font-bold transition-colors ${
+                      billing === value ? "bg-cyan-500 text-slate-950" : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                    }`}
+                  >
+                    {text}
+                  </button>
+                ))}
+              </div>
+            </Field>
+            {q.billingType !== "auto" && (
+              <button type="button" onClick={() => set({ billingType: "auto" })} className="-mt-2 text-xs font-semibold text-cyan-300 hover:text-cyan-200">
+                ↺ Back to automatic
+              </button>
+            )}
             <div className="grid grid-cols-2 gap-3">
               <Field label="Discount %" hint="0 = no discount">
                 <input type="number" min="0" max="100" step="0.01" className={inputCls} value={q.discountPct} onChange={(e) => set({ discountPct: e.target.value })} />
@@ -415,6 +455,10 @@ function QuoteGenerator() {
               <div className="flex justify-between text-slate-300"><span>GST {gstRate}%</span><span>₹ {formatINR(gst)}</span></div>
             )}
             <div className="flex justify-between pt-1 text-base font-black text-white"><span>Total</span><span>₹ {formatINR(total)}</span></div>
+            <div className="flex justify-between text-slate-300">
+              <span>Payment type</span>
+              <span>{isRecurring ? `Recurring · ₹ ${formatINR(recurring)} / month` : "One-time"}</span>
+            </div>
             <div className="flex justify-between text-cyan-300"><span>Advance on acceptance ({ADVANCE_PCT}%)</span><span>₹ {formatINR(advance)}</span></div>
           </div>
           <button
@@ -532,15 +576,17 @@ function QuoteGenerator() {
                 )}
                 {gstRate > 0 && <div className="q-sum-row"><span>GST @ {gstRate}%</span><span>₹ {formatINR(gst)}</span></div>}
                 <div className="q-sum-total"><span>Total</span><span>₹ {formatINR(total)}</span></div>
-                <div className="q-advance"><span>Advance on acceptance ({ADVANCE_PCT}%)</span><span>₹ {formatINR(advance)}</span></div>
-                {recurring > 0 && (
+                <div className="q-billing">
+                  <span>Payment type</span>
+                  <strong>{isRecurring ? "Recurring - Monthly" : "One-time Payment"}</strong>
+                </div>
+                {isRecurring && (
                   <div className="q-recurring">
-                    Recurring charge per month
-                    {[gstRate > 0 && "incl. tax", discountPct > 0 && "after discount"].filter(Boolean).length > 0
-                      && ` (${[gstRate > 0 && "incl. tax", discountPct > 0 && "after discount"].filter(Boolean).join(", ")})`}
+                    Recurring charge per month{recurringQualifiers.length > 0 && ` (${recurringQualifiers.join(", ")})`}
                     : <span style={{ whiteSpace: "nowrap" }}>₹ {formatINR(recurring)}</span>
                   </div>
                 )}
+                <div className="q-advance"><span>Advance on acceptance ({ADVANCE_PCT}%)</span><span>₹ {formatINR(advance)}</span></div>
               </div>
             </div>
 
