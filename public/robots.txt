@@ -7,5 +7,6 @@ Disallow: /presentation3
 Disallow: /presentation4
 Disallow: /presentations
 Disallow: /brief
+Disallow: /quote
 
 Sitemap: https://www.globalcyberassociates.com/sitemap.xml

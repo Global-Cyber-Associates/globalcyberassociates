@@ -11,6 +11,7 @@ import Refund from "./pages/Refund";
 
 import ScrollToTop from "./components/ScrollToTop";
 import PageTransition from "./components/PageTransition";
+import { unlockAdmin } from "./lib/adminAuth";
 
 const Home = lazy(() => import("./components/homepage/home.jsx"));
 const About = lazy(() => import("./components/about/about.jsx"));
@@ -32,6 +33,7 @@ const VisunAIShowcase = lazy(() => import("./components/products/VisunAIShowcase
 const Blogs = lazy(() => import("./pages/Blog.jsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 const News = lazy(() => import("./pages/News.jsx"));
+const QuoteGenerator = lazy(() => import("./components/quote/QuoteGenerator.jsx"));
 
 const App = () => {
 
@@ -53,7 +55,7 @@ const App = () => {
 
         const password = prompt("Enter Administration Password to view Visual Intel:");
 
-        if (password === "gca@123") {
+        if (password !== null && unlockAdmin(password)) {
           navigate("/presentations");
         } else if (password !== null) {
           setToast({
@@ -125,6 +127,7 @@ const App = () => {
             <Route path="assessment" element={<PageTransition><AssessmentPage /></PageTransition>} />
             <Route path="products" element={<PageTransition><Products /></PageTransition>} />
             <Route path="products/visunai" element={<VisunAIShowcase />} />
+            <Route path="quote" element={<QuoteGenerator />} />
 
           </Routes>
 

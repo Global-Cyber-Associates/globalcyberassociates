@@ -83,16 +83,24 @@ export default function PresentationIndex() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 px-6 py-12 md:px-10">
       <div className="mx-auto w-full max-w-6xl">
-        <header className="mb-10">
-          <p className="text-sm uppercase tracking-[0.2em] text-cyan-300/80 mb-3">
-            GCA Visual Intel
-          </p>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight">
-            Presentations
-          </h1>
-          <p className="mt-3 text-slate-400">
-            Select a presentation to open it.
-          </p>
+        <header className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-cyan-300/80 mb-3">
+              GCA Visual Intel
+            </p>
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight">
+              Presentations
+            </h1>
+            <p className="mt-3 text-slate-400">
+              Select a presentation to open it.
+            </p>
+          </div>
+          <Link
+            to="/quote"
+            className="rounded-xl bg-cyan-500 px-5 py-3 font-bold text-slate-950 hover:bg-cyan-400 transition-colors"
+          >
+            Generate Quote
+          </Link>
         </header>
 
         <div className="mb-8">
